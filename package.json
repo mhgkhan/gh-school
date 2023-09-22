@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node app.js",
-    "dev":"nodemon app.js -e ejs"
+    "dev": "nodemon app.js -e ejs"
   },
   "repository": {
     "type": "git",
@@ -39,5 +39,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.2",
     "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
