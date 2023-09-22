@@ -22,3 +22,27 @@ closeMenu.addEventListener("click", e=>{
     navMenu.style.zIndex = "-1"
     open = true
 })
+
+
+
+
+
+
+// aos and typed animations libarary works 
+
+var typed = new Typed("#firstHead", {
+    strings: ["Our Aim To Educate The Nation "],
+    typeSpeed: 120,
+})
+var typed = new Typed("#courses", {
+    strings: ["MATHS", "URDU", "ENGLISH", "ISLAMYAT", "PAK STUDY", "PASHTO", "BIOLOGY", "CHEMISTARY"],
+    typeSpeed: 50,
+    loop:true,
+    cursorChar:"✏️"
+})
+
+AOS.init({
+    duration:600,
+    once:false,
+    offset:30
+})
