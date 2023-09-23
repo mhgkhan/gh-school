@@ -279,25 +279,36 @@ main {
   background: #0505d9f1;
 }
 
-/* .services{
-  width: 100%;
-  height: 100%;
-} */
-.services .container h2 {
+/* ##############
+  SECTIONS STARTED 
+###############*/
+.section{
+  margin-top: 3rem;
+}
+.section-container h2 {
   color: gray;
   position: relative;
 }
-.services .container h2::before {
+.section-container h2::before {
   content: "";
   margin: 0px 1rem;
   border: 1px solid gray;
   width: 50%;
 }
-.services .container h1 {
+.section-container h1 {
   margin: 0.4rem 3rem;
   font-size: 2.3rem;
   color: #a32727;
 }
+/* ##############
+  SECTIONS ENDED STYLING 
+###############*/
+
+/* .services{
+  width: 100%;
+  height: 100%;
+} */
+
 .container .services-cards {
   margin-top: 1.5rem;
   /* position: relative; */
@@ -348,6 +359,28 @@ main {
 .service-card:hover.service-card .card-text {
   height: 70%;
 }
+
+/* survey section styling   */
+.survey{
+  width: 100%;
+  height: auto;
+  background: url(../media/images/surveybg.jpg) no-repeat center center/cover;
+  background-attachment: fixed;
+  padding: 20px 0px;
+}
+.survey-cards{
+  margin-top: 1.5rem;
+}
+.survey-item{
+  padding: 10px;
+  text-align: center;
+  background: #e4dcdcd8;
+  margin: 1rem;
+}
+.survey-item h1{
+  font-size: 4rem !important;
+}
+
 
 /* ##########################
 ##########################
@@ -420,6 +453,21 @@ footer .container p {
     width: 100%;
     margin: 1rem !important;
   }
+  .service-card{
+    width: 200px !important;
+    height: 250px !important;
+    margin-top: .6rem !important;
+  }
+  .service-card img{
+    height: 50% !important;
+  }
+  .service-card .card-text{
+    height: 50%;
+  }
+  .service-card:hover.service-card .card-text {
+    height: 90%;
+  }
+
 }
 
 @media screen and (max-width: 500px) {
