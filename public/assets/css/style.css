@@ -107,7 +107,7 @@ h6 {
 .flex-wrap {
   flex-wrap: wrap;
 }
-.flwx-wrap-rev {
+.flex-wrap-rev {
   flex-wrap: wrap-reverse;
 }
 .justify-end {
@@ -116,6 +116,9 @@ h6 {
 
 .flex-col {
   flex-direction: column;
+}
+.flex-row-rev{
+  flex-direction: row-reverse;
 }
 .m1-auto {
   margin: 1rem auto;
@@ -376,9 +379,161 @@ main {
   text-align: center;
   background: #e4dcdcd8;
   margin: 1rem;
+  /* width: 250px; */
 }
 .survey-item h1{
   font-size: 4rem !important;
+}
+
+
+/* rules and regulation section  */
+.rg-rows .rg-row{
+  width: 100%;
+  /* box-shadow: 0px 0px 8px black; */
+  /* border-bottom: 1px solid #6e2f2f; */
+  border-radius: 7px;
+  margin-top: 1rem;
+  padding: 15px;
+  align-items: flex-start;
+}
+
+.rg-rows .rg-row .rg-text-content{
+  width: 55%;
+  text-align: left;
+}
+
+.rg-rows .rg-row .rg-text-content h1{
+  margin: 7px 0px;
+}
+.rg-row .rg-text-content p{
+  padding: 0px 12px;
+  line-height: 35px;
+}
+.rg-rows .rg-row .img{
+  width: 35%;
+  /* padding: 20px 0px; */
+  /* height: 270px; */
+}
+.rg-rows .rg-row .img img{
+  border-radius: 7px;
+}
+
+
+/* #testemonials styling section  */
+.testemonials{
+  background: url(../media/images/testmonialbg.jpg) no-repeat center center/cover;
+  padding: 25px 0px;
+  background-attachment: fixed;
+}
+
+.testemonials .testemonilas-container{
+  width:90%;
+  height: auto;
+  /* border: 1px solid white; */
+  margin: 1rem auto;
+  background: #bbb6b6d2;
+  border-radius: 10px;
+  box-shadow: -1px 9px 9px 0px #afa7a7a3;
+  margin-bottom: -100px;
+  padding: 15px 5px;
+}
+
+.testemonials .testemonilas-container .testmonials-all{
+  margin-top: 1.8rem;
+} 
+.testemonials .testemonilas-container .testmonial{
+  width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  /* border: 1px solid black; */
+  text-align: center;
+  background: #f9f6f6ba;
+  margin-bottom: -70px;
+  box-shadow: -1px 11px 11px 0px #e9dedebd;
+}
+.testemonials .testemonilas-container .testmonial img{
+  width: 100px;
+  height: 100px;
+  margin: 5px auto;
+  display: block;
+  border-radius: 50%;
+  border: 4px solid #6e2f2f;
+}
+.testmonial h3{
+  color: #6e2f2f;
+  margin: .3rem auto;
+}
+.testmonial span{
+  background: #6e2f2f;
+  padding: 4px 7px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px #6e2f2f;
+  margin: 10px 0px !important;
+  color: white;
+}
+.testmonial p{
+  margin-top: 1rem;
+  padding: 4px 20px;
+  text-align: center;
+}
+.testmonial .icons{
+  width: 80%;
+  margin: 0px auto;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.testmonial .icons a{
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+
+
+/* contactus section  */
+.contactus{
+  margin-top: 120px;
+  padding: 25px 0px;
+}
+.contactus .contactblock{
+  width: 450px;
+  height: auto;
+  padding: 10px;
+  margin: 1rem 1rem;
+  /* border: 1px solid red; */
+  border-radius: 4px;
+  box-shadow: 0px 0px 6px #2e2d2dd2;
+}
+.contactblock h3{
+  margin:1rem auto;
+}
+.contactblock .address-block{
+  border-bottom: 1px solid rebeccapurple;
+  padding: 6px 0px;
+  margin: 1rem auto;
+}
+.contactblock .span{
+  font-size: 1.5rem;
+  padding: 15px;
+  margin: 0px 10px;
+  border: 1px solid rebeccapurple;
+  border-radius: 3px;
+  background: rebeccapurple;
+  color: white;
+  cursor: pointer;
+}
+.contactblock .span:hover{
+  background: white;
+  color: rebeccapurple;
+}
+.contactblock .address-block .address-text{
+ justify-content: space-between;
+ padding: 4px;
+}
+
+.contactblock1{
+  height: 400px !important;
 }
 
 
@@ -426,7 +581,12 @@ footer .container p {
     width: 80%;
   }
 }
-
+@media screen and (max-width:1000px){
+  .testmonial{
+    margin-bottom: 0px;
+    margin: 1rem auto !important;
+  }
+}
 @media screen and (max-width: 800px) {
   html {
     font-size: 80%;
@@ -467,6 +627,22 @@ footer .container p {
   .service-card:hover.service-card .card-text {
     height: 90%;
   }
+  .rg-row{
+    flex-direction: column-reverse;
+  }
+  .rg-row div{
+    width: 100% !important;
+  }
+  .rg-row .img{
+    width: 70% !important;
+    margin: auto !important;
+  }
+  .rg-row .rg-text-content{
+    text-align: center !important;
+  }
+  .rg-row .rg-text-content p{
+    line-height:20px;
+  }
 
 }
 
@@ -506,5 +682,11 @@ footer .container p {
 
   nav .closeBtn {
     display: block;
+  }
+  .testemonilas-container{
+    padding-bottom: 0px !important;
+  }
+  .contactblock1{
+    height: 280px !important;
   }
 }
