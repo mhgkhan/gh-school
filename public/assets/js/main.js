@@ -5,8 +5,9 @@ const closeMenu = document.getElementById("closeMenu")
 
 let open = true
 menuBtn.addEventListener("click", e => {
+    
     if (!open) {
-        navMenu.style.transform = "translateY(-500px)"
+        navMenu.style.transform = "translateY(-1000px)"
         open = true
     }
     else {
@@ -16,7 +17,7 @@ menuBtn.addEventListener("click", e => {
 })
 
 closeMenu.addEventListener("click", e => {
-    navMenu.style.transform = "translateY(-500px)"
+    navMenu.style.transform = "translateY(-1000px)"
     open = true
 })
 
@@ -35,9 +36,9 @@ const increaseValues = (range, index,timing) => {
     }, timing);
 }
 
-increaseValues(6000, 0,150);
-increaseValues(16000, 1,100);
-increaseValues(4500, 2, 200)
+increaseValues(6000, 0,700);
+increaseValues(16000, 1,300);
+increaseValues(4500, 2, 500)
 
 
 
