@@ -2,19 +2,13 @@ import { config } from 'dotenv'
 config();
 import express from 'express'
 import path from 'path'
-import Server from './routes/server.js';
+import staticPagesRouter from './routes/staticRouter.js';
 import fs from 'fs/promises'
 
 const app = express();
 
-// app.use((req, res, next) => {
-//     fs.appendFile(`user.txt`, `[DATE: ${Date.now()}]\t [IP: ${req.ip}]  \t [METHOD: ${req.method}] \t [PATH: ${req.path}] \n `, (err, data) => {
-//         next();
-//     })
-// })
-
 // default route 
-app.use("/", Server);
+app.use("/", staticPagesRouter);
 
 // connect with public folder 
 app.use(express.static(path.join(process.cwd(), "./public")));

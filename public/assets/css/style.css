@@ -165,6 +165,9 @@ header .container .logo {
   height: 90px;
 }
 
+header .icons{
+  width: 90%;
+}
 header .container .icons span {
   font-size: 1.3rem;
   cursor: pointer;
@@ -173,20 +176,24 @@ header .container .icons span {
 header .container .icons #menuBtn {
   font-size: 2rem;
   display: none;
-  background: #59f757;
+  background: #a32727;
   padding: 8px 10px;
   color: white;
   border-radius: 3px;
   margin: 0px;
   box-shadow: 0px 0px 4px black;
 }
+header .container .icons #menuBtn span{
+  color: white;
+}
 .icons .searchbar {
   width: 200px;
   margin: 0px 14px;
   padding: 4px;
-  background: #59f757;
+  background: #a32727;
   border-radius: 4px;
   box-shadow: 0px 0px 4px #5b5a5ace;
+  width: 100%;
 }
 .icons .searchbar span {
   color: white;
@@ -200,7 +207,12 @@ header .container .icons #menuBtn {
   background: none;
   font-size: 1rem;
   border: none;
+  color: white;
 }
+.icons .searchbar input::placeholder{
+  color: white;
+}
+
 
 nav {
   margin-top: 7px;
@@ -229,9 +241,10 @@ nav .closeBtn {
   margin-top: 1rem;
 }
 nav .closeBtn button {
-  background: #036703;
+  background: #a32727;
   width: 100%;
   border: 1px solid #59f757;
+  border: 1px solid #a32727;
   color: white;
   font-size: 1.7rem;
   border-radius: 5px;
@@ -557,6 +570,41 @@ main {
   height: 400px !important;
 }
 
+
+/* oursotory page  */
+.ourstory-section-1 div:first-child{
+  width: 250px;
+  height: 280px;
+}
+.ourstory-section-1 img{
+  border-radius: 10px;
+}
+
+.ourstory-section-1 div:last-child{
+  width: 60%;
+  text-align: right;
+}
+.ourstory-section-1 .block{
+  margin: 1rem auto;
+  padding: 10px;
+}
+.ourstory-section-1 .block h1{
+  margin: .5rem 0px;
+}
+
+
+
+/* gallery */
+.line-gallery .gallery-block{
+  width: 260px;
+  height: 280px;
+  border-radius: 5px;
+  margin: 1rem;
+  box-shadow: 0px 0px 3px #4a3939;
+}
+
+
+
 /* ##########################
 ##########################
 footer stying .. 
@@ -565,6 +613,7 @@ footer stying ..
 footer {
   background: #4a3939;
   color: white;
+  margin-top: 1.5rem;
 }
 footer .container {
   padding: 10px;
@@ -708,6 +757,17 @@ footer .container p {
   }
   .rg-row .rg-text-content p {
     line-height: 20px;
+  }
+}
+
+@media screen and (max-width:650px){
+  .ourstory-section-1 .block{
+    margin: 0px auto;
+  }
+  .ourstory-section-1 div:last-child{
+    width: 90%;
+    margin: 0px auto;
+    text-align: center;
   }
 }
 

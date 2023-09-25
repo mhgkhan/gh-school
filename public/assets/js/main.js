@@ -30,15 +30,15 @@ const increaseValues = (range, index,timing) => {
             clearInterval();
         }
         else {
-            counter = counter  + 353
+            counter = counter  + 88
             surveyValue[index].innerHTML = counter + "+"
         }
     }, timing);
 }
 
-increaseValues(6000, 0,700);
-increaseValues(16000, 1,300);
-increaseValues(4500, 2, 500)
+increaseValues(6000, 0,300);
+increaseValues(16000, 1,100);
+increaseValues(4500, 2, 300)
 
 
 
