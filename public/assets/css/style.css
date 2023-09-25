@@ -252,6 +252,7 @@ nav .closeBtn button {
 
 main {
   width: 100%;
+  overflow-x: hidden;
 }
 
 .intro {
