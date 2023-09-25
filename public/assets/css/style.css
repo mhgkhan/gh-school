@@ -19,6 +19,9 @@ font-family: 'Shadows Into Light', cursive;
 html {
   scroll-behavior: smooth;
 }
+body{
+  overflow-x: hidden !important;
+}
 
 img {
   width: 100%;
@@ -150,11 +153,14 @@ h6 {
 
 header {
   width: 100%;
-  /* background: white; */
+  background: white;
   padding-top: 17px;
+  z-index: 999999;
+  position: sticky;
+  top: 0px;
 }
 
-header .container {
+header>.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -252,7 +258,6 @@ nav .closeBtn button {
 
 main {
   width: 100%;
-  overflow-x: hidden;
 }
 
 .intro {
@@ -369,7 +374,7 @@ main {
   border: 1px solid #6e2f2f;
   margin: 1rem auto;
   box-shadow: -4px 9px 11px 0px #c8bbbbd4;
-  transform: skewX(-6deg);
+  transform: skewX(-6deg) !important;
   transition: 1s;
 }
 
@@ -552,15 +557,15 @@ main {
   font-size: 1.5rem;
   padding: 15px;
   margin: 0px 10px;
-  border: 1px solid rebeccapurple;
+  border: 1px solid #a32727;
   border-radius: 3px;
-  background: rebeccapurple;
+  background: #a32727;
   color: white;
   cursor: pointer;
 }
 .contactblock .span:hover {
   background: white;
-  color: rebeccapurple;
+  color: #a32727;
 }
 .contactblock .address-block .address-text {
   justify-content: space-between;
@@ -676,13 +681,15 @@ footer .container p {
     background: white;
     box-shadow: 0px 0px 4px #424040;
     border-radius: 5px;
-    padding: 10px;
     transition: 0.5s;
-    transform: translateY(-1000px);
     border-bottom: none;
     margin: 0px auto;
-    position: absolute;
     z-index: 111111;
+    height: 0px;
+    overflow-y: hidden;
+    width: 90%;
+    margin-top: 5px;
+    transition: height 1s;
   }
   nav ul {
     flex-direction: column;
@@ -782,12 +789,21 @@ footer .container p {
   .contactblock1 {
     height: 280px !important;
   }
+  footer img{
+    width: 120px !important;
+    height: 130px !important;
+  }
 }
 
 
 @media screen and (max-width:370px){
+  
   header .container{
     flex-direction: column !important;
+  }
+  header .logo{
+    width: 60px !important;
+    height: 65px !important;
   }
   header .container .icons{
     margin-top:8px;

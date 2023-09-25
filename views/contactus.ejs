@@ -1,14 +1,72 @@
 <%- include('./layouts/header') %>
 
+    <style>
+        form{
+            padding: 10px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #6e2f2f;
+            color: #fff;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b14d4d;
+        }
+    </style>
 
     <!-- main in strted from here  -->
-   <section class="section">
-    <div class="container section-container">
-        <h3>Contact us  </h3>
-        <h1> FREE FEEL TO CONTACT US  </h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste consectetur cupiditate sed ex, aliquid qui maiores harum ut ipsum optio repellendus soluta ipsam beatae modi sit id eveniet fuga animi iure at! Animi facere soluta repudiandae, dolorem tenetur atque corporis consectetur sapiente praesentium odio architecto in autem similique vel sit molestias assumenda unde perspiciatis consequatur at fugit quae. Tenetur, assumenda placeat possimus necessitatibus aliquam velit nihil iure rerum in dolorum tempore magnam ab fugiat modi enim provident optio recusandae nobis iste aspernatur vel mollitia obcaecati quidem ut. Maiores autem distinctio et assumenda numquam laudantium cupiditate, totam nobis vero labore, atque quasi, rem quam iusto! Nostrum dolore nam beatae, sint esse fuga ipsa corrupti. Quas recusandae veritatis iusto dicta molestias. Quam cum dolore asperiores iste maiores, laudantium numquam veniam quia recusandae, possimus ad, delectus sed est labore. Dicta recusandae fuga ipsa! Vitae ex ea architecto sapiente accusamus exercitationem dolore molestiae quaerat! Et laborum nulla iure ducimus voluptate, sint iusto adipisci ipsam ab molestiae obcaecati perferendis harum sunt odit quasi pariatur? Odio autem modi architecto asperiores consectetur eum delectus atque ad ipsum nulla, tempora nihil sed dolor, dolores impedit fugit aperiam consequatur tenetur exercitationem nam iusto itaque quos unde. Nulla, dolor. Iste, tenetur! Error assumenda nihil id ut dicta. Et placeat explicabo amet ea voluptates accusamus eos itaque fuga nesciunt assumenda temporibus unde quas, corporis modi atque deleniti repellat perferendis eaque alias soluta. At repellendus est natus totam voluptas eos blanditiis corrupti sint, officiis asperiores doloremque porro magnam neque error sit vel? Dolorem eligendi possimus nulla aspernatur qui beatae iusto alias facilis a perspiciatis illum libero nemo similique ut facere inventore dicta veniam, est quisquam architecto, molestias rem? Blanditiis minus ex possimus repellendus incidunt voluptates aliquam quas sed quia facilis ratione tempore eveniet qui corporis, repudiandae expedita molestiae praesentium aliquid veritatis illum quos. Illum praesentium minus vero. Possimus modi voluptate neque ipsum deserunt ipsa exercitationem, fugit enim repellat architecto quos, libero, inventore harum unde officiis ea doloribus. Neque quidem illo obcaecati, accusantium vero aspernatur at.</p>
-    </div>
-   </section>
+    <section class="section">
+        <div class="container section-container">
+            <h3>Contact us </h3>
+            <h1 style="margin: 1rem 0px;"> FREE FEEL TO CONTACT US </h1>
+            <p>Your questions and feedback are important to us. We welcome your
+                inquiries and look <br> forward to connecting with you as we work together to create an exceptional
+                educational experience.</p>
+
+
+            <form action="#" method="POST">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Name">
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Your message"></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+
+        </div>
+    </section>
     <!-- main in ended from here  -->
 
 

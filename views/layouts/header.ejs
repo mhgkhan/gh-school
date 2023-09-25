@@ -6,7 +6,7 @@
     <title>
         <%= title %>
     </title>
-    
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
@@ -17,7 +17,7 @@
 
     <!-- aos animation libarary css cdn  -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    
+
     <!-- website styleshet  -->
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -27,31 +27,35 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="./logo.png" alt="ghazna school logo " style="cursor: pointer;" onclick="document.location.href = '/'">
+                <img src="./logo.png" alt="ghazna school logo " style="cursor: pointer;"
+                    onclick="document.location.href = '/'">
             </div>
 
             <div class="icons flex">
                 <div class="searchbar flex item-center justify-between">
-                    <input type="text" name="search" id="search" placeholder="Type to search" minlength="3" maxlength="30">
+                    <input type="text" name="search" id="search" placeholder="Type to search" minlength="3"
+                        maxlength="30">
                     <span><i class="fa fa-search"></i></span>
                 </div>
                 <span id="menuBtn"><i class="fa-solid fa-bars" style="color: white;"></i></span>
             </div>
         </div>
+        <nav id="navMenu">
+            <div class="container">
+                <ul class="flex item-center justify-end">
+                    <li><a href="/"><i class="fa fa-home"></i> HOME</a></li>
+                    <li><a href="/ourmission"><i class="fa fa-signal"></i> OUR MISSION </a></li>
+                    <li><a href="/ourstory"><i class="fa fa-book"></i> OUR STORY</a></li>
+                    <!-- <li><a href="/ourgallery"><i class="fa fa-images"></i> OUR GALLERY</a></li>
+                    <li><a href="/addmissions"><i class="fa fa-sign-in"></i> ADDMISSIONS</a></li> -->
+                    <li><a href="/contactus"><i class="fa fa-phone"></i> CONTACT US </a></li>
+                </ul>
+                <div class="closeBtn"><button class="close btn" id="closeMenu"><i class="fa fa-close"></i> </button>
+                </div>
+            </div>
+        </nav>
     </header>
-    <nav id="navMenu">
-        <div class="container">
-            <ul class="flex item-center justify-end">
-                <li><a href="/"><i class="fa fa-home"></i> HOME</a></li>
-                <li><a href="/ourmission"><i class="fa fa-signal"></i> OUR MISSION </a></li>
-                <li><a href="/ourstory"><i class="fa fa-book"></i> OUR STORY</a></li>
-                <li><a href="/ourgallery"><i class="fa fa-images"></i> OUR GALLERY</a></li>
-                <li><a href="/addmissions"><i class="fa fa-sign-in"></i> ADDMISSIONS</a></li>
-                <li><a href="/contactus"><i class="fa fa-phone"></i> CONTACT US </a></li>
-            </ul>
-            <div class="closeBtn"><button class="close btn" id="closeMenu"><i class="fa fa-close"></i> </button></div>
-        </div>
-    </nav>
+
 
 
 

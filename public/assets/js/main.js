@@ -7,17 +7,17 @@ let open = true
 menuBtn.addEventListener("click", e => {
     
     if (!open) {
-        navMenu.style.transform = "translateY(-1000px)"
+        navMenu.style.height = "0px"
         open = true
     }
     else {
-        navMenu.style.transform = "translateY(0px)"
+        navMenu.style.height = "auto"
         open = false
     }
 })
 
 closeMenu.addEventListener("click", e => {
-    navMenu.style.transform = "translateY(-1000px)"
+    navMenu.style.height = "0px"
     open = true
 })
 
@@ -47,7 +47,7 @@ increaseValues(4500, 2, 300)
 // aos and typed animations libarary works 
 
 var typed = new Typed("#firstHead", {
-    strings: ["Our Aim To Educate The Nation "],
+    strings: ["Education is the passport to the future, for tomorrow belongs to those who prepare for it today."],
     typeSpeed: 120,
 })
 var typed = new Typed("#courses", {
@@ -57,8 +57,8 @@ var typed = new Typed("#courses", {
     cursorChar: "✏️"
 })
 
-AOS.init({
-    duration: 600,
-    once: false,
-    offset: 30
-})
+// AOS.init({
+//     duration: 600,
+//     once: false,
+//     offset: 30
+// })
