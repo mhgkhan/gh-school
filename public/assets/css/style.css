@@ -724,10 +724,18 @@ footer .container p {
     width: 96%;
   }
 }
-@media screen and (max-width: 600px) {
-  html {
-    font-size: 75%;
+@media screen and (max-width:650px){
+  .ourstory-section-1 .block{
+    margin: 0px auto;
   }
+  .ourstory-section-1 div:last-child{
+    width: 90%;
+    margin: 0px auto;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .intro .intro-content {
     margin-top: 1rem;
     width: 94%;
@@ -766,22 +774,15 @@ footer .container p {
   .rg-row .rg-text-content p {
     line-height: 20px;
   }
+  .section-container{
+    padding: 10px;
+  }
 }
 
-@media screen and (max-width:650px){
-  .ourstory-section-1 .block{
-    margin: 0px auto;
-  }
-  .ourstory-section-1 div:last-child{
-    width: 90%;
-    margin: 0px auto;
-    text-align: center;
-  }
-}
 
 @media screen and (max-width: 500px) {
   html {
-    font-size: 70%;
+    font-size: 75%;
   }
   .testemonilas-container {
     padding-bottom: 0px !important;

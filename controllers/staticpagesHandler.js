@@ -2,6 +2,7 @@
 const pageRender = (ejsfile, title) => {
     return (req, res) => {
         try {
+            
             res.status(200).render(ejsfile, {title: title})
         } catch (error) {
             res.status(500).json({ error })
@@ -22,6 +23,8 @@ class staticPagesHandler {
     static handleAdmissionspage = pageRender("addmissions", "Addmissions || GHSMS");
     // for our contactus page 
     static handleContactuspage = pageRender("contactus", "Contactus || GHSMS");
+    // for our student addmission page 
+    static handleStudentAddmisionPage = pageRender("./student/addmission.ejs", "Student Addmision ")
 }
 
 export default staticPagesHandler
