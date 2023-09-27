@@ -10,6 +10,8 @@ staticPagesRouter.get("/", staticPagesHandler.handleIndex)
     .get("/ourgallery", staticPagesHandler.handleOurgallery)
     .get("/addmissions", staticPagesHandler.handleAdmissionspage)
     .get("/contactus", staticPagesHandler.handleContactuspage)
-staticPagesRouter.get("/student/addmission", staticPagesHandler.handleStudentAddmisionPage);
+
+    // to get student create form 
+staticPagesRouter.get("/student/create", staticPagesHandler.handleStudentAddmisionPage);
 
 export default staticPagesRouter
