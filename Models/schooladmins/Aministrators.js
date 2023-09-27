@@ -7,9 +7,10 @@ const addministrators = mongoose.Schema({
     role: { type: String, required: true },
     password: { type: String, required: true },
     image: { type: String, required: true },
-},{
-    timestamps:true
+    success:{type:String, default:"pending"}
+}, {
+    timestamps: true
 })
 
-const adminSchoolWeb = mongoose.model("Admin",addministrators);
+const adminSchoolWeb = mongoose.model("Admin", addministrators);
 export default adminSchoolWeb

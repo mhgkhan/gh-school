@@ -19,6 +19,10 @@ const studentSignupStr = mongoose.Schema({
         type:String,
         required:true,
         min:6
+    },
+    status:{
+        type:String,
+        default:"offline"
     }
 },{
     timestamps:true
