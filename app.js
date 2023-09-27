@@ -14,7 +14,11 @@ import contactRouter from './routes/contactRouter.js';
 
 
 const app = express();
+<<<<<<< HEAD
 connectDB(process.env.MONGO_URI).then(() => console.log("MONGODB CONNECTED."))
+=======
+connectDB("mongodb+srv://ghazna:wpqiEidJVjX39yEw@farhatdb.zejxmeq.mongodb.net/ghsms?retryWrites=true&w=majority").then(()=>console.log("MONGODB CONNECTED."))
+>>>>>>> 5be64ab0dba7c1bdf92a3f8f4abfd8895fb9252e
 
 
 // connect with public folder 
@@ -45,4 +49,8 @@ app.set("views", path.join(process.cwd(), "./views"))
 
 
 
+<<<<<<< HEAD
 app.listen(process.env.PORT || 80, () => console.log("SERVER ARE LISTENNING ON PORT " + process.env.PORT || 80))
+=======
+app.listen(process.env.PORT || 80, ()=> console.log("SERVER ARE LISTENNING ON PORT " + process.env.PORT || 80))
+>>>>>>> 5be64ab0dba7c1bdf92a3f8f4abfd8895fb9252e
