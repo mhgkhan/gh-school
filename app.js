@@ -14,7 +14,11 @@ import contactRouter from './routes/contactRouter.js';
 
 
 const app = express();
+<<<<<<< HEAD
+connectDB(process.env.MONGO_URI).then(() => console.log("MONGODB CONNECTED."))
+=======
 connectDB("mongodb+srv://ghazna:wpqiEidJVjX39yEw@farhatdb.zejxmeq.mongodb.net/ghsms?retryWrites=true&w=majority").then(()=>console.log("MONGODB CONNECTED."))
+>>>>>>> 5be64ab0dba7c1bdf92a3f8f4abfd8895fb9252e
 
 
 // connect with public folder 
