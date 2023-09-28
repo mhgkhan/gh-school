@@ -31,14 +31,21 @@ button,
 .btn {
   width: 90px;
   padding: 5px 7px;
-  border: 1px solid blue;
+  border: 1px solid #6e2f2f;
   text-align: center;
   box-shadow: 0px 0px 4px black;
   transition: 0.4s;
+  background: #a32727;
+  color: white;
+  cursor: pointer;
 }
+
 button:active,
 .btn:active {
   transform: scale(1.05, 1.05);
+}
+button:hover,.btn:hover{
+  background: #bf4545;
 }
 
 a {
@@ -622,6 +629,9 @@ main {
 .section-container .header h1{
   font-size: 3rem;
   color: #a32727;
+  width: 100% !important;
+  text-align: center;
+  margin: 0px auto !important;
 }
 .section-container .header span{
   margin: 8px 0px;
@@ -643,6 +653,7 @@ main {
   margin: 0px;
   padding: 10px;
 }
+
 .form-area .form-header h1, .form-header p{
   color: white;
 }
@@ -661,27 +672,50 @@ main {
   padding: 0px;
   box-sizing: border-box;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #a32727;
 }
 .form-area form .form-fields-row .form-field span{
-  padding: 7px 9px;
+  padding: 14px 18px;
   /* border-radius: 4px; */
   margin: 0px 0px;
-  background: #a32727;
   color: white;
   font-size: 1.1rem;
-  width: 50px;
 }
 .form-area form .form-fields-row .form-field input{
-  width: 80%;
+  width: 100%;
   height: auto;
-  padding: 7px 7px;
+  padding: 14px 7px;
   background: none;
   color: black;
   border: none;
   font-size: 1.1rem;
   outline: none;
+  background: white;
+}
+.form-field input::placeholder{
+  color: #a32727a2;
 }
 
+.quiz-form{
+  width: 100% !important;
+  background: white !important;
+}
+.quiz-form span{
+  background: #a32727 !important;
+  margin: 3px !important;
+}
+
+.form-area form button{
+  margin: 1rem 10px;
+  margin-left: 20px;
+  padding: 8px 0px;
+  text-align: center;
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
 
 /* ##########################
 ##########################
@@ -782,6 +816,12 @@ footer .container p {
   }
 }
 
+@media screen and (max-width:850px){
+  .form-area {
+    width: 100% !important;
+  }
+}
+
 @media screen and (max-width: 800px) {
   html {
     font-size: 80%;
@@ -866,6 +906,13 @@ footer .container p {
     width: 120px !important;
     height: 130px !important;
   }
+
+  .form-area form .form-field span{
+    padding: 8px 10px !important;
+  }
+  .form-area form .form-field input{
+    padding: 8px 5px !important;
+  }
 }
 
 
@@ -884,5 +931,14 @@ footer .container p {
   }
   header .container .icons .searchbar{
     width: 100%;
+  }
+  .form-area form{
+    padding: 10px;
+  }
+  .form-area .form-fields-row{
+    flex-direction: column !important;
+  }
+  .form-area .form-fields-row .form-field{
+    width: 100% !important;
   }
 }

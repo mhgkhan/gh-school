@@ -21,19 +21,71 @@
                 </div>
 
                 <form action="#">
-                    <div class="form-fields-row flex">
+
+                    <div class="form-fields-row flex item-center justify-center">
 
                         <div class="form-field">
                             <span><i class="fa fa-user"></i></span>
-                            <input type="text" name="fullname" id="fullname" placeholder="Full name" required minlength="4" pattern="[A-Za-z]{50}" title="Please Enter Valid Name" >
+                            <input type="text" name="firstname" id="firstname" placeholder="Frist name " required minlength="4" pattern="[A-Za-z]{30}" title="Please Enter Valid Name"  >
                         </div> 
 
+
                         <div class="form-field">
                             <span><i class="fa fa-user"></i></span>
-                            <input type="text" name="fullname" id="fullname" placeholder="Full name" required minlength="4" pattern="[A-Za-z]{50}" title="Please Enter Valid Name" >
+                            <input type="text" name="lastname" id="lastname" placeholder="Last name" required minlength="4" pattern="[A-Za-z]{50}" title="Please Enter Valid Name" >
+                        </div> 
+
+
+                       
+                    </div>
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+                        <div class="form-field">
+                            <span><i class="fa fa-key"></i></span>
+                            <input type="email" name="email" id="email" placeholder="Valid email" required minlength="5" title="Please Enter Valid Email" >
+                        </div> 
+
+
+                        <div class="form-field">
+                            <span><i class="fa fa-phone"></i></span>
+                            <input type="tel" name="phone" id="phone" placeholder="0333 3333333" required minlength="5" pattern="[0-9]{4} [0-9]{7}" title="Please Enter Valid Phone Number" maxlength="12" >
                         </div> 
 
                     </div>
+
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+                        <div class="form-field">
+                            <span><i class="fa fa-key"></i></span>
+                            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password" >
+                        </div> 
+
+
+                        <div class="form-field">
+                            <span><i class="fa fa-envelope"></i></span>
+                            <input type="password" name="password" id="confirm-password" placeholder="Confirm password" required minlength="6" title="Please Enter Valid password" >
+                        </div> 
+
+                    </div>
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+                        <!-- <div class="form-field">
+                            <span><i class="fa fa-key"></i></span>
+                            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password" >
+                        </div>  -->
+
+                        <div class="form-field quiz-form" style="width: 100%;">
+                            <span>5</span>
+                            <span>+</span>
+                            <span>10</span>
+                            <span>=</span>
+                            <input type="number" name="quiznumber" id="quiznumber" placeholder="Enter answer here " required minlength="1" title="Please Enter Valid Answer"  maxlength="3">                        </div> 
+                    </div>
+
+                    <button type="button" id="formSubmitBtn" disabled ><i class="fa fa-sign-in"></i> Signup</button>
                 </form>
             </div>
 
