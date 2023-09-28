@@ -20,37 +20,43 @@
                         educational experience.</p>
                 </div>
 
-                <form action="#">
+                <form action="/api/student/signup" id="signup-form" method="post">
 
                     <div class="form-fields-row flex item-center justify-center">
 
                         <div class="form-field">
                             <span><i class="fa fa-user"></i></span>
-                            <input type="text" name="firstname" id="firstname" placeholder="Frist name " required minlength="4" pattern="[A-Za-z]{30}" title="Please Enter Valid Name"  >
-                        </div> 
+                            <input type="text" class="form-input" name="firstname" id="firstname"
+                                placeholder="Frist name " required minlength="4" pattern="[A-Za-z]{30}"
+                                title="Please Enter Valid Name">
+                        </div>
 
 
                         <div class="form-field">
                             <span><i class="fa fa-user"></i></span>
-                            <input type="text" name="lastname" id="lastname" placeholder="Last name" required minlength="4" pattern="[A-Za-z]{50}" title="Please Enter Valid Name" >
-                        </div> 
+                            <input type="text" class="form-input" name="lastname" id="lastname" placeholder="Last name"
+                                required minlength="4" pattern="[A-Za-z]{50}" title="Please Enter Valid Name">
+                        </div>
 
 
-                       
+
                     </div>
 
                     <div class="form-fields-row flex item-center justify-center">
 
                         <div class="form-field">
                             <span><i class="fa fa-key"></i></span>
-                            <input type="email" name="email" id="email" placeholder="Valid email" required minlength="5" title="Please Enter Valid Email" >
-                        </div> 
+                            <input type="email" class="form-input" name="email" id="email" placeholder="Valid email"
+                                required minlength="5" title="Please Enter Valid Email">
+                        </div>
 
 
                         <div class="form-field">
                             <span><i class="fa fa-phone"></i></span>
-                            <input type="tel" name="phone" id="phone" placeholder="0333 3333333" required minlength="5" pattern="[0-9]{4} [0-9]{7}" title="Please Enter Valid Phone Number" maxlength="12" >
-                        </div> 
+                            <input type="tel" class="form-input" name="phone" id="phone" placeholder="0333 3333333"
+                                required minlength="5" pattern="[0-9]{4} [0-9]{7}"
+                                title="Please Enter Valid Phone Number" maxlength="12">
+                        </div>
 
                     </div>
 
@@ -59,14 +65,17 @@
 
                         <div class="form-field">
                             <span><i class="fa fa-key"></i></span>
-                            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password" >
-                        </div> 
+                            <input type="password" class="form-input" name="password" id="password"
+                                placeholder="Password" required minlength="6" title="Please Enter Valid password">
+                        </div>
 
 
                         <div class="form-field">
                             <span><i class="fa fa-envelope"></i></span>
-                            <input type="password" name="password" id="confirm-password" placeholder="Confirm password" required minlength="6" title="Please Enter Valid password" >
-                        </div> 
+                            <input type="password" class="form-input" name="password" id="confirm-password"
+                                placeholder="Confirm password" required minlength="6"
+                                title="Please Enter Valid password">
+                        </div>
 
                     </div>
 
@@ -78,14 +87,16 @@
                         </div>  -->
 
                         <div class="form-field quiz-form" style="width: 100%;">
-                            <span>5</span>
+                            <span id="5">5</span>
                             <span>+</span>
-                            <span>10</span>
+                            <span id="100">100</span>
                             <span>=</span>
-                            <input type="number" name="quiznumber" id="quiznumber" placeholder="Enter answer here " required minlength="1" title="Please Enter Valid Answer"  maxlength="3">                        </div> 
+                            <input type="number" class="form-input" name="quiznumber" id="quiznumber"
+                                placeholder="Enter answer here " required minlength="1" maxlength="3">
+                        </div>
                     </div>
 
-                    <button type="button" id="formSubmitBtn" disabled ><i class="fa fa-sign-in"></i> Signup</button>
+                    <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i> Signup</button>
                 </form>
             </div>
 
@@ -106,6 +117,133 @@
 
 
         <script src="/assets/js/main.js"></script>
+
+        <script>
+
+
+
+
+
+            const form = document.getElementById("signup-form");
+            const formSubmitBtn = document.getElementById("formSubmitBtn")
+            const formInputs = document.querySelectorAll(".form-input")
+
+
+            let f = false, l = false, em = false, ph = false, p = false, cp = false, quiz = false
+
+
+            const checkall = () => {
+                console.log(f, l, em, ph, p, cp, quiz)
+                if (f && l && ph && em && p && cp && quiz) {
+                    if(formInputs[6].value == "105"){
+                        formSubmitBtn.disabled = false
+                    }
+                    else{
+                        formSubmitBtn.disabled = true
+                    }
+                } else {
+                    console.log("submit button was disabled")
+                    formSubmitBtn.disabled = true
+                }
+            }
+
+
+
+            formInputs[0].addEventListener("keyup", e => {
+                console.log('value1 length is ', e.target.value.length)
+                if (e.target.value.length > 2) {
+                    f = true
+
+                }
+                else {
+                    f = false
+                }
+                checkall()
+            })
+
+            formInputs[1].addEventListener("keyup", e => {
+                console.log('value2 length is ', e.target.value.length)
+
+                if (e.target.value.length > 2) {
+                    l = true
+                }
+                else {
+                    l = false
+                }
+                checkall()
+            })
+
+            formInputs[2].addEventListener("keyup", e => {
+                console.log('value3 length is ', e.target.value.length)
+
+                if (e.target.value.length > 4) {
+                    em = true
+                }
+                else {
+                    em = false
+                }
+                checkall()
+            })
+
+            formInputs[3].addEventListener("keyup", e => {
+                console.log('value4 length is ', e.target.value.length)
+
+                if (e.target.value.length > 9) {
+                    ph = true
+                }
+                else {
+                    ph = false
+                }
+                checkall()
+            })
+
+            formInputs[4].addEventListener("keyup", e => {
+                console.log('value5 length is ', e.target.value.length)
+
+                if (e.target.value.length > 5) {
+                    p = true
+                }
+                else {
+                    p = false
+                }
+                checkall()
+            })
+
+            formInputs[5].addEventListener("keyup", e => {
+                console.log('value6 length is ', e.target.value.length)
+
+                if (e.target.value.length > 5) {
+                    cp = true
+                }
+                else {
+                    cp = false
+                }
+                checkall()
+            })
+
+            formInputs[6].addEventListener("keyup", e => {
+                console.log('value7 length is ', e.target.value.length)
+
+                if (e.target.value.length >= 2) {
+                    quiz = true
+                }
+                else {
+                    quiz = false
+                }
+                checkall()
+            })
+
+
+            formSubmitBtn.addEventListener("click", e => {
+                form.submit();
+            })
+
+
+
+
+        </script>
+
+
         </body>
 
         </html>
