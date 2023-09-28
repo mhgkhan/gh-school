@@ -2,6 +2,7 @@ import express from 'express'
 const staticPagesRouter = express.Router();
 
 import staticPagesHandler from '../controllers/staticpagesHandler.js';
+import userAuth from '../middlewares/userAuth.js';
 
 
 staticPagesRouter.get("/", staticPagesHandler.handleIndex)

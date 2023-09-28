@@ -654,8 +654,12 @@ main {
   padding: 10px;
 }
 
-.form-area .form-header h1, .form-header p{
+.form-area .form-header ul{
+  padding: 5px 15px;
+}
+.form-area .form-header h1, .form-header ul li{
   color: white;
+  list-style-type: "👉";
 }
 
 .form-area form{

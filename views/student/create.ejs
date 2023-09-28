@@ -14,10 +14,17 @@
             <div class="form-area">
                 <div class="form-header">
                     <h1 style="margin: 1rem 0px;"> Create new account! </h1>
-                    <p>Your questions and feedback are important to us. We welcome your
-                        inquiries and look <br> forward to connecting with you as we work together to create an
-                        exceptional
-                        educational experience.</p>
+                    <ul>
+                        <li>
+                           <p> Please fill all fields with valid credientials and don't leave any field from this other
+                            wise the submit button is disabled.</p>
+                        </li>
+                        <li><p>Must check your confirm password if match otherwise they will throw error (submit button
+                            are disabled).</p></li>
+                        <li>
+                           <p> And must calculate the 100 + 5 = and type the answer of this is the last field.</p>
+                        </li>
+                    </ul>
                 </div>
 
                 <form action="/api/student/signup" id="signup-form" method="post">
@@ -97,6 +104,7 @@
                     </div>
 
                     <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i> Signup</button>
+
                 </form>
             </div>
 
@@ -120,10 +128,6 @@
 
         <script>
 
-
-
-
-
             const form = document.getElementById("signup-form");
             const formSubmitBtn = document.getElementById("formSubmitBtn")
             const formInputs = document.querySelectorAll(".form-input")
@@ -131,14 +135,18 @@
 
             let f = false, l = false, em = false, ph = false, p = false, cp = false, quiz = false
 
-
             const checkall = () => {
                 console.log(f, l, em, ph, p, cp, quiz)
                 if (f && l && ph && em && p && cp && quiz) {
-                    if(formInputs[6].value == "105"){
-                        formSubmitBtn.disabled = false
+                    if (formInputs[4].value === formInputs[5].value) {
+                        if (formInputs[6].value == "105") {
+                            formSubmitBtn.disabled = false
+                        }
+                        else {
+                            formSubmitBtn.disabled = true
+                        }
                     }
-                    else{
+                    else {
                         formSubmitBtn.disabled = true
                     }
                 } else {
@@ -146,8 +154,6 @@
                     formSubmitBtn.disabled = true
                 }
             }
-
-
 
             formInputs[0].addEventListener("keyup", e => {
                 console.log('value1 length is ', e.target.value.length)
