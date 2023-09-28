@@ -6,18 +6,14 @@ import session from 'express-session';
 
 
 import connectDB from './connectdb.js'
-
-
 // import routes 
 import staticPagesRouter from './routes/staticRouter.js';
 import contactRouter from './routes/contactRouter.js';
 
 
 const app = express();
-let mongodbUri = "mongodb+srv://ghazna:wpqiEidJVjX39yEw@farhatdb.zejxmeq.mongodb.net/GHSMS?retryWrites=true&w=majority"
 
-connectDB(app.get("env")=="development"?"mongodb://localhost:27017/GHSMS":mongodbUri).then(() => console.log("MONGODB CONNECTED."))
-
+connectDB(app.get("env")=="development"?process.env.MONGO_URI:process.env.MONGO_URI_PROD).then(() => console.log("MONGODB CONNECTED."))
 
 
 // connect with public folder 
@@ -27,12 +23,6 @@ app.use(express.static(path.join(process.cwd(), "public")));
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 
-// session middleware 
-app.use(session({
-    secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true
-}))
 
 
 // default route 
@@ -41,6 +31,15 @@ app.use("/", staticPagesRouter);
 app.use("/api/contact", contactRouter);
 
 app.get("*", (req, res) => res.status(404).json({ error: "404 page not found " }))
+
+// session middleware 
+app.use(session({
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: true
+}))
+
+
 
 
 app.set("view engine", "ejs");
