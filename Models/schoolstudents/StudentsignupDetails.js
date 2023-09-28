@@ -1,6 +1,19 @@
 import mongoose from "mongoose";
 
 const singupStudentDetails = mongoose.Schema({
+    gender:{
+        type:String,
+        required:true
+    },
+    religon:{
+        type:String,
+        required:true
+    },
+    martial_status:{
+        type:String,
+        required:true
+    },
+    
     student_cnic: { //1
         type: String,
         max: 15,

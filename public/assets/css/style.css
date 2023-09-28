@@ -610,6 +610,78 @@ main {
 }
 
 
+/* student admission  */
+/* 1- Signup form  */
+.section-container .header{
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  text-align: center;
+  margin: 1rem 0px;
+}
+.section-container .header h1{
+  font-size: 3rem;
+  color: #a32727;
+}
+.section-container .header span{
+  margin: 8px 0px;
+  padding: 5px 10px;
+  background: #a32727;
+  color: white;
+}
+
+.form-area{
+  width:80%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 12px #686b68dd;
+  padding: 0px;
+}
+.form-area .form-header{
+  width: 100%;
+  background: #a32727;
+  margin: 0px;
+  padding: 10px;
+}
+.form-area .form-header h1, .form-header p{
+  color: white;
+}
+
+.form-area form{
+  margin-top: .7rem;
+}
+.form-area form .form-fields-row{
+  width: 100%;
+}
+.form-area form .form-fields-row .form-field{
+  width: 48%;
+  margin: .7rem 7px;
+  background: white;
+  border: 1px solid #a32727;
+  padding: 0px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.form-area form .form-fields-row .form-field span{
+  padding: 7px 9px;
+  /* border-radius: 4px; */
+  margin: 0px 0px;
+  background: #a32727;
+  color: white;
+  font-size: 1.1rem;
+  width: 50px;
+}
+.form-area form .form-fields-row .form-field input{
+  width: 80%;
+  height: auto;
+  padding: 7px 7px;
+  background: none;
+  color: black;
+  border: none;
+  font-size: 1.1rem;
+  outline: none;
+}
+
 
 /* ##########################
 ##########################
