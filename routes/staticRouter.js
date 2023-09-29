@@ -2,7 +2,8 @@ import express from 'express'
 const staticPagesRouter = express.Router();
 
 import staticPagesHandler from '../controllers/staticpagesHandler.js';
-import userAuth from '../middlewares/userAuth.js';
+import { afterSignupAuth, userAuth } from '../middlewares/userAuthorization.js';
+
 
 
 staticPagesRouter.get("/", staticPagesHandler.handleIndex)
@@ -15,5 +16,6 @@ staticPagesRouter.get("/", staticPagesHandler.handleIndex)
     // to get student create form 
 staticPagesRouter.get("/student/create",userAuth, staticPagesHandler.hanldeStudentSignupPage)
 .get("/student/login", userAuth, staticPagesHandler.hanldeStudentLoginPage)
+.get("/student/signupinformation",afterSignupAuth,staticPagesHandler.handleAddstudentPersonalInformation)
 
 export default staticPagesRouter

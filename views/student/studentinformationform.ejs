@@ -1,0 +1,337 @@
+<%- include('../layouts/header') %>
+
+
+    <!-- main in strted from here  -->
+    <section class="section">
+        <div class="container section-container">
+
+            <div class="header">
+                <h1>MADINA PUBLIC SCHOOL </h1>
+                <span>Step-2 Add Your Personal Information </span>
+            </div>
+
+            <h3> Student Admission </h3>
+            <div class="form-area">
+                <div class="form-header">
+                    <h1 style="margin: 1rem 0px;"> Add Your Legal Personal Information </h1>
+                    <ul>
+                        <li>
+                            <p> Please fill all fields with valid credientials and don't leave any field from this other
+                                wise the submit button is disabled.</p>
+                        </li>
+                        <li>
+                            <p> And fill your information all and true is required not an lie otherwise we are report
+                                you.</p>
+                        </li>
+
+                        <li>
+                            <p> And must calculate the 100 + 5 = and type the answer of this in the last field.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <form action="/api/student/personaldetails" id="signup-form" method="post"
+                    enctype="multipart/form-data">
+
+
+
+                    <div class="form-fields-row flex item-center" style="justify-content: space-around;">
+
+
+                        <div class="uploadPicblock flex item-center justify-center flex-col" id="uploadPicBlock">
+                            <span><i class="fa fa-upload"></i></span>
+                            <p style="padding: 5px; text-align:center">click to select your profile image </p>
+                            <input type="file" name="image" id="usrimageinput" accept="image/*" required hidden>
+                        </div>
+                    </div>
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+                        <div class="form-field">
+                            <span><i class="fa fa-user"></i></span>
+                            <select name="gender" id="gender" required>
+                                <option disabled selected>Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <span><i class="fa fa-user"></i></span>
+                            <select name="marial_status" id="mstatus" required>
+                                <option disabled selected>Martial Status</option>
+                                <option value="unmarried">Unmarried</option>
+                                <option value="married">Married</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+                        <div class="form-field">
+                            <span><i class="fa fa-book"></i></span>
+                            <select name="religon" id="religon" required>
+                                <option disabled selected>Religion</option>
+                                <option value="islam">Islam</option>
+                                <option value="hindu">Hindu</option>
+                                <option value="christian">Chris</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <input type="number" class="form-input" name="student_cnic" id="cnic"
+                                placeholder="ID card Number 22222-2222222-2" required
+                                pattern="[0-9]{5}-[0-9]{8}-[0-9]{1}" title="Please Your Valid Cnic  Number"
+                                maxlength="12">
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <input type="number" name="father_cnic" id="fathercnic"
+                                placeholder="Father Cnic 22222-2222222-2" maxlength="15" min="8" required>
+                        </div>
+
+                        <div class="form-field">
+                            <span><i class="fa fa-phone"></i></span>
+                            <input type="tel" name="father_phone" id="fatherphone"
+                                placeholder="Father Phone Number 0333-3333333" max="14" minlength="6" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <input type="number" name="mother_cnic" id="mothercnic"
+                                placeholder="Mother Cnic 22222-2222222-2" maxlength="15" min="8">
+                        </div>
+
+                        <div class="form-field">
+                            <span><i class="fa fa-thermometer"></i></span>
+                            <select name="blood_group" id="bloodgroup" required>
+                                <option disabled selected>Blood Group </option>
+                                <option value="a+">A <sup>+</sub></option>
+                                <option value="b+">B <sup>+</sub></option>
+                                <option value="a-">A <sup>+</sub></option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <select name="country" id="country" required>
+                                <option selected disabled>Country</option>
+                                <option value="pakistan">Pakistan</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <select name="provience" id="provience" required>
+                                <option selected disabled>Provience</option>
+                                <option value="Khyber pakhtun khwa">Khyber pakhtun khwa</option>
+                                <option value="Balochistan">Balochistan</option>
+                                <option value="Sindh">Sindh</option>
+                                <option value="Gilgat Balgistan">Gilgat Balgistan</option>
+                                <option value="Panjab">Panjab</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <select name="city" id="city" required>
+                                <option selected disabled>City</option>
+                                <option value="Peshawar">Peshawar</option>
+                                <option value="Hayat Abad">Hayat Abad</option>
+                                <option value="Now Shehra">Now Shehra</option>
+                                <option value="Bannu">Bannu</option>
+                                <option value="Jamrud">Jamrud</option>
+                                <option value="ETC">ETC</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <select name="district" id="district" required>
+                                <option disabled selected>District </option>
+                                <option value="Khyber">Khyber</option>
+                                <option value="Kohat">Kohat</option>
+                                <option value="Peshawar">Peshawar</option>
+                                <option value="Bannu">Bannu</option>
+                                <option value="Malakand">Malakand</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="form-fields-row flex item-center justify-center">
+
+                        <div class="form-field">
+                            <span><i class="fa fa-flag"></i></span>
+                            <input type="number" name="postal_address" id="postaladdres"
+                                placeholder="Postal Address 24730 for jamrud" maxlength="15" required >
+                        </div>
+
+                        <div class="form-field quiz-form">
+                            <span id="5">5</span>
+                            <span>+</span>
+                            <span id="100">100</span>
+                            <span>=</span>
+                            <input type="number" class="form-input" name="quiznumber" id="quiznumber"
+                                placeholder="Enter answer here " required minlength="1" maxlength="3">
+                        </div>
+                    </div>
+
+                    <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
+                        Next</button>
+
+                </form>
+                <div class="other flex item-center justify-around" style="padding:10px; text-align:center;">
+                     <a href="/student/create" class="btn">Back to Signup </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- main in ended from here  -->
+    <%- include('../layouts/footer') %>
+
+
+
+        <script src="/assets/js/all.js"></script>
+
+
+        <!-- typedjs animation library cdn -->
+        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+        <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+        <script src="/assets/js/main.js"></script>
+
+        <script>
+
+            const form = document.getElementById("signup-form");
+            const formSubmitBtn = document.getElementById("formSubmitBtn")
+            const formInputs = document.querySelectorAll(".form-input")
+
+
+            let ph = false, p = false, quiz = false
+
+
+            const uploadPicBlock = document.getElementById("uploadPicBlock");
+            const usrimageinput = document.getElementById("usrimageinput");
+            uploadPicBlock.addEventListener("click", e => {
+                uploadPicBlock.innerHTML = ""
+                usrimageinput.click()
+            })
+            usrimageinput.addEventListener("change", e => {
+                uploadPicBlock.innerHTML = "<span> <i class='fa fa-upload'> </i> </span> <p style='text-align:center; padding:5px;'>click to select your profile image </p> "
+                if (e.target.files.length < 1) {
+                    usrimageinput.click()
+                }
+                else {
+                    const fakeUrl = URL.createObjectURL(e.target.files[0]);
+                    uploadPicBlock.innerHTML = `<img src="${fakeUrl}" />`
+                }
+            })
+
+
+
+
+
+
+
+
+
+
+            const checkall = () => {
+                console.log(ph, p, quiz)
+                if (ph && p && quiz) {
+                    if (formInputs[2].value == "105") {
+                        formSubmitBtn.disabled = false
+                    }
+                    else {
+                        formSubmitBtn.disabled = true
+                    }
+
+                } else {
+                    console.log("submit button was disabled")
+                    formSubmitBtn.disabled = true
+                }
+            }
+
+            formInputs[0].addEventListener("keyup", e => {
+                console.log('value1 length is ', e.target.value.length)
+                if (e.target.value.length > 5) {
+                    ph = true
+
+                }
+                else {
+                    ph = false
+                }
+                checkall()
+            })
+
+            formInputs[1].addEventListener("keyup", e => {
+                console.log('value2 length is ', e.target.value.length)
+
+                if (e.target.value.length > 5) {
+                    p = true
+                }
+                else {
+                    p = false
+                }
+                checkall()
+            })
+            formInputs[2].addEventListener("keyup", e => {
+                console.log('value2 length is ', e.target.value.length)
+
+                if (e.target.value.length > 2) {
+                    quiz = true
+                }
+                else {
+                    quiz = false
+                }
+                checkall()
+            })
+
+
+            formSubmitBtn.addEventListener("click", e => {
+                form.submit();
+            })
+
+
+
+
+        </script>
+
+
+        </body>
+
+        </html>

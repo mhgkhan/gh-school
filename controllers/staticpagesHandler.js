@@ -27,6 +27,8 @@ class staticPagesHandler {
     static hanldeStudentSignupPage = pageRender("./student/create.ejs", "Create Account Student Addmision ")
     // for our student login page
     static hanldeStudentLoginPage = pageRender("./student/login.ejs", "Login Account Student Addmission ")
+    // for our student adding personal details informaton 
+    static handleAddstudentPersonalInformation = pageRender("./student/studentinformationform.ejs", "Add Your Personal Information || GHSMS")
 }
 
 export default staticPagesHandler

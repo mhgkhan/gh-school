@@ -19,7 +19,7 @@ font-family: 'Shadows Into Light', cursive;
 html {
   scroll-behavior: smooth;
 }
-body{
+body {
   overflow-x: hidden !important;
 }
 
@@ -44,7 +44,8 @@ button:active,
 .btn:active {
   transform: scale(1.05, 1.05);
 }
-button:hover,.btn:hover{
+button:hover,
+.btn:hover {
   background: #bf4545;
 }
 
@@ -167,7 +168,7 @@ header {
   top: 0px;
 }
 
-header>.container {
+header > .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -178,7 +179,7 @@ header .container .logo {
   height: 90px;
 }
 
-header .icons{
+header .icons {
   width: 90%;
 }
 header .container .icons span {
@@ -196,7 +197,7 @@ header .container .icons #menuBtn {
   margin: 0px;
   box-shadow: 0px 0px 4px black;
 }
-header .container .icons #menuBtn span{
+header .container .icons #menuBtn span {
   color: white;
 }
 .icons .searchbar {
@@ -222,10 +223,9 @@ header .container .icons #menuBtn span{
   border: none;
   color: white;
 }
-.icons .searchbar input::placeholder{
+.icons .searchbar input::placeholder {
   color: white;
 }
-
 
 nav {
   margin-top: 7px;
@@ -583,32 +583,29 @@ main {
   height: 400px !important;
 }
 
-
 /* oursotory page  */
-.ourstory-section-1 div:first-child{
+.ourstory-section-1 div:first-child {
   width: 250px;
   height: 280px;
 }
-.ourstory-section-1 img{
+.ourstory-section-1 img {
   border-radius: 10px;
 }
 
-.ourstory-section-1 div:last-child{
+.ourstory-section-1 div:last-child {
   width: 60%;
   text-align: right;
 }
-.ourstory-section-1 .block{
+.ourstory-section-1 .block {
   margin: 1rem auto;
   padding: 10px;
 }
-.ourstory-section-1 .block h1{
-  margin: .5rem 0px;
+.ourstory-section-1 .block h1 {
+  margin: 0.5rem 0px;
 }
 
-
-
 /* gallery */
-.line-gallery .gallery-block{
+.line-gallery .gallery-block {
   width: 260px;
   height: 280px;
   border-radius: 5px;
@@ -616,61 +613,61 @@ main {
   box-shadow: 0px 0px 3px #4a3939;
 }
 
-
 /* student admission  */
 /* 1- Signup form  */
-.section-container .header{
+.section-container .header {
   width: 100%;
   height: auto;
   padding: 20px;
   text-align: center;
   margin: 1rem 0px;
 }
-.section-container .header h1{
+.section-container .header h1 {
   font-size: 3rem;
   color: #a32727;
   width: 100% !important;
   text-align: center;
   margin: 0px auto !important;
 }
-.section-container .header span{
+.section-container .header span {
   margin: 8px 0px;
   padding: 5px 10px;
   background: #a32727;
   color: white;
 }
 
-.form-area{
-  width:80%;
+.form-area {
+  width: 80%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0px 0px 12px #686b68dd;
   padding: 0px;
 }
-.form-area .form-header{
+.form-area .form-header {
   width: 100%;
   background: #a32727;
   margin: 0px;
   padding: 10px;
 }
 
-.form-area .form-header ul{
+.form-area .form-header ul {
   padding: 5px 15px;
 }
-.form-area .form-header h1, .form-header ul li{
+.form-area .form-header h1,
+.form-header ul li {
   color: white;
   list-style-type: "👉";
 }
 
-.form-area form{
-  margin-top: .7rem;
+.form-area form {
+  margin-top: 0.7rem;
 }
-.form-area form .form-fields-row{
+.form-area form .form-fields-row {
   width: 100%;
 }
-.form-area form .form-fields-row .form-field{
+.form-area form .form-fields-row .form-field {
   width: 48%;
-  margin: .7rem 7px;
+  margin: 0.7rem 7px;
   background: white;
   border: 1px solid #a32727;
   padding: 0px;
@@ -681,14 +678,14 @@ main {
   justify-content: center;
   background: #a32727;
 }
-.form-area form .form-fields-row .form-field span{
+.form-area form .form-fields-row .form-field span {
   padding: 14px 18px;
   /* border-radius: 4px; */
   margin: 0px 0px;
   color: white;
   font-size: 1.1rem;
 }
-.form-area form .form-fields-row .form-field input{
+.form-area form .form-fields-row .form-field input,.form-field select {
   width: 100%;
   height: auto;
   padding: 14px 7px;
@@ -699,23 +696,20 @@ main {
   outline: none;
   background: white;
 }
-.form-field input::placeholder{
+.form-field input::placeholder {
   color: #a32727a2;
 }
 
-
-
-
-.quiz-form{
+/* .quiz-form {
   width: 100% !important;
   background: white !important;
-}
-.quiz-form span{
+} */
+.quiz-form span {
   background: #a32727 !important;
-  margin: 3px !important;
+  /* margin: 3px !important; */
 }
 
-.form-area form button{
+.form-area form button {
   margin: 1rem 10px;
   margin-left: 20px;
   padding: 8px 0px;
@@ -723,17 +717,37 @@ main {
   font-size: 1.1rem;
   border-radius: 5px;
 }
-.form-area form button:disabled{
+.form-area form button:disabled {
   background: #a29c9c94;
   color: gray;
   box-shadow: none;
   border: none;
 }
 
-.form-field form input:focus .form-field{
+.form-field form input:focus .form-field {
   box-shadow: 0px 0px 12px #6e2f2f;
 }
 
+/* student personal information form  */
+.uploadPicblock {
+  width: 170px;
+  height: 180px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background: #e2deded0;
+  box-shadow: 0px 0px 0px 1.8px #706d6db8;
+  cursor: pointer;
+}
+.uploadPicblock span {
+  font-size: 4rem;
+  color: #a32727;
+}
+.uploadPicblock:hover {
+  background: white;
+}
+.uploadPicblock:hover.uploadPicblock span {
+  transform: scale(0.8, 0.8);
+}
 
 /* ##########################
 ##########################
@@ -798,7 +812,7 @@ footer .container p {
   header .container .icons #menuBtn {
     display: unset;
   }
-  #intro{
+  #intro {
     margin-top: 2rem;
   }
   nav {
@@ -834,7 +848,7 @@ footer .container p {
   }
 }
 
-@media screen and (max-width:850px){
+@media screen and (max-width: 850px) {
   .form-area {
     width: 100% !important;
   }
@@ -854,11 +868,11 @@ footer .container p {
     width: 96%;
   }
 }
-@media screen and (max-width:650px){
-  .ourstory-section-1 .block{
+@media screen and (max-width: 650px) {
+  .ourstory-section-1 .block {
     margin: 0px auto;
   }
-  .ourstory-section-1 div:last-child{
+  .ourstory-section-1 div:last-child {
     width: 90%;
     margin: 0px auto;
     text-align: center;
@@ -904,11 +918,10 @@ footer .container p {
   .rg-row .rg-text-content p {
     line-height: 20px;
   }
-  .section-container{
+  .section-container {
     padding: 10px;
   }
 }
-
 
 @media screen and (max-width: 500px) {
   html {
@@ -920,43 +933,41 @@ footer .container p {
   .contactblock1 {
     height: 280px !important;
   }
-  footer img{
+  footer img {
     width: 120px !important;
     height: 130px !important;
   }
 
-  .form-area form .form-field span{
+  .form-area form .form-field span {
     padding: 8px 10px !important;
   }
-  .form-area form .form-field input{
+  .form-area form .form-field input {
     padding: 8px 5px !important;
   }
 }
 
-
-@media screen and (max-width:370px){
-  
-  header .container{
+@media screen and (max-width: 370px) {
+  header .container {
     flex-direction: column !important;
   }
-  header .logo{
+  header .logo {
     width: 60px !important;
     height: 65px !important;
   }
-  header .container .icons{
-    margin-top:8px;
+  header .container .icons {
+    margin-top: 8px;
     width: 100%;
   }
-  header .container .icons .searchbar{
+  header .container .icons .searchbar {
     width: 100%;
   }
-  .form-area form{
+  .form-area form {
     padding: 10px;
   }
-  .form-area .form-fields-row{
+  .form-area .form-fields-row {
     flex-direction: column !important;
   }
-  .form-area .form-fields-row .form-field{
+  .form-area .form-fields-row .form-field {
     width: 100% !important;
   }
 }

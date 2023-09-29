@@ -5,11 +5,11 @@ const singupStudentDetails = mongoose.Schema({
         type:String,
         required:true
     },
-    religon:{
+    martial_status:{
         type:String,
         required:true
     },
-    martial_status:{
+    religon:{
         type:String,
         required:true
     },
@@ -83,3 +83,6 @@ const singupStudentDetails = mongoose.Schema({
 },{
     timestamps:true
 })
+
+const studentPersonalInformationModel = mongoose.model("SPInformation", singupStudentDetails);
+export default studentPersonalInformationModel

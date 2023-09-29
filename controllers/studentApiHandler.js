@@ -3,6 +3,14 @@ import bcrypt from 'bcrypt'
 import JWT from 'jsonwebtoken'
 
 
+// function to handle extra responses that generate from error 
+// const handleResponseError = (req,res,message,status) =>{
+//     return res.status(status).json(message)
+// }
+
+
+
+
 class studentApiHandler {
 
     static handleSignupPost = async (req, res) => {
@@ -40,8 +48,7 @@ class studentApiHandler {
                         res.cookie("MPS", token, {
                             httpOnly: true
                         })
-                        // req.session.user_id = created._id
-                        res.redirect("/")
+                        res.redirect("/student/signupinformation")
                     } catch (error) {
                         res.status(500).json(error)
                     }
@@ -95,7 +102,7 @@ class studentApiHandler {
                     res.cookie("MPS", token, {
                         httpOnly: true
                     })
-                    res.redirect("/")
+                    res.redirect("/student/signupinformation")
                 }
                 else {
                     res.status(400).render("./student/login.ejs", {
