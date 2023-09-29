@@ -13,51 +13,25 @@
             <h3> Student Admission </h3>
             <div class="form-area">
                 <div class="form-header">
-                    <h1 style="margin: 1rem 0px;"> Create new account! </h1>
+                    <h1 style="margin: 1rem 0px;"> Login to your account </h1>
                     <ul>
                         <li>
                             <p> Please fill all fields with valid credientials and don't leave any field from this other
                                 wise the submit button is disabled.</p>
                         </li>
-                        <li>
-                            <p>Must check your confirm password if match otherwise they will throw error (submit button
-                                are disabled).</p>
-                        </li>
+
                         <li>
                             <p> And must calculate the 100 + 5 = and type the answer of this is the last field.</p>
                         </li>
                     </ul>
                 </div>
 
-                <form action="/api/student/signup" id="signup-form" method="post">
+                <form action="/api/student/login" id="signup-form" method="post">
+
+
 
                     <div class="form-fields-row flex item-center justify-center">
 
-                        <div class="form-field">
-                            <span><i class="fa fa-user"></i></span>
-                            <input type="text" class="form-input" name="firstname" id="firstname"
-                                placeholder="Frist name " required minlength="4" pattern="[A-Za-z]{30}"
-                                title="Please Enter Valid Name">
-                        </div>
-
-
-                        <div class="form-field">
-                            <span><i class="fa fa-user"></i></span>
-                            <input type="text" class="form-input" name="lastname" id="lastname" placeholder="Last name"
-                                required minlength="4" pattern="[A-Za-z]{50}" title="Please Enter Valid Name">
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field">
-                            <span><i class="fa fa-envelope"></i></span>
-                            <input type="email" class="form-input" name="email" id="email" placeholder="Valid email"
-                                required minlength="5" title="Please Enter Valid Email">
-                        </div>
 
 
                         <div class="form-field">
@@ -67,23 +41,11 @@
                                 title="Please Enter Valid Phone Number" maxlength="12">
                         </div>
 
-                    </div>
-
-
-                    <div class="form-fields-row flex item-center justify-center">
 
                         <div class="form-field">
                             <span><i class="fa fa-key"></i></span>
                             <input type="password" class="form-input" name="password" id="password"
                                 placeholder="Password" required minlength="6" title="Please Enter Valid password">
-                        </div>
-
-
-                        <div class="form-field">
-                            <span><i class="fa fa-key"></i></span>
-                            <input type="password" class="form-input" name="cpassword" id="confirm-password"
-                                placeholder="Confirm password" required minlength="6"
-                                title="Please Enter Valid password">
                         </div>
 
                     </div>
@@ -106,11 +68,11 @@
                     </div>
 
                     <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
-                        Signup</button>
+                        Login</button>
 
                 </form>
                 <div class="other" style="padding:10px; text-align:center;">
-                    <span>Already Have an Account&nbsp; </span> <a href="/student/login" class="btn">Login</a>
+                    <span>Not have an account &nbsp; </span> <a href="/student/create" class="btn">Create now </a>
                 </div>
             </div>
 
@@ -139,22 +101,18 @@
             const formInputs = document.querySelectorAll(".form-input")
 
 
-            let f = false, l = false, em = false, ph = false, p = false, cp = false, quiz = false
+            let ph = false, p = false, quiz = false
 
             const checkall = () => {
-                console.log(f, l, em, ph, p, cp, quiz)
-                if (f && l && ph && em && p && cp && quiz) {
-                    if (formInputs[4].value === formInputs[5].value) {
-                        if (formInputs[6].value == "105") {
-                            formSubmitBtn.disabled = false
-                        }
-                        else {
-                            formSubmitBtn.disabled = true
-                        }
+                console.log(ph,p,quiz)
+                if (ph && p && quiz) {
+                    if (formInputs[2].value == "105") {
+                        formSubmitBtn.disabled = false
                     }
                     else {
                         formSubmitBtn.disabled = true
                     }
+
                 } else {
                     console.log("submit button was disabled")
                     formSubmitBtn.disabled = true
@@ -163,45 +121,9 @@
 
             formInputs[0].addEventListener("keyup", e => {
                 console.log('value1 length is ', e.target.value.length)
-                if (e.target.value.length > 2) {
-                    f = true
-
-                }
-                else {
-                    f = false
-                }
-                checkall()
-            })
-
-            formInputs[1].addEventListener("keyup", e => {
-                console.log('value2 length is ', e.target.value.length)
-
-                if (e.target.value.length > 2) {
-                    l = true
-                }
-                else {
-                    l = false
-                }
-                checkall()
-            })
-
-            formInputs[2].addEventListener("keyup", e => {
-                console.log('value3 length is ', e.target.value.length)
-
-                if (e.target.value.length > 4) {
-                    em = true
-                }
-                else {
-                    em = false
-                }
-                checkall()
-            })
-
-            formInputs[3].addEventListener("keyup", e => {
-                console.log('value4 length is ', e.target.value.length)
-
-                if (e.target.value.length > 9) {
+                if (e.target.value.length > 5) {
                     ph = true
+
                 }
                 else {
                     ph = false
@@ -209,8 +131,8 @@
                 checkall()
             })
 
-            formInputs[4].addEventListener("keyup", e => {
-                console.log('value5 length is ', e.target.value.length)
+            formInputs[1].addEventListener("keyup", e => {
+                console.log('value2 length is ', e.target.value.length)
 
                 if (e.target.value.length > 5) {
                     p = true
@@ -220,23 +142,10 @@
                 }
                 checkall()
             })
+            formInputs[2].addEventListener("keyup", e => {
+                console.log('value2 length is ', e.target.value.length)
 
-            formInputs[5].addEventListener("keyup", e => {
-                console.log('value6 length is ', e.target.value.length)
-
-                if (e.target.value.length > 5) {
-                    cp = true
-                }
-                else {
-                    cp = false
-                }
-                checkall()
-            })
-
-            formInputs[6].addEventListener("keyup", e => {
-                console.log('value7 length is ', e.target.value.length)
-
-                if (e.target.value.length >= 2) {
+                if (e.target.value.length > 2) {
                     quiz = true
                 }
                 else {

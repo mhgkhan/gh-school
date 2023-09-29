@@ -23,8 +23,10 @@ class staticPagesHandler {
     static handleAdmissionspage = pageRender("addmissions", "Addmissions || GHSMS");
     // for our contactus page 
     static handleContactuspage = pageRender("contactus", "Contactus || GHSMS");
-    // for our student addmission page 
-    static handleStudentAddmisionPage = pageRender("./student/create.ejs", "Student Addmision ")
+    // for our student signup page 
+    static hanldeStudentSignupPage = pageRender("./student/create.ejs", "Create Account Student Addmision ")
+    // for our student login page
+    static hanldeStudentLoginPage = pageRender("./student/login.ejs", "Login Account Student Addmission ")
 }
 
 export default staticPagesHandler

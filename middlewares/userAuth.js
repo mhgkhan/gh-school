@@ -1,21 +1,35 @@
 import studentSignupModel from "../Models/schoolstudents/Studentsignup.js";
+import JWT from 'jsonwebtoken'
 
 
 
 const userAuth = async (req, res, next) => {
-   if (req.session.user_id) {
-      const userid = await req.session.user_id
-      const compare = await studentSignupModel.findOne({ _id: userid })
-      if (compare) {
+
+   if (req.cookies.MPS) {
+      const token = req.cookies.MPS 
+      // console.log(token)
+      const idformtoken = JWT.verify(token, process.env.SECRET);
+      // console.log(idformtoken);
+      let checkinUser 
+      try {
+         checkinUser = await studentSignupModel.findOne({_id:idformtoken.id});
+      } catch (error) {
+         console.log(error);
+         res.status(200).json(error)
+      }
+
+      if(checkinUser){
+         // res.redirect("/student/form1");
          res.redirect("/")
       }
-      else {
+      else{
+         // res.redirect("/student/login")
          next()
       }
 
    }
    else {
-      next();
+      next()
    }
 }
 

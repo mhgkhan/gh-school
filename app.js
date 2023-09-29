@@ -3,6 +3,7 @@ config();
 import express from 'express'
 import path from 'path'
 import session from 'express-session';
+import cookieParser from 'cookie-parser';
 
 
 import connectDB from './connectdb.js'
@@ -23,6 +24,7 @@ app.use(express.static(path.join(process.cwd(), "public")));
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
+app.use(cookieParser())
 
 
 
@@ -37,11 +39,11 @@ app.use("/api/student/",studentRouter)
 app.get("*", (req, res) => res.status(404).json({ error: "404 page not found " }))
 
 // session middleware 
-app.use(session({
-    secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true
-}))
+// app.use(session({
+//     secret: process.env.SECRET,
+//     resave: true,
+//     saveUninitialized: true
+// }))
 
 
 

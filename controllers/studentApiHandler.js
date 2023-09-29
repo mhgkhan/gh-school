@@ -1,5 +1,6 @@
 import studentSignupModel from "../Models/schoolstudents/Studentsignup.js";
 import bcrypt from 'bcrypt'
+import JWT from 'jsonwebtoken'
 
 
 class studentApiHandler {
@@ -32,6 +33,13 @@ class studentApiHandler {
 
                     try {
                         const created = await createUser.save()
+                        const data = {
+                            id: created._id
+                        }
+                        const token = JWT.sign(data, process.env.SECRET)
+                        res.cookie("MPS", token, {
+                            httpOnly: true
+                        })
                         // req.session.user_id = created._id
                         res.redirect("/")
                     } catch (error) {
@@ -58,6 +66,55 @@ class studentApiHandler {
         }
 
 
+    }
+
+
+
+
+    static handleLoginPost = async (req, res) => {
+        try {
+            const { phone, password } = req.body
+
+            // checking if user is exists or not 
+            let exists
+            try {
+                exists = await studentSignupModel.findOne({ phone: phone });
+            } catch (error) {
+                console.log(error);
+                res.status(500).json(error)
+            }
+
+            if (exists) {
+                const comparePassword = await bcrypt.compare(password, exists.password);
+                if (comparePassword) {
+
+                    const data = {
+                        id: exists._id
+                    }
+                    const token = JWT.sign(data, process.env.SECRET)
+                    res.cookie("MPS", token, {
+                        httpOnly: true
+                    })
+                    res.redirect("/")
+                }
+                else {
+                    res.status(400).render("./student/login.ejs", {
+                        title: "Login Account Student Addmission",
+                        errMsg: "Invilid credientials "
+                    })
+                }
+
+            }
+            else {
+                res.redirect("/student/create");
+            }
+
+
+
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: error })
+        }
     }
 
 
