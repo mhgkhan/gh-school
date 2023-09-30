@@ -125,6 +125,32 @@ class studentApiHandler {
     }
 
 
+
+
+
+    static HandlePersonalDetailsPost = async (req,res)=>{
+        try {
+
+            if(req.cookies.MPS && req.cookies.MPS!=="undefiend"){
+                const verfication = JWT.verify(req.cookies.MPS,process.env.SECRET)
+                const id = verfication.id
+
+
+
+            }
+            else{
+                res.redirect("/student/login")
+            }
+            
+
+            
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({error:error})
+        }
+    }
+
+
 }
 
 
