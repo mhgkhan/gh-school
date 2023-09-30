@@ -1,24 +1,25 @@
 import mongoose from "mongoose";
 
 const singupStudentDetails = mongoose.Schema({
-    gender:{
-        type:String,
-        required:true
+    gender: {
+        type: String,
+        required: true
     },
-    martial_status:{
-        type:String,
-        required:true
+    martial_status: {
+        type: String,
+        required: true,
+        default: "unmarried"
     },
-    religon:{
-        type:String,
-        required:true
+    religon: {
+        type: String,
+        required: true,
+        default: "islam",
     },
-    
+
     student_cnic: { //1
         type: String,
         max: 15,
         min: 10,
-        required: true,
         unique: true
     },
 
@@ -40,7 +41,7 @@ const singupStudentDetails = mongoose.Schema({
         type: String,
         max: 15,
         min: 10,
-        required: true
+        // required: true
     },
 
     blood_group: {//5
@@ -53,35 +54,39 @@ const singupStudentDetails = mongoose.Schema({
 
     country: {//6
         type: String,
-        required: true
+        required: true,
+        default: "pakistan"
     },
 
     provience: {//7
         type: String,
-        required: true
+        required: true,
+        default: "khyberpakhtunkhwa"
     },
 
-    city: String,//8
-    district: String,//9
-
-    postal_address: {//10
+    city: { type: String, default: "Peshawar" },//8
+    district: { type: String, default: "Khyber" },//9
+    vallage_name: {
         type: String,
-        trim: true,
         required: true
     },
+    parmanent_address:{
+    type: String,
+    required: true
+},
 
     image: {//11
-        type: String,
-        required: true
-    },
+    type: String,
+    required: true
+},
 
     user: {//12
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Signup_Student"
-    }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Signup_Student"
+}
 
-},{
-    timestamps:true
+}, {
+    timestamps: true
 })
 
 const studentPersonalInformationModel = mongoose.model("SPInformation", singupStudentDetails);
