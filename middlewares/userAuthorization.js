@@ -40,7 +40,7 @@ export const userAuth = async (req, res, next) => {
 
 export const afterSignupAuth = async (req, res, next) => {
    if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
-      console.log("cookies is founded. ")
+      console.log("cookies is founded. from middleware ")
       const token = req.cookies.MPS
       const idFromtoken = JWT.verify(token, process.env.SECRET);
 
@@ -55,7 +55,7 @@ export const afterSignupAuth = async (req, res, next) => {
 
       // if user is exists 
       if (checkinUser) {
-         console.log("user is exists")
+         console.log("user is exists from middleware")
          // checking if user personal informations is exists or not 
          // if exists i will redirect to next form 
          // else next ()
@@ -70,18 +70,18 @@ export const afterSignupAuth = async (req, res, next) => {
 
          if (existsStudnetPersonalInfor) {
             console.log(existsStudnetPersonalInfor);
-            console.log("user student personal information is exists  ")
+            console.log("user student personal information is exists  checked from middlewars")
             res.redirect("/")
          }
          else {
-            console.log("user studnet personal informtion is not exists ")
+            console.log("user studnet personal informtion is not exists checked from middlewars")
             next();
          }
 
       }
 
       else {
-         console.log("user not exists")
+         console.log("user not exists from middleware")
          res.redirect("/student/create")
       }
 

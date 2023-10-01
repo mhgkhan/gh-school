@@ -70,20 +70,20 @@ const singupStudentDetails = mongoose.Schema({
         type: String,
         required: true
     },
-    parmanent_address:{
-    type: String,
-    required: true
-},
+    parmanent_address: {
+        type: String,
+        required: true
+    },
 
     image: {//11
-    type: String,
-    required: true
-},
+        type: String,
+        required: true
+    },
 
     user: {//12
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Signup_Student"
-}
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Signup_Student"
+    }
 
 }, {
     timestamps: true

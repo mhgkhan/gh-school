@@ -17,5 +17,5 @@ staticPagesRouter.get("/", staticPagesHandler.handleIndex)
 staticPagesRouter.get("/student/create",userAuth, staticPagesHandler.hanldeStudentSignupPage)
 .get("/student/login", userAuth, staticPagesHandler.hanldeStudentLoginPage)
 .get("/student/signupinformation",afterSignupAuth,staticPagesHandler.handleAddstudentPersonalInformation)
-
+.get("/student/previusschooldata",afterSignupAuth, staticPagesHandler.handlePreviusSchooldataForm);
 export default staticPagesRouter

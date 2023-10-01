@@ -29,13 +29,14 @@
 
             <div class="header">
                 <h1>MADINA PUBLIC SCHOOL </h1>
-                <span>Step-2 Add Your Personal Information </span>
+                <span>Step-3 Add Your Previus School Information </span>
             </div>
 
             <h3> Student Admission </h3>
             <div class="form-area">
                 <div class="form-header">
-                    <h1 style="margin: 1rem 0px;"> Add Your Legal Personal Information </h1>
+                    <h1 style="margin: 1rem 0px;"> Add Your Previus School Informations
+                    </h1>
                     <ul>
                         <li>
                             <p> Please fill all fields with valid credientials and don't leave any field from this other
@@ -52,113 +53,9 @@
                     </ul>
                 </div>
 
+                <form action="/api/student/personaldetails" id="signup-form" method="post"
+                    enctype="multipart/form-data">
 
-                <form method="post" action="/api/student/personaldetails" id="signup-form" enctype="multipart/form-data">
-
-                    <div class="form-fields-row flex item-center" style="justify-content: space-around;">
-
-                        <span id="userImageUploadMsg" style="color:red ;">Select Profile Image* </span>
-
-                        <div class="uploadPicblock flex item-center justify-center flex-col" id="uploadPicBlock">
-                            <span><i class="fa fa-upload"></i></span>
-                            <p style="padding: 5px; text-align:center">click to select your profile image </p>
-                            <input type="file" name="image" id="usrimageinput" accept="image/*" required style="display:none ;" >
-                        </div>
-                    </div>
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field">
-                            <span><i class="fa fa-user"></i></span>
-                            <select name="gender" id="gender" required>
-                                <option disabled selected>Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-user"></i></span>
-                            <select name="martial_status" id="mstatus" required >
-                                <option disabled selected >Martial Status</option>
-                                <option value="unmarried">Unmarried</option>
-                                <option value="married">Married</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field">
-                            <span><i class="fa fa-book"></i></span>
-                            <select name="religon" id="religon" required>
-                                <option disabled selected>Religion</option>
-                                <option value="islam">Islam</option>
-                                <option value="hindu">Hindu</option>
-                                <option value="christian">Chris</option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-flag"></i></span>
-                            <input type="number" name="student_cnic" id="cnic"
-                                placeholder="ID card Number 22222-2222222-2" required
-                                pattern="[0-9]{5}-[0-9]{8}-[0-9]{1}" title="Please Your Valid Cnic  Number"
-                                maxlength="12">
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-
-                        <div class="form-field">
-                            <span><i class="fa fa-flag"></i></span>
-                            <input type="number" name="father_cnic" id="fathercnic" class="form-input"
-                                placeholder="Father Cnic 22222-2222222-2*" maxlength="15" min="8" required>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-phone"></i></span>
-                            <input type="tel" name="father_phone" id="fatherphone" class="form-input"
-                                placeholder="Father Phone Number 0333-3333333*" maxlength="14" minlength="6" required>
-                        </div>
-
-                    </div>
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field">
-                            <span><i class="fa fa-thermometer"></i></span>
-                            <select name="blood_group" id="bloodgroup" required>
-                                <option disabled selected>Blood Group </option>
-                                <option value="a+">A <sup>+</sub></option>
-                                <option value="b+">B <sup>+</sub></option>
-                                <option value="a-">A <sup>+</sub></option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-flag"></i></span>
-                            <input type="text" name="vallage_name" id="village" placeholder="Vilage name* "
-                                maxlength="15" required class="form-input">
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field quiz-form">
-                            <span id="5"><i class="fa fa-flag"></i></span>
-                            <input type="text" class="form-input" name="parmanent_address" id="paddresss"
-                                placeholder="Full Address* " required>
-                        </div>
-                    </div>
                     <div class="form-fields-row flex item-center justify-center">
 
                         <div class="form-field quiz-form">
@@ -260,10 +157,7 @@
                     const fakeUrl = URL.createObjectURL(e.target.files[0]);
                     uploadPicBlock.innerHTML = `<img src="${fakeUrl}" />`
                     formimageinputSpan.innerText = usrimageinput.files[0].name
-                    console.log(e.target.files[0])
-                    console.log(e.target.name)
                     checkall()
-
                 }
             })
 
