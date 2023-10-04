@@ -1063,8 +1063,8 @@ footer .container p {
     width: 100% !important;
   }
   .form-fields-row:first-child{
-    flex-direction: column-reverse !important;
-    gap: 6px;
+    flex-direction: column !important;
+    gap: 0px;
   }
   .uploadPicblock{
     width: 100px;

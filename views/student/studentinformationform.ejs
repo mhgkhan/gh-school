@@ -1,30 +1,33 @@
 <%- include('../layouts/header') %>
 
+<!-- main in strted from here  -->
 
-    <!-- main in strted from here  -->
-    <section class="section flex" style="margin: 0px; position:relative" >
-        <div class="sidebar-user-profile" id="profile-sidebar">
-            <span class="profile-sidebar-button" onclick="openProfileSidebar()"><i class="fa-solid fa-bars"></i></span>
-
+    <section class="section flex" style="margin: 0px; position:relative">
+        <!-- 
+            <div class="sidebar-user-profile" id="profile-sidebar">
+                <span class="profile-sidebar-button" onclick="openProfileSidebar()"><i class="fa-solid fa-bars"></i></span>
+            
             <div class="profile-img">
                 <img src="/assets/media/images/test2.jpg" alt="user profile image ">
             </div>
-
-           <div class="menu">
-            <h3>Menu</h3>
-            <ul>
-                <li><a href="#"><i class="fa fa-user"></i>&nbsp;Profile</a></li>
-                <li><a href="#"><i class="fa fa-user"></i>&nbsp;Personal Info</a></li>
-                <li><a href="#"><i class="fa fa-home"></i>&nbsp;Last School </a></li>
-                <li><a href="#"><i class="fa fa-user"></i>&nbsp;Admission form </a></li>
-                <li><a href="#"><i class="fa fa-signal"></i>&nbsp;Status </a></li>
-                <li><a href="#"><i class="fa fa-sign-out"></i>&nbsp;Logout </a></li>
-
-
-            </ul>
-           </div>
-
+            
+            <div class="menu">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="#"><i class="fa fa-user"></i>&nbsp;Profile</a></li>
+                    <li><a href="#"><i class="fa fa-user"></i>&nbsp;Personal Info</a></li>
+                    <li><a href="#"><i class="fa fa-home"></i>&nbsp;Last School </a></li>
+                    <li><a href="#"><i class="fa fa-user"></i>&nbsp;Admission form </a></li>
+                    <li><a href="#"><i class="fa fa-signal"></i>&nbsp;Status </a></li>
+                    <li><a href="#"><i class="fa fa-sign-out"></i>&nbsp;Logout </a></li>
+                    
+                    
+                </ul>
+            </div>
+            
         </div>
+    -->
+        
         <div class="container section-container user-profile-container">
 
             <div class="header">
@@ -53,131 +56,144 @@
                 </div>
 
 
-                <form method="post" action="/api/student/personaldetails" id="signup-form" enctype="multipart/form-data">
+                        <form action="/api/student/personaldetails/" method="post" id="signup-form"
+                            enctype="multipart/form-data">
 
-                    <div class="form-fields-row flex item-center" style="justify-content: space-around;">
 
-                        <span id="userImageUploadMsg" style="color:red ;">Select Profile Image* </span>
 
-                        <div class="uploadPicblock flex item-center justify-center flex-col" id="uploadPicBlock">
-                            <span><i class="fa fa-upload"></i></span>
-                            <p style="padding: 5px; text-align:center">click to select your profile image </p>
-                            <input type="file" name="image" id="usrimageinput" accept="image/*" required style="display:none ;" >
+                            <!-- image selection and preview  -->
+                            <input type="file" name="image" id="usrimageinput" accept="image/*" required
+                            style="opacity:-3333;">
+                            <div class="form-fields-row flex item-center" style="justify-content: space-around;">
+
+                                <span id="userImageUploadMsg" style="color:red ;">Select Profile Image* </span>
+
+                                <div class="uploadPicblock flex item-center justify-center flex-col"
+                                    id="uploadPicBlock">
+                                    <span><i class="fa fa-upload"></i></span>
+                                    <p style="padding: 5px; text-align:center">click to select your profile image </p>
+                                </div>
+                            </div>
+                            
+
+
+
+                            <!-- other fields  -->
+                            <div class="form-fields-row flex item-center justify-center">
+
+                                <div class="form-field">
+                                    <span><i class="fa fa-user"></i></span>
+                                    <select name="gender" id="gender" required>
+                                        <option disabled selected >Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <span><i class="fa fa-user"></i></span>
+                                    <select name="martial_status" id="mstatus" required>
+                                        <option disabled selected>Martial Status</option>
+                                        <option value="unmarried">Unmarried</option>
+                                        <option value="married">Married</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="form-fields-row flex item-center justify-center">
+
+                                <div class="form-field">
+                                    <span><i class="fa fa-book"></i></span>
+                                    <select name="religon" id="religon" required>
+                                        <option disabled selected>Religion</option>
+                                        <option value="islam">Islam</option>
+                                        <option value="hindu">Hindu</option>
+                                        <option value="christian">Chris</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <span><i class="fa fa-flag"></i></span>
+                                    <input type="number" name="student_cnic" id="cnic"
+                                        placeholder="ID card Number 22222-2222222-2" required
+                                        maxlength="12">
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-fields-row flex item-center justify-center">
+                                <div class="form-field">
+                                    <span><i class="fa fa-flag"></i></span>
+                                    <input type="number" name="father_cnic" id="fathercnic" class="form-input"
+                                        placeholder="Father Cnic 22222-2222222-2*" maxlength="15" min="8" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <span><i class="fa fa-phone"></i></span>
+                                    <input type="tel" name="father_phone" id="fatherphone" class="form-input"
+                                        placeholder="Father Phone Number 0333-3333333*" maxlength="14" minlength="6"
+                                        required>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-fields-row flex item-center justify-center">
+
+                                <div class="form-field">
+                                    <span><i class="fa fa-thermometer"></i></span>
+                                    <select name="blood_group" id="bloodgroup" required>
+                                        <option disabled selected>Blood Group </option>
+                                        <option value="a+">A <sup>+</sub></option>
+                                        <option value="b+">B <sup>+</sub></option>
+                                        <option value="a-">A <sup>+</sub></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <span><i class="fa fa-flag"></i></span>
+                                    <input type="text" name="vallage_name" id="village" placeholder="Vilage name* "
+                                        maxlength="15" required class="form-input">
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="form-fields-row flex item-center justify-center">
+                                <div class="form-field quiz-form">
+                                    <span id="5"><i class="fa fa-flag"></i></span>
+                                    <input type="text" class="form-input" name="parmanent_address" id="paddresss"
+                                        placeholder="Full Address* " required>
+                                </div>
+                            </div>
+                            <div class="form-fields-row flex item-center justify-center">
+                                <div class="form-field quiz-form">
+                                    <span id="5">5</span>
+                                    <span>+</span>
+                                    <span id="100">100</span>
+                                    <span>=</span>
+                                    <input type="number" class="form-input" name="quiznumber" id="quiznumber"
+                                        placeholder="Enter answer here *" required minlength="1" maxlength="3">
+                                </div>
+                            </div>
+
+
+
+                            <button type="submit" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
+                                Next</button>
+
+                        </form>
+                        <div class="other flex item-center justify-around" style="padding:10px; text-align:center;">
+                            <a href="/student/create" class="btn">Back to Signup </a>
                         </div>
-                    </div>
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field">
-                            <span><i class="fa fa-user"></i></span>
-                            <select name="gender" id="gender" required>
-                                <option disabled selected>Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-user"></i></span>
-                            <select name="martial_status" id="mstatus" required >
-                                <option disabled selected >Martial Status</option>
-                                <option value="unmarried">Unmarried</option>
-                                <option value="married">Married</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field">
-                            <span><i class="fa fa-book"></i></span>
-                            <select name="religon" id="religon" required>
-                                <option disabled selected>Religion</option>
-                                <option value="islam">Islam</option>
-                                <option value="hindu">Hindu</option>
-                                <option value="christian">Chris</option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-flag"></i></span>
-                            <input type="number" name="student_cnic" id="cnic"
-                                placeholder="ID card Number 22222-2222222-2" required
-                                pattern="[0-9]{5}-[0-9]{8}-[0-9]{1}" title="Please Your Valid Cnic  Number"
-                                maxlength="12">
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-
-                        <div class="form-field">
-                            <span><i class="fa fa-flag"></i></span>
-                            <input type="number" name="father_cnic" id="fathercnic" class="form-input"
-                                placeholder="Father Cnic 22222-2222222-2*" maxlength="15" min="8" required>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-phone"></i></span>
-                            <input type="tel" name="father_phone" id="fatherphone" class="form-input"
-                                placeholder="Father Phone Number 0333-3333333*" maxlength="14" minlength="6" required>
-                        </div>
-
-                    </div>
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field">
-                            <span><i class="fa fa-thermometer"></i></span>
-                            <select name="blood_group" id="bloodgroup" required>
-                                <option disabled selected>Blood Group </option>
-                                <option value="a+">A <sup>+</sub></option>
-                                <option value="b+">B <sup>+</sub></option>
-                                <option value="a-">A <sup>+</sub></option>
-                            </select>
-                        </div>
-
-                        <div class="form-field">
-                            <span><i class="fa fa-flag"></i></span>
-                            <input type="text" name="vallage_name" id="village" placeholder="Vilage name* "
-                                maxlength="15" required class="form-input">
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field quiz-form">
-                            <span id="5"><i class="fa fa-flag"></i></span>
-                            <input type="text" class="form-input" name="parmanent_address" id="paddresss"
-                                placeholder="Full Address* " required>
-                        </div>
-                    </div>
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field quiz-form">
-                            <span id="5">5</span>
-                            <span>+</span>
-                            <span id="100">100</span>
-                            <span>=</span>
-                            <input type="number" class="form-input" name="quiznumber" id="quiznumber"
-                                placeholder="Enter answer here *" required minlength="1" maxlength="3">
-                        </div>
-                    </div>
-
-                    <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
-                        Next</button>
-
-                </form>
-                <div class="other flex item-center justify-around" style="padding:10px; text-align:center;">
-                    <a href="/student/create" class="btn">Back to Signup </a>
-                </div>
             </div>
 
         </div>
@@ -213,7 +229,7 @@
             // for inputs 
             let fc = false, fp = false, vn = false, pa = false, quiz = false
 
-            
+
 
             // to check if input is not valid 
             const checkall = () => {
@@ -247,11 +263,11 @@
 
 
             uploadPicBlock.addEventListener("click", e => {
-                uploadPicBlock.innerHTML = ""
+               // uploadPicBlock.innerHTML = ""
                 usrimageinput.click()
-                uploadPicBlock.classList.remove("animate")
+                //uploadPicBlock.classList.remove("animate")
             })
-            usrimageinput.addEventListener("change", e => {
+           usrimageinput.addEventListener("change", e => {
                 uploadPicBlock.innerHTML = "<span> <i class='fa fa-upload'> </i> </span> <p style='text-align:center; padding:5px;'>click to select your profile image </p> "
                 if (e.target.files.length < 1) {
                     usrimageinput.click()
@@ -287,26 +303,26 @@
             })
             formInputs[2].addEventListener("keyup", e => {
                 console.log('value2 length is ', e.target.value.length)
-                e.target.value.length > 5 ? vn = true : vn=false
+                e.target.value.length > 5 ? vn = true : vn = false
                 checkall()
             })
             formInputs[3].addEventListener("keyup", e => {
                 console.log('value2 length is ', e.target.value.length)
-                e.target.value.length > 10 ? pa = true:pa = false
+                e.target.value.length > 10 ? pa = true : pa = false
                 checkall()
             })
             formInputs[4].addEventListener("keyup", e => {
                 console.log('value2 length is ', e.target.value.length)
-                e.target.value.length>2 ? quiz= true : quiz = false
+                e.target.value.length > 2 ? quiz = true : quiz = false
                 checkall()
             })
 
 
-            formSubmitBtn.addEventListener("click", e => {
-                form.submit();
+   /*         form.addEventListener("submit", e=>{
+                e.preventDefault();
+                console.log(e.target)
             })
-
-
+*/ 
 
 
         </script>
@@ -315,3 +331,4 @@
         </body>
 
         </html>
+        

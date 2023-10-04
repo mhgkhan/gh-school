@@ -39,10 +39,12 @@ export const userAuth = async (req, res, next) => {
 
 
 export const afterSignupAuth = async (req, res, next) => {
+
    if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
-      console.log("cookies is founded. from middleware ")
+      // console.log("cookies is founded. from middleware ")
       const token = req.cookies.MPS
       const idFromtoken = JWT.verify(token, process.env.SECRET);
+
 
       // checking if user is exists or not 
       let checkinUser
@@ -52,43 +54,77 @@ export const afterSignupAuth = async (req, res, next) => {
          console.log(error);
          res.redirect("/student/login")
       }
-
       // if user is exists 
       if (checkinUser) {
-         console.log("user is exists from middleware")
-         // checking if user personal informations is exists or not 
-         // if exists i will redirect to next form 
-         // else next ()
 
-         let existsStudnetPersonalInfor
-         try {
-            existsStudnetPersonalInfor = await studentPersonalInformationModel.findOne({ user: checkinUser._id })
-         } catch (error) {
-            console.log(error);
-            res.redirect("/student/login")
-         }
+         // pdata = personal data 
+         const checkIfPdata = await studentPersonalInformationModel.findOne({user:checkinUser._id})
 
-         if (existsStudnetPersonalInfor) {
-            console.log(existsStudnetPersonalInfor);
-            console.log("user student personal information is exists  checked from middlewars")
-            res.redirect("/")
-         }
-         else {
-            console.log("user studnet personal informtion is not exists checked from middlewars")
+         if(!checkIfPdata){
             next();
          }
+         else{
+            res.redirect("/student/previusschooldata")
+         }
+
+
 
       }
 
       else {
-         console.log("user not exists from middleware")
+         // console.log("user not exists from middleware")
          res.redirect("/student/create")
       }
 
    }
    else {
-      console.log("user not authorize ")
+      // console.log("user not authorize ")
       res.redirect("/student/login")
+   }
+}
+
+
+export const afterSignupDetails = async (req,res,next) =>{
+   if(req.cookies.MPS && req.cookies.MPS !=="undefiend"){
+      
+      const token = req.cookies.MPS
+      const idFromtoken = JWT.verify(token, process.env.SECRET);
+
+
+      let checkinUser
+      try {
+         checkinUser = await studentSignupModel.findOne({ _id: idFromtoken.id });
+      } catch (error) {
+         console.log(error);
+         res.redirect("/student/create")
+      }
+      
+      if(checkinUser){
+         
+         let existsStudnetPersonalInfor
+         try {
+            existsStudnetPersonalInfor = await studentPersonalInformationModel.findOne({ user: checkinUser._id })
+            // console.log(existsStudnetPersonalInfor)
+         } catch (error) {
+            console.log(error);
+            res.redirect("/student/login")
+         }
+   
+         if (existsStudnetPersonalInfor) {
+            // console.log("user student personal information is exists  checked from middlewars")
+            next();
+         }
+         else {
+            console.log("user studnet personal informtion is not exists checked from middlewars")
+            res.redirect("/student/signupinformation")
+         }
+      }
+      else{
+         res.redirect("/student/create")
+      }
+   }
+   else{
+      res.redirect("/student/login");
    }
 }
 

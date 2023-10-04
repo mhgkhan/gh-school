@@ -7,8 +7,20 @@ const studentPSDStr = mongoose.Schema({
     },
     subject: {
         type: String,
-        required: true
+        required: true,
+        default:"Arts"
     },
+    classname: {
+        type: String,
+        required: true,
+        default:"Arts"
+    },
+    rollno: {
+        type: String,
+        required: true,
+        default:"Arts"
+    },
+
     obtmarks: {
         type: String,
         required: true

@@ -1,3 +1,4 @@
+import multer from "multer";
 import studentSignupModel from "../Models/schoolstudents/Studentsignup.js";
 import studentPersonalInformationModel from '../Models/schoolstudents/StudentsignupDetails.js'
 import bcrypt from 'bcrypt'
@@ -8,9 +9,6 @@ import JWT from 'jsonwebtoken'
 // const handleResponseError = (req,res,message,status) =>{
 //     return res.status(status).json(message)
 // }
-
-
-
 
 class studentApiHandler {
 
@@ -127,36 +125,38 @@ class studentApiHandler {
 
 
 
+    
 
 
-    static HandlePersonalDetailsPost = async (req, res) => {
+
+    static HandlePersonalDetailsPost =  async (req, res) => {
         try {
-
+            
             if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
-                console.log(req.file)
-                console.log(req.body)
-                console.log("cookies is exists ")
+                // console.log(req.file)
+                // console.log(req.body)
+                // console.log("cookies is exists ")
                 const verfication = JWT.verify(req.cookies.MPS, process.env.SECRET)
                 const id = verfication.id
-                console.log(verfication);
+                // console.log(verfication);
 
                 // checking if user is exists or not 
                 let exists
                 try {
                     exists = await studentSignupModel.findOne({ _id:id });
-                    console.log(exists);
+                    // console.log(exists);
                 } catch (error) {
                     console.log(error);
                     res.status(500).json(error)
                 }
 
                 if (exists) {
-                    console.log("user is exists ")
+                    // console.log("user is exists ")
                     // checking if this user data is already exists or not 
                     const existSignupDetails = await studentPersonalInformationModel.findOne({ user: exists._id })
 
                     if (existSignupDetails) {
-                        console.log("already avalaible data of student personal ")
+                        // console.log("already avalaible data of student personal ")
                         await studentPersonalInformationModel.findOneAndUpdate({
                             user: exists._id
                         }, {
@@ -168,37 +168,34 @@ class studentApiHandler {
 
                     else {
 
-                        console.log("trying to adding new student persoanl data ")
-                        console.log(req.file)
+                        // console.log("trying to adding new student persoanl data ")
+                        // console.log(req.file)
                         if (!req.file) {
-                            return res.status(400).render("./student/studentinformationform.ejs",{title: "Please Image is required"})
+                            return res.status(400).render("./student/studentinformationform.ejs",{title: "Please Image is required", errMsg:"Image are required!"})
                         }
                         else {
-
-
                             await studentPersonalInformationModel.create({
                                 ...req.body,
                                 image: req.file.filename,
                                 user: exists._id,
                             })
-                            console.log("new student personal data has been added. ")
+                            // console.log("new student personal data has been added. ")
 
                             return res.redirect("/student/previusschooldata")
-
                         }
                     }
 
 
                 }
                 else {
-                    console.log("user is not exists  ")
+                    // console.log("user is not exists  ")
                     res.redirect("/student/create")
                 }
 
 
             }
             else {
-                console.log("cookie is not exits user is unothorize. ")
+                // console.log("cookie is not exits user is unothorize. ")
                 res.redirect("/student/login")
             }
 

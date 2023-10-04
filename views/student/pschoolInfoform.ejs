@@ -1,11 +1,13 @@
 <%- include('../layouts/header') %>
 
 
-    <!-- main in strted from here  -->
-    <section class="section flex" style="margin: 0px; position:relative" >
-        <div class="sidebar-user-profile" id="profile-sidebar">
-            <span class="profile-sidebar-button" onclick="openProfileSidebar()"><i class="fa-solid fa-bars"></i></span>
-
+<!-- main in strted from here  -->
+<section class="section flex" style="margin: 0px; position:relative">
+  <!-- 
+            
+            <div class="sidebar-user-profile" id="profile-sidebar">
+                <span class="profile-sidebar-button" onclick="openProfileSidebar()"><i class="fa-solid fa-bars"></i></span>
+                
             <div class="profile-img">
                 <img src="/assets/media/images/test2.jpg" alt="user profile image ">
             </div>
@@ -22,190 +24,195 @@
 
 
             </ul>
-           </div>
-
         </div>
-        <div class="container section-container user-profile-container">
+        
+    </div>
+-->
+  <div class="container section-container user-profile-container">
 
-            <div class="header">
-                <h1>MADINA PUBLIC SCHOOL </h1>
-                <span>Step-3 Add Your Previus School Information </span>
+    <div class="header">
+      <h1>MADINA PUBLIC SCHOOL </h1>
+      <span>Step-3 Add Your Previus School Information </span>
+    </div>
+
+    <h3> Student Admission </h3>
+    <div class="form-area">
+      <div class="form-header">
+        <h1 style="margin: 1rem 0px;"> Add Your Previus School Informations
+        </h1>
+        <ul>
+          <li>
+            <p> Please fill all fields with valid credientials and don't leave any field from this other
+              wise the submit button is disabled.</p>
+          </li>
+          <li>
+            <p> And fill your information all and true is required not an lie otherwise we are report
+              you.</p>
+          </li>
+
+          <li>
+            <p> And must calculate the 100 + 5 = and type the answer of this in the last field.</p>
+          </li>
+        </ul>
+      </div>
+
+      <form action="/api/student/previussdata" id="signup-form" method="post" enctype="multipart/form-data">
+
+
+
+        <div class="form-fields-row flex item-center justify-center">
+            <div class="form-field">
+                <span><i class="fa fa-home"></i></span>
+                <input type="text" name="schoolname" id="schoonmaeinput" minlength="5" maxlength="50" placeholder="Previus School Name" required>
             </div>
-
-            <h3> Student Admission </h3>
-            <div class="form-area">
-                <div class="form-header">
-                    <h1 style="margin: 1rem 0px;"> Add Your Previus School Informations
-                    </h1>
-                    <ul>
-                        <li>
-                            <p> Please fill all fields with valid credientials and don't leave any field from this other
-                                wise the submit button is disabled.</p>
-                        </li>
-                        <li>
-                            <p> And fill your information all and true is required not an lie otherwise we are report
-                                you.</p>
-                        </li>
-
-                        <li>
-                            <p> And must calculate the 100 + 5 = and type the answer of this in the last field.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <form action="/api/student/personaldetails" id="signup-form" method="post"
-                    enctype="multipart/form-data">
-
-                    <div class="form-fields-row flex item-center justify-center">
-
-                        <div class="form-field quiz-form">
-                            <span id="5">5</span>
-                            <span>+</span>
-                            <span id="100">100</span>
-                            <span>=</span>
-                            <input type="number" class="form-input" name="quiznumber" id="quiznumber"
-                                placeholder="Enter answer here *" required minlength="1" maxlength="3">
-                        </div>
-                    </div>
-
-                    <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
-                        Next</button>
-
-                </form>
-                <div class="other flex item-center justify-around" style="padding:10px; text-align:center;">
-                    <a href="/student/create" class="btn">Back to Signup </a>
-                </div>
+            <div class="form-field">
+                <span><i class="fa fa-book"></i></span>
+                <select name="subject" id="subject" required >
+                    <option disabled selected >Subject</option>
+                    <option value="science">Science</option>
+                    <option value="Arts">Arts</option>
+                </select>
             </div>
-
         </div>
-    </section>
-    <!-- main in ended from here  -->
-    <%- include('../layouts/footer') %>
 
 
+        <div class="form-fields-row flex item-center justify-center">
+            <div class="form-field">
+                <span><i class="fa fa-pencil"></i></span>
+                <input type="number" name="rollno" id="rollnoinput" minlength="1" maxlength="5" placeholder="Class RollNo" required>
+            </div>
+            <div class="form-field">
+                <span><i class="fa fa-home"></i></span>
+                <select name="classname" id="classname" required >
+                    <option disabled selected >From Class</option>
+                    <option value="KG">KG</option>
+                    <option value="PREP">PREP</option>
+                    <option value="FIRST">FIRST</option>
+                    <option value="SECOND">SECOND</option>
+                    <option value="THIRD">THIRD</option>
+                    <option value="FOURTH">FOURTH</option>
+                    <option value="FIFTH">FIFTH</option>
+                    <option value="SEXTH">SEXTH</option>
+                    <option value="SEVENTH">SEVENTH</option>
+                    <option value="EIGHTH">EIGHTH</option>
+                    <option value="NINTH">NINTH</option>
+                </select>
+            </div>
+        </div>
 
-        <script src="/assets/js/all.js"></script>
 
-
-        <!-- typedjs animation library cdn -->
-        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-        <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
-
-
-        <script src="/assets/js/main.js"></script>
-
-        <script>
-
-            const form = document.getElementById("signup-form");
-            const formSubmitBtn = document.getElementById("formSubmitBtn")
-            const formInputs = document.querySelectorAll(".form-input")
-
-
-            const uploadPicBlock = document.getElementById("uploadPicBlock");
-            const usrimageinput = document.getElementById("usrimageinput");
-            const formimageinputSpan = document.getElementById("userImageUploadMsg")
-
-
-            // for inputs 
-            let fc = false, fp = false, vn = false, pa = false, quiz = false
-
-            
-
-            // to check if input is not valid 
-            const checkall = () => {
-                console.log(fc, fp, vn, pa, quiz)
-                if (usrimageinput.files.length < 1) {
-                    formSubmitBtn.disabled = true
-                    formimageinputSpan.innerText = "Image Upload Is Required"
-                    uploadPicBlock.style.boxShadow = "0px 0px 29px red"
-                    uploadPicBlock.classList.add("animate")
-                }
-                else {
-                    uploadPicBlock.style.boxShadow = "0px 0px 5px #706d6db8"
-                    uploadPicBlock.classList.remove("animate")
-                    formimageinputSpan.innerText = usrimageinput.files[0].name
-                    if (fc && fp && vn && pa && quiz) {
-                        if (formInputs[4].value == "105") {
-                            formSubmitBtn.disabled = false
-                        }
-                        else {
-                            formSubmitBtn.disabled = true
-                        }
-                    }
-                    else {
-                        console.log("submit button was disabled")
-                        formSubmitBtn.disabled = true
-                    }
-                }
-            }
+        <div class="form-fields-row flex item-center justify-center">
+            <div class="form-field">
+                <span><i class="fa fa-pencil"></i></span>
+                <input type="number" name="obtmarks" id="obtmarks" minlength="1" maxlength="5" placeholder="Obt Marks" required>
+            </div>
+            <div class="form-field">
+                <span><i class="fa fa-pencil"></i></span>
+                <input type="number" name="totalmarks" id="totalmarks" minlength="1" maxlength="5" placeholder="out of (obt marks)" required>
+            </div>
+        </div>
 
 
 
 
-            uploadPicBlock.addEventListener("click", e => {
-                uploadPicBlock.innerHTML = ""
-                usrimageinput.click()
-                uploadPicBlock.classList.remove("animate")
-            })
-            usrimageinput.addEventListener("change", e => {
-                uploadPicBlock.innerHTML = "<span> <i class='fa fa-upload'> </i> </span> <p style='text-align:center; padding:5px;'>click to select your profile image </p> "
-                if (e.target.files.length < 1) {
-                    usrimageinput.click()
-                }
-                else {
-                    const fakeUrl = URL.createObjectURL(e.target.files[0]);
-                    uploadPicBlock.innerHTML = `<img src="${fakeUrl}" />`
-                    formimageinputSpan.innerText = usrimageinput.files[0].name
-                    checkall()
-                }
-            })
+        <div class="form-fields-row flex item-center justify-center">
+
+          <div class="form-field quiz-form">
+            <span id="5">5</span>
+            <span>+</span>
+            <span id="100">100</span>
+            <span>=</span>
+            <input type="number" class="form-input" name="quiznumber" id="quiznumber" placeholder="Enter answer here *" required minlength="1" maxlength="3">
+          </div>
+        </div>
+
+        <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
+          Next</button>
+
+      </form>
+      <div class="other flex item-center justify-around" style="padding:10px; text-align:center;">
+        <a href="/student/create" class="btn">Back to Signup </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('../layouts/footer') %>
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+<script>
+  const form = document.getElementById("signup-form");
+  const formSubmitBtn = document.getElementById("formSubmitBtn")
+  const formInputs = document.querySelectorAll(".form-input")
+
+
+  const uploadPicBlock = document.getElementById("uploadPicBlock");
+  const usrimageinput = document.getElementById("usrimageinput");
+  const formimageinputSpan = document.getElementById("userImageUploadMsg")
+
+
+  // for inputs 
+  let fc = false,
+    fp = false,
+    vn = false,
+    pa = false,
+    quiz = false
+
+
+
+  // to check if input is not valid 
+  const checkall = () => {
+    console.log(fc, fp, vn, pa, quiz)
+    if (usrimageinput.files.length < 1) {
+      formSubmitBtn.disabled = true
+      formimageinputSpan.innerText = "Image Upload Is Required"
+      uploadPicBlock.style.boxShadow = "0px 0px 29px red"
+      uploadPicBlock.classList.add("animate")
+    } else {
+      uploadPicBlock.style.boxShadow = "0px 0px 5px #706d6db8"
+      uploadPicBlock.classList.remove("animate")
+      formimageinputSpan.innerText = usrimageinput.files[0].name
+      if (fc && fp && vn && pa && quiz) {
+        if (formInputs[4].value == "105") {
+          formSubmitBtn.disabled = false
+        } else {
+          formSubmitBtn.disabled = true
+        }
+      } else {
+        console.log("submit button was disabled")
+        formSubmitBtn.disabled = true
+      }
+    }
+  }
 
 
 
 
+  formInputs[0].addEventListener("keyup", e => {
+    console.log('value1 length is ', e.target.value.length)
+    e.target.value.length > 13 ? fc = true : fc = false
+    checkall()
+  })
+
+  formSubmitBtn.addEventListener("click", e => {
+    form.submit();
+  })
+</script>
 
 
+</body>
 
-
-            formInputs[0].addEventListener("keyup", e => {
-                console.log('value1 length is ', e.target.value.length)
-                e.target.value.length > 13 ? fc = true : fc = false
-                checkall()
-            })
-
-            formInputs[1].addEventListener("keyup", e => {
-                console.log('value2 length is ', e.target.value.length)
-                e.target.value.length > 9 ? fp = true : fp = false
-                checkall()
-            })
-            formInputs[2].addEventListener("keyup", e => {
-                console.log('value2 length is ', e.target.value.length)
-                e.target.value.length > 5 ? vn = true : vn=false
-                checkall()
-            })
-            formInputs[3].addEventListener("keyup", e => {
-                console.log('value2 length is ', e.target.value.length)
-                e.target.value.length > 10 ? pa = true:pa = false
-                checkall()
-            })
-            formInputs[4].addEventListener("keyup", e => {
-                console.log('value2 length is ', e.target.value.length)
-                e.target.value.length>2 ? quiz= true : quiz = false
-                checkall()
-            })
-
-
-            formSubmitBtn.addEventListener("click", e => {
-                form.submit();
-            })
-
-
-
-
-        </script>
-
-
-        </body>
-
-        </html>
+</html>
