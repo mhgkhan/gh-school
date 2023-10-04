@@ -29,15 +29,7 @@ const studentPSDStr = mongoose.Schema({
         type: String,
         required: true,
     },
-    schooldistrict: {
-        type: String,
-        required: true
-    },
-    lastclassdmc: {
-        type: String,
-        required: true
-    },
-    schoolcertificate: {
+    schooladdress: {
         type: String,
         required: true
     },
@@ -45,6 +37,11 @@ const studentPSDStr = mongoose.Schema({
         type: String,
         required: true
     },
+    schoolcertificate: {
+        type: String,
+        required: true
+    },
+
     user: {//12
         type: mongoose.Schema.Types.ObjectId,
         ref: "Signup_Student"

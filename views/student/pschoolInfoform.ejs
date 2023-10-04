@@ -56,60 +56,87 @@
         </ul>
       </div>
 
-      <form action="/api/student/previussdata" id="signup-form" method="post" enctype="multipart/form-data">
+      <form action="/api/student/previusschooldata" id="signup-form" method="post" enctype="multipart/form-data">
+
+
+
+        <!-- image selection and preview  -->
+        <input type="file" name="schoolcertificate" id="usrimageinput" accept="application/pdf" required style="opacity:-3333;">
+
+        <div class="form-fields-row flex item-center" style="justify-content: space-around;">
+
+          <span id="userImageUploadMsg" style="color:red ;">Upload School Certificate (scanned)* </span>
+
+          <div class="uploadPicblock flex item-center justify-center flex-col" id="uploadPicBlock">
+            <span><i class="fa fa-upload"></i></span>
+            <p style="padding: 5px; text-align:center">Upload Your Scanned Shool Certificate (click now ) </p>
+          </div>
+        </div>
 
 
 
         <div class="form-fields-row flex item-center justify-center">
-            <div class="form-field">
-                <span><i class="fa fa-home"></i></span>
-                <input type="text" name="schoolname" id="schoonmaeinput" minlength="5" maxlength="50" placeholder="Previus School Name" required>
-            </div>
-            <div class="form-field">
-                <span><i class="fa fa-book"></i></span>
-                <select name="subject" id="subject" required >
-                    <option disabled selected >Subject</option>
-                    <option value="science">Science</option>
-                    <option value="Arts">Arts</option>
-                </select>
-            </div>
+          <div class="form-field">
+            <span><i class="fa fa-home"></i></span>
+            <input type="text" class="form-input" name="schoolname" id="schoonmaeinput" minlength="5" maxlength="50" placeholder="Previus School Name" required>
+          </div>
+          <div class="form-field">
+            <span><i class="fa fa-book"></i></span>
+            <select name="subject" id="subject" required>
+              <option disabled selected>Subject</option>
+              <option value="science">Science</option>
+              <option value="Arts">Arts</option>
+            </select>
+          </div>
         </div>
 
 
         <div class="form-fields-row flex item-center justify-center">
-            <div class="form-field">
-                <span><i class="fa fa-pencil"></i></span>
-                <input type="number" name="rollno" id="rollnoinput" minlength="1" maxlength="5" placeholder="Class RollNo" required>
-            </div>
-            <div class="form-field">
-                <span><i class="fa fa-home"></i></span>
-                <select name="classname" id="classname" required >
-                    <option disabled selected >From Class</option>
-                    <option value="KG">KG</option>
-                    <option value="PREP">PREP</option>
-                    <option value="FIRST">FIRST</option>
-                    <option value="SECOND">SECOND</option>
-                    <option value="THIRD">THIRD</option>
-                    <option value="FOURTH">FOURTH</option>
-                    <option value="FIFTH">FIFTH</option>
-                    <option value="SEXTH">SEXTH</option>
-                    <option value="SEVENTH">SEVENTH</option>
-                    <option value="EIGHTH">EIGHTH</option>
-                    <option value="NINTH">NINTH</option>
-                </select>
-            </div>
+          <div class="form-field">
+            <span><i class="fa fa-pencil"></i></span>
+            <input type="number" class="form-input" name="rollno" id="rollnoinput" minlength="1" maxlength="5" placeholder="Class RollNo" required>
+          </div>
+          <div class="form-field">
+            <span><i class="fa fa-home"></i></span>
+            <select name="classname" id="classname" required>
+              <option disabled selected>From Class</option>
+              <option value="KG">KG</option>
+              <option value="PREP">PREP</option>
+              <option value="FIRST">FIRST</option>
+              <option value="SECOND">SECOND</option>
+              <option value="THIRD">THIRD</option>
+              <option value="FOURTH">FOURTH</option>
+              <option value="FIFTH">FIFTH</option>
+              <option value="SEXTH">SEXTH</option>
+              <option value="SEVENTH">SEVENTH</option>
+              <option value="EIGHTH">EIGHTH</option>
+              <option value="NINTH">NINTH</option>
+            </select>
+          </div>
         </div>
 
 
         <div class="form-fields-row flex item-center justify-center">
-            <div class="form-field">
-                <span><i class="fa fa-pencil"></i></span>
-                <input type="number" name="obtmarks" id="obtmarks" minlength="1" maxlength="5" placeholder="Obt Marks" required>
-            </div>
-            <div class="form-field">
-                <span><i class="fa fa-pencil"></i></span>
-                <input type="number" name="totalmarks" id="totalmarks" minlength="1" maxlength="5" placeholder="out of (obt marks)" required>
-            </div>
+          <div class="form-field">
+            <span><i class="fa fa-pencil"></i></span>
+            <input type="number" class="form-input" name="obtmarks" id="obtmarks" minlength="1" maxlength="5" placeholder="Obt Marks" required>
+          </div>
+          <div class="form-field">
+            <span><i class="fa fa-pencil"></i></span>
+            <input type="number" class="form-input" name="totalmarks" id="totalmarks" minlength="1" maxlength="5" placeholder="out of (obt marks)" required>
+          </div>
+        </div>
+
+
+        <div class="form-fields-row flex item-center justify-center">
+          <div class="form-field">
+            <span><i class="fa fa-phone"></i></span>
+            <input type="number" class="form-input" name="schoolphone" id="schoolphone" minlength="9" maxlength="15" placeholder="School Phone" required>
+          </div>
+          <div class="form-field">
+            <span><i class="fa fa-home"></i></span>
+            <input type="text" class="form-input" name="schooladdress" id="schooladdress" minlength="8" maxlength="50" placeholder="School Short Address" required>
+          </div>
         </div>
 
 
@@ -165,17 +192,20 @@
 
 
   // for inputs 
-  let fc = false,
-    fp = false,
-    vn = false,
-    pa = false,
+  let sn = false,
+    rn = false,
+    om = false,
+    tm = false,
+    sp = false,
+    sa = false,
     quiz = false
+
 
 
 
   // to check if input is not valid 
   const checkall = () => {
-    console.log(fc, fp, vn, pa, quiz)
+    console.log(sn,rn,om,tm,sp,sa,quiz)
     if (usrimageinput.files.length < 1) {
       formSubmitBtn.disabled = true
       formimageinputSpan.innerText = "Image Upload Is Required"
@@ -185,8 +215,8 @@
       uploadPicBlock.style.boxShadow = "0px 0px 5px #706d6db8"
       uploadPicBlock.classList.remove("animate")
       formimageinputSpan.innerText = usrimageinput.files[0].name
-      if (fc && fp && vn && pa && quiz) {
-        if (formInputs[4].value == "105") {
+      if (sn && rn && om && tm && sp && sa && quiz) {
+        if (formInputs[6].value == "105") {
           formSubmitBtn.disabled = false
         } else {
           formSubmitBtn.disabled = true
@@ -201,15 +231,73 @@
 
 
 
+  uploadPicBlock.addEventListener("click", e => {
+    // uploadPicBlock.innerHTML = ""
+    usrimageinput.click()
+    //uploadPicBlock.classList.remove("animate")
+  })
+  usrimageinput.addEventListener("change", e => {
+    uploadPicBlock.innerHTML = "<span> <i class='fa fa-upload'> </i> </span> <p style='text-align:center; padding:5px;'>click to select your profile image </p> "
+    if (e.target.files.length < 1) {
+      usrimageinput.click()
+    } else {
+      const fakeUrl = URL.createObjectURL(e.target.files[0]);
+      uploadPicBlock.innerHTML = `<iframe style="width:100%; height:100%;" src="${fakeUrl}" > </ifram>`
+      formimageinputSpan.innerText = usrimageinput.files[0].name
+      console.log(e.target.files[0])
+      console.log(e.target.name)
+      checkall()
+
+    }
+  })
+
+
+
+
   formInputs[0].addEventListener("keyup", e => {
     console.log('value1 length is ', e.target.value.length)
-    e.target.value.length > 13 ? fc = true : fc = false
+    e.target.value.length > 5 ? sn = true : sn = false
     checkall()
   })
+
+  formInputs[1].addEventListener("keyup", e => {
+    console.log("value2 length is ", e.target.value.length)
+    e.target.value.length > 1 ? rn = true : rn = false
+  })
+
+  formInputs[2].addEventListener("keyup", e => {
+    console.log("value3 length is ", e.target.value.length);
+    e.target.value.length > 2 ? om = true : om = false
+  })
+
+  formInputs[3].addEventListener("keyup", e => {
+    console.log("value4 length is ", e.target.value.length);
+    e.target.value.length > 2 ? tm = true : tm = false
+  })
+
+
+  formInputs[4].addEventListener("keyup", e => {
+    console.log("value5 length is ", e.target.value.length);
+    e.target.value.length > 8 ? sp = true : sp = false
+  })
+
+
+  formInputs[5].addEventListener("keyup", e => {
+    console.log("value6 length is ", e.target.value.length);
+    e.target.value.length > 8 ? sa = true : sa = false
+  })
+  
+  formInputs[6].addEventListener("keyup",e=>{
+    console.log("value7 length is ", e.target.value.length);
+    e.target.value.length > 2 ? quiz = true : quiz = false
+  })
+
 
   formSubmitBtn.addEventListener("click", e => {
     form.submit();
   })
+
+
 </script>
 
 

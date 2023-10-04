@@ -1,6 +1,9 @@
 import multer from "multer";
 import studentSignupModel from "../Models/schoolstudents/Studentsignup.js";
 import studentPersonalInformationModel from '../Models/schoolstudents/StudentsignupDetails.js'
+import StudentPreviusSchoolDetails from "../Models/schoolstudents/StudentPreviusSchoolData.js";
+
+
 import bcrypt from 'bcrypt'
 import JWT from 'jsonwebtoken'
 
@@ -206,6 +209,115 @@ class studentApiHandler {
             res.status(500).json({ error: error })
         }
     }
+
+
+
+
+
+
+
+
+
+    static handlePreviusSchoolDataPost = async (req,res)=>{
+        try {
+         
+            const {schoolname,subject,classname,rollno,obtmarks,totalmarks,schooladdress,schoolphone} = req.body
+
+            if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+                // console.log(req.file)
+                // console.log(req.body)
+                // console.log("cookies is exists ")
+                const verfication = JWT.verify(req.cookies.MPS, process.env.SECRET)
+                const id = verfication.id
+                // console.log(verfication);
+
+                // checking if user is exists or not 
+                let exists
+                try {
+                    exists = await studentSignupModel.findOne({ _id:id });
+                    // console.log(exists);
+                } catch (error) {
+                    console.log(error);
+                    return res.status(500).json(error)
+                }
+
+                if (exists) {
+                    // console.log("user is exists ")
+                    // checking if this user data is already exists or not 
+                    const existSignupDetails = await studentPersonalInformationModel.findOne({ user: exists._id })
+
+                    if (existSignupDetails) {
+                        // console.log("already avalaible data of student personal ")
+                        
+                      if(!req.file){
+                        return res.redirect("/student/previusschooldata");
+                      }
+
+                      else{
+
+                          // checking if this user the previus school data is already exists or not 
+                        const exitsPreviusSchooldata  = await StudentPreviusSchoolDetails.findOne({user:exists._id})
+
+                        if(exitsPreviusSchooldata){
+                            return res.json({
+                                user:exists.email,
+                                name:existSignupDetails.fullname,
+                                applicationform:"pending",
+                                data:"Submited verified processing. ",
+                            })
+
+                        }
+                        else{
+
+                            const savingPreviusSchoolData = new StudentPreviusSchoolDetails({
+                                schoolname,schooladdress,rollno,obtmarks,totalmarks,schoolphone,subject,classname,
+                                schoolcertificate:req.file.filename,
+                                usrer:exists._id
+                            })
+
+                            const savedPSdata = await savingPreviusSchoolData.save();
+
+                            return res.status(200).json({
+                                submitted:"Congragulations your addmission was sucessfully you are in the waitlist"
+                            })
+
+
+                        }
+
+
+                      }
+
+
+                    }
+
+                    else {
+                        return res.redirect("/student/signupinformation")
+                    }
+
+
+                }
+                else {
+                    // console.log("user is not exists  ")
+                    return res.redirect("/student/create")
+                }
+
+
+            }
+            else {
+                // console.log("cookie is not exits user is unothorize. ")
+                return res.redirect("/student/login")
+            }
+
+
+
+
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({error})
+        }
+    }
+
+
 
 
 }
