@@ -940,8 +940,9 @@ footer .container p {
     width: 96%;
   }
   .user-profile-container{
-    width: 90%;
-    margin-left: 3rem;
+    width: 96%;
+    margin:0px auto;
+    /* margin-left: 3rem; */
   }
   .sidebar-user-profile{
     position: absolute;
