@@ -12,21 +12,16 @@ import staticPagesRouter from './routes/staticRouter.js';
 import contactRouter from './routes/contactRouter.js';
 import studentRouter from './routes/studentRouter.js';
 
-
 const app = express();
 
 connectDB(app.get("env")=="development"?process.env.MONGO_URI:process.env.MONGO_URI_PROD).then(() => console.log("MONGODB CONNECTED."))
 
-
 // connect with public folder 
 app.use(express.static(path.join(process.cwd(), "public")));
-
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(cookieParser())
-
-
 
 // default route 
 app.use("/", staticPagesRouter);
@@ -44,9 +39,6 @@ app.get("*", (req, res) => res.status(404).json({ error: "404 page not found " }
 //     resave: true,
 //     saveUninitialized: true
 // }))
-
-
-
 
 app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "./views"))
