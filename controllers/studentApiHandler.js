@@ -1,4 +1,4 @@
-import multer from "multer";
+
 import studentSignupModel from "../Models/schoolstudents/Studentsignup.js";
 import studentPersonalInformationModel from '../Models/schoolstudents/StudentsignupDetails.js'
 import StudentPreviusSchoolDetails from "../Models/schoolstudents/StudentPreviusSchoolData.js";
@@ -277,13 +277,14 @@ class studentApiHandler {
 
                             const savedPSdata = await savingPreviusSchoolData.save();
 
-                            return res.status(200).json({
-                                submitted:"Congragulations your addmission was sucessfully you are in the waitlist"
+                            return res.status(200).render("student/dashboard/index.ejs",{
+                                title:"Student Dashboard",
+                                student:existSignupDetails,
+                                personal:exists
                             })
 
 
                         }
-
 
                       }
 

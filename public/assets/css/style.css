@@ -241,6 +241,10 @@ nav ul li {
   margin: 0px 6px;
   padding: 9px 7px;
 }
+nav ul li a{
+  width: 100%;
+  height: 100%;
+}
 nav ul li:hover {
   background: #ede7e7e4;
   transform: scale(1.04, 1.04);
@@ -821,6 +825,110 @@ main {
   color: white;
 }
 
+
+/* dashboard sidebar  */
+.dashboard-nav{
+  width: auto;
+  padding: 5px 10px;
+}
+.dashboard-nav ul{
+  display: flex;
+}
+.dashboard-nav ul li{
+  margin: 0px 5px;
+  list-style-type: none;
+}
+.dashboard-nav ul li a{
+  padding: 8px 5px;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+}
+
+/* dashboard  */
+.std-account{
+  width: 100%;
+  /* border: 1px solid red; */
+  padding: 10px;
+}
+.std-account .student-image{
+  width: 200px;
+  height: 230px;
+  /* border: 1px solid red; */
+  border-radius: 5px;
+  box-shadow: 0px 0px  5px #5e5e5f;
+  margin: 10px;
+}
+.std-account .student-account-heading{
+  margin: 10px;
+  padding: 10px;
+  /* border: 1px solid red; */
+  width: 60%;
+}
+.student-account-heading .stdname{
+  gap: 5px;
+
+}
+.student-account-heading .stdname h3{
+  font-size: 1.9rem;
+}
+.student-account-heading .stdname span{
+  padding: 3px 10px;
+  color: white;
+  background: #6e2f2f;
+  border-radius: 3px;
+}
+.student-account-heading h4{
+  margin-top: 1rem;
+  margin-bottom: 0px;
+  padding-left: 20px;
+}
+.social-info{
+  width: 100%;
+}
+.social-info .data-field{
+  width: 100%;
+  padding: 4px;
+  margin: 7px 0px;
+  justify-content: flex-start;
+  gap: 7px;
+}
+.social-info .data-field {
+  font-size: 1.2rem;
+}
+.social-info .data-field span{
+  color: #a32727;
+  font-size: 1.5rem;
+}
+.student-account-heading .quicklinks{
+  width: 100%;
+  flex-wrap: wrap;
+}
+.student-account-heading .quicklinks a{
+  background: #a32727;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 4px;
+  margin: 5px 8px;
+  position: relative;
+}
+.quicklinks a::after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+  transition: .6s;
+}
+.quicklinks a:hover::after{
+  width: 0%;
+  background: white;
+  color: #6e2f2f;
+}
+
+
+
+
 /* ##########################
 ##########################
 footer stying .. 
@@ -1036,6 +1144,43 @@ footer .container p {
   .uploadPicblock{
     width: 150px;
     height: 160px;
+  }
+  .std-account{
+    flex-direction: column;
+  }
+  .std-account .student-image{
+    margin: 1rem auto;
+    display: block;
+    width: 150px;
+    height: 166px;
+  }
+  .student-account-heading{
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5px 0px !important;
+  }
+  .social-info{
+    width: auto;
+  }
+  
+  .student-account-heading .stdname{
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .stdname h3
+  {
+    text-align: center;
+  }
+  .student-account-heading .quicklinks{
+    /* width: 100%; */
+    align-items: center;
+    justify-content: center;
   }
 }
 
