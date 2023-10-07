@@ -1,78 +1,86 @@
 <%- include('./layouts/header') %>
 
-    <style>
-        form{
-            padding: 10px;
-        }
-        .input-group {
-            margin-bottom: 15px;
-        }
+<style>
+  form {
+    padding: 10px;
+  }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
+  .input-group {
+    margin-bottom: 15px;
+  }
 
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
 
-        button {
-            background-color: #6e2f2f;
-            color: #fff;
-            border: none;
-            padding: 7px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
 
-        button:hover {
-            background-color: #b14d4d;
-        }
-    </style>
+  button {
+    background-color: #6e2f2f;
+    color: #fff;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
 
-    <!-- main in strted from here  -->
-    <section class="section">
-        <div class="container section-container">
-            <h3>Contact us </h3>
-            <h1 style="margin: 1rem 0px;"> FREE FEEL TO CONTACT US </h1>
-            <p>Your questions and feedback are important to us. We welcome your
-                inquiries and look <br> forward to connecting with you as we work together to create an exceptional
-                educational experience.</p>
+  button:hover {
+    background-color: #b14d4d;
+  }
 
+  .hide {
+    display: none;
+  }
+</style>
 
-            <form method="post" action="/api/contact/" id="contactform" autocomplete="off" >
-                <div class="input-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required placeholder="Name" maxlength="40" minlength="4">
-                </div>
-                <div class="input-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="Email" maxlength="100" minlength="4">
-                </div>
-                <div class="input-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="10" required placeholder="Your message" maxlength="500" minlength="10"  ></textarea>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-
-        </div>
-    </section>
-    <!-- main in ended from here  -->
-    <%- include('./layouts/footer') %>
+<!-- main in strted from here  -->
+<section class="section">
+  <div class="container section-container">
+    <h3>Contact us </h3>
+    <h1 style="margin: 1rem 0px;"> FREE FEEL TO CONTACT US </h1>
+    <p>Your questions and feedback are important to us. We welcome your
+      inquiries and look <br> forward to connecting with you as we work together to create an exceptional
+      educational experience.</p>
 
 
-
+    <form method="post" action="/api/contact/" id="contactform" autocomplete="off">
+      <div class="input-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-input-contact" id="name" name="name" required placeholder="Name" maxlength="40" minlength="8">
+        <span style="color: red; margin:0px 15px;" class="errLine"></span>
+      </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-input-contact" id="email" name="email" required placeholder="Email" maxlength="100" minlength="4">
+        <span style="color: red; margin:0px 15px;" class="errLine"></span>
+      </div>
+      <div class="input-group">
+        <label for="message">Message:</label>
+        <textarea id="message" class="form-input-contact" name="message" rows="10" required placeholder="Your message" maxlength="500" minlength="10"></textarea>
+        <span style="color: red; margin:0px 15px;" class="errLine"></span>
+      </div>
+      <button type="submit" id="submitBtn" disabled >Submit</button>
+    </form>
     
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('./layouts/footer') %>
+
+
+
+
 <script src="/assets/js/all.js"></script>
 
 
@@ -83,6 +91,69 @@
 
 
 <script src="/assets/js/main.js"></script>
+
+<script>
+  let name = false,
+    email = false,
+    message = false
+
+  let formInputContact = document.querySelectorAll(".form-input-contact");
+  let errLine = document.querySelectorAll(".errLine");
+
+  function checkInvilidInput(){
+    console.log(name,email,message)
+    if(name && email && message){
+        document.getElementById("submitBtn").disabled = false
+    }
+    else{
+        document.getElementById("submitBtn").disabled = true
+    }
+  }
+
+  formInputContact[0].addEventListener("keyup", e => {
+      if (e.target.value.length < 5) {
+          name = false
+          //   errLine[0].classList.add("hide");
+          errLine[0].innerHTML = "Name value must be atleast 5 characters"
+        } else {
+            name = true
+            // errLine[0].classList.remove("hide");
+            errLine[0].innerHTML = "✅ Name are valid"
+        }
+        checkInvilidInput()
+})
+
+
+formInputContact[1].addEventListener("keyup", e => {
+    if (e.target.value.length < 8) {
+        email = false
+        // errLine[1].classList.add("hide");
+        errLine[1].innerHTML = "Invilid Email and value must atleast 8 characters"
+    } else {
+        email = true
+        //   errLine[1].classList.remove("hide");
+        errLine[1].innerHTML = "✅ Email are valid"
+    }
+    checkInvilidInput()
+})
+
+
+formInputContact[2].addEventListener("keyup", e => {
+    if (e.target.value.length < 20) {
+        message = false
+        // errLine[2].classList.add("hide");
+        errLine[2].innerHTML = "Message value must be atleast 20 characters."
+    } else {
+        message = true
+        // errLine[2].classList.remove("hide");
+        errLine[2].innerHTML = "✅ message are valid"
+    }
+    checkInvilidInput()
+  })
+
+
+  
+</script>
 </body>
 
 </html>

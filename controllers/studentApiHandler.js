@@ -90,7 +90,7 @@ class studentApiHandler {
                 exists = await studentSignupModel.findOne({ phone: phone });
             } catch (error) {
                 console.log(error);
-                res.status(500).json(error)
+                res.status(500).json({err:error})
             }
 
             if (exists) {
@@ -104,25 +104,23 @@ class studentApiHandler {
                     res.cookie("MPS", token, {
                         httpOnly: true
                     })
-                    res.redirect("/student/signupinformation")
+
+                    res.status(200).json({success:true})
                 }
                 else {
-                    res.status(400).render("./student/login.ejs", {
-                        title: "Login Account Student Addmission",
-                        errMsg: "Invilid credientials "
-                    })
+                    res.status(400).json({success:false, err:"invilid credientials"})
                 }
 
             }
             else {
-                res.redirect("/student/create");
+                res.status(401).json({success:false, err:"User is not exists try to signup "})
             }
 
 
 
         } catch (error) {
             console.log(error);
-            res.status(500).json({ error: error })
+            res.status(500).json({err:error})
         }
     }
 
@@ -261,7 +259,7 @@ class studentApiHandler {
                         if(exitsPreviusSchooldata){
                             return res.json({
                                 user:exists.email,
-                                name:existSignupDetails.fullname,
+                                name:exists.fullname,
                                 applicationform:"pending",
                                 data:"Submited verified processing. ",
                             })
@@ -272,17 +270,12 @@ class studentApiHandler {
                             const savingPreviusSchoolData = new StudentPreviusSchoolDetails({
                                 schoolname,schooladdress,rollno,obtmarks,totalmarks,schoolphone,subject,classname,
                                 schoolcertificate:req.file.filename,
-                                usrer:exists._id
+                                user:exists._id
                             })
 
                             const savedPSdata = await savingPreviusSchoolData.save();
 
-                            return res.status(200).render("student/dashboard/index.ejs",{
-                                title:"Student Dashboard",
-                                student:existSignupDetails,
-                                personal:exists
-                            })
-
+                            return res.redirect("/student/profile")
 
                         }
 

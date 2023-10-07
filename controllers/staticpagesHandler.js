@@ -31,6 +31,17 @@ class staticPagesHandler {
     static handleAddstudentPersonalInformation = pageRender("./student/studentinformationform.ejs", "Add Your Personal Information || GHSMS")
     // for our student previus school form 
     static handlePreviusSchooldataForm = pageRender("./student/pschoolInfoform.ejs", "Student Previus School Information Form || GHSMS");
+    // for our school student profile 
+    static handleProfilePage = async (req,res)=>{
+        console.log("the req user is " , req.user)
+        res.status(200).render("./student/dashboard/index.ejs", {
+            title:"Student Dashboard",
+            student:{email:"ghazna k44@gmail.com"},
+            personal:'hello'
+        })
+
+    }
+    
 }
 
 export default staticPagesHandler

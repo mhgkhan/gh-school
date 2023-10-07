@@ -44,7 +44,9 @@ const studentPSDStr = mongoose.Schema({
 
     user: {//12
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Signup_Student"
+        ref: "Signup_Student",
+        required:true,
+        unique:true
     }
 },{
     timestamps:true

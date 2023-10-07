@@ -723,7 +723,7 @@ main {
   font-size: 1.1rem;
   border-radius: 5px;
 }
-.form-area form button:disabled {
+.form-area form button:disabled,form button[type="submit"]:disabled {
   background: #a29c9c94;
   color: gray;
   box-shadow: none;
