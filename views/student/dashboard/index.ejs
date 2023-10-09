@@ -1,54 +1,61 @@
 <%- include('../../layouts/dashboardHeader') %>
 
 
-    <!-- main in strted from here  -->
-    <section class="section">
-        <div class="container section-container">
-            <h2>Dashboard</h2>
-            <h1>Student Account </h1>
-            <div class="std-account flex">
-                <div class="student-image"><img src="/assets/media/images/students/profiles/<%= student.image %>" alt=""></div>
-                <div class="student-account-heading">
-                    <div class="stdname flex item-center">
-                        <h3><%= student.fullname%></h3>
-                        <span>Best Student </span>
-                    </div>      
-                    <div class="social-info">
-                        <div class="data-field flex item-center ">
-                            <span><i class="fa fa-envelope"></i></span><%= personal.email %>
-                        </div>
-                        <div class="data-field flex item-center ">
-                        <span><i class="fa fa-phone"></i></span> <%= personal.phone %>
-                        </div>
-                    </div>
-                    
-                    <h4>Quick Links </h4>
-                    <div class="quicklinks flex">
-                        <a href="#">Edit Personal Info </a>
-                        <a href="#">Edit Previus School Info </a>
-                        <a href="#">Edit Admission Form </a>
-                        <a href="#">Update Password </a>
-                    </div>
-                </div>
-            </div>
+<!-- main in strted from here  -->
+<section class="section">
+  <div class="container section-container">
+    <h2>Dashboard</h2>
+    <h1>Student Account </h1>
+    <div class="std-account flex">
+      <div class="student-image"><img src="/assets/media/images/students/profiles/<%= personalInfo.image %>" alt=""></div>
+      <div class="student-account-heading">
+        <div class="stdname flex item-center">
+          <h3><%= signupData.fullname %></h3>
+          <span>Topper </span>
         </div>
-    </section>
-    <!-- main in ended from here  -->
-    <%- include('../../layouts/footer') %>
+        <div class="social-info">
+          <div class="data-field flex item-center ">
+            <span><i class="fa fa-envelope"></i></span><%= signupData.email %>
+          </div>
+          <div class="data-field flex item-center ">
+            <span><i class="fa fa-phone"></i></span> <%= signupData.phone %>
+          </div>
+        </div>
+
+        <h4>Quick Links </h4>
+        <div class="quicklinks flex">
+          <a href="/student/edit/personalinfo/<%= personalInfo.user %>">Edit Personal Info </a>
+          <a href="/student/edit/previusschoolinfo/<%= personalInfo.user %>">Edit Previus School Info </a>
+          <a href="/student/edit/editadmissionform/<%= personalInfo.user %>">Edit Admission Form </a>
+          <a href="/student/edit/password/<%= personalInfo.user %>">Update Password </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="admissindetails section">
+  <div class="container section-container">
+    <h1>Admission Details</h1>
+    <h3>Status <span>Pending</span></h3>
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('../../layouts/footer') %>
 
 
 
-        <script src="/assets/js/all.js"></script>
+<script src="/assets/js/all.js"></script>
 
 
-        <!-- typedjs animation library cdn -->
-        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-        <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
 
 
-        <script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
 
-        </body>
+</body>
 
-        </html>
+</html>

@@ -31,7 +31,7 @@ app.use("/api/contact", contactRouter);
 // student route 
 app.use("/api/student/",studentRouter)
 
-app.get("*", (req, res) => res.status(404).json({ error: "404 page not found " }))
+app.get("*", (req, res) => res.status(404).render("404.ejs", {title:"404 Page Not Found",url:req.url}))
 
 // session middleware 
 // app.use(session({

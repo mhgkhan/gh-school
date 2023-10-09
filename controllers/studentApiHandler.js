@@ -105,7 +105,7 @@ class studentApiHandler {
                         httpOnly: true
                     })
 
-                    res.status(200).json({success:true})
+                    res.status(200).json({success:true,token:token})
                 }
                 else {
                     res.status(400).json({success:false, err:"invilid credientials"})

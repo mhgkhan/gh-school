@@ -33,15 +33,40 @@ class staticPagesHandler {
     static handlePreviusSchooldataForm = pageRender("./student/pschoolInfoform.ejs", "Student Previus School Information Form || GHSMS");
     // for our school student profile 
     static handleProfilePage = async (req,res)=>{
-        console.log("the req user is " , req.user)
-        res.status(200).render("./student/dashboard/index.ejs", {
-            title:"Student Dashboard",
-            student:{email:"ghazna k44@gmail.com"},
-            personal:'hello'
-        })
-
+        try {
+        const studentData = req.studentData;
+        return res.status(200).render("./student/dashboard/index.ejs", {
+            title:"Student Profile",
+            signupData:studentData.signupData,
+            personalInfo: studentData.personalInfo,
+            previusSchool:studentData.previusSchool
+        })    
+        } catch (error) {
+            return res.status(500).json({error})
+        }
     }
     
+
+
+    static handleLogout = async (req,res)=>{
+        // setting the logout logic 
+        res.clearCookie("MPS")
+        return res.redirect("/student/login")
+    }
+
+    
+    static handlPersonalInfoPage = pageRender("./student/edit/editpersonalinfo.ejs", "Edit your personal Information");
+    static handlePrviusSchoolInfoPage = pageRender("./student/edit/editpreviusschoolinfo.ejs", "Edit Previus School Information");
+    static handleAdmissionFormPage = pageRender("./student/edit/editadmissioninfo.ejs", "Edit Your Addmission Form");
+    static handleChangePasswordPage = pageRender("./student/edit/changepassword.ejs", "Chagne Your passowrd now");
+
+
+
+
+
 }
+
+
+
 
 export default staticPagesHandler

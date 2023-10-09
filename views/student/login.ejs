@@ -168,7 +168,7 @@
     e.preventDefault()
     let msg = ""
     let apiUrl = "/api/student/login/";
-
+    errMsg.innerText = "Wait..."
     const request = await fetch(apiUrl, {
       method: "post",
       headers: {
@@ -187,6 +187,7 @@
       if (response.success) {
         errMsg.style.color = "green"
         msg = "Login Sucessfull."
+        localStorage.setItem("token", response.token)
         setTimeout(() => {
           window.location.reload()
         }, 1000);
