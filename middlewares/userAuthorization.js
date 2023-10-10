@@ -7,6 +7,7 @@ import StudentPreviusSchoolDetails from "../Models/schoolstudents/StudentPrevius
 
 import JWT from 'jsonwebtoken'
 
+// import {gotoErrorPage} from "../controllers/otherHandlers.js"
 
 
 export const userAuth = async (req, res, next) => {
@@ -20,8 +21,12 @@ export const userAuth = async (req, res, next) => {
       try {
          checkinUser = await studentSignupModel.findOne({ _id: idformtoken.id });
       } catch (error) {
-         console.log(error);
-         res.status(200).json(error)
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
+         // console.log(error);
+         // res.status(200).json(error)
       }
 
       if (checkinUser) {
@@ -49,7 +54,10 @@ export const isLogin = async (req, res, next) => {
          res.redirect("/student/login");
       }
    } catch (error) {
-      res.json({ error })
+      return res.status(500).render("error.ejs", {
+         title: "ERROR IN PAGE",
+         error: error
+      })
    }
 }
 
@@ -75,7 +83,10 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
                   res.redirect("/student/create/")
                }
             } catch (error) {
-               res.status(500).json({ error })
+               return res.status(500).render("error.ejs", {
+                  title: "ERROR IN PAGE",
+                  error: error
+               })
             }
          }
          else {
@@ -88,7 +99,10 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
          res.redirect("/student/login");
       }
    } catch (error) {
-      res.json({ error })
+      return res.status(500).render("error.ejs", {
+         title: "ERROR IN PAGE",
+         error: error
+      })
    }
 }
 
@@ -107,7 +121,10 @@ export const afterSignupAuth = async (req, res, next) => {
          checkinUser = await studentSignupModel.findOne({ _id: idFromtoken.id });
       } catch (error) {
          console.log(error);
-         res.redirect("/student/login")
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
       }
       // if user is exists 
       if (checkinUser) {
@@ -154,7 +171,10 @@ export const afterSignupDetails = async (req, res, next) => {
          checkinUser = await studentSignupModel.findOne({ _id: idFromtoken.id });
       } catch (error) {
          console.log(error);
-         res.redirect("/student/create")
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
       }
 
       if (checkinUser) {
@@ -165,7 +185,10 @@ export const afterSignupDetails = async (req, res, next) => {
             // console.log(existsStudnetPersonalInfor)
          } catch (error) {
             console.log(error);
-            res.redirect("/student/login")
+            return res.status(500).render("error.ejs", {
+               title: "ERROR IN PAGE",
+               error: error
+            })
          }
 
          if (existsStudnetPersonalInfor) {
@@ -185,7 +208,10 @@ export const afterSignupDetails = async (req, res, next) => {
                   return next();
                }
             } catch (error) {
-               res.json(error)
+               return res.status(500).render("error.ejs", {
+                  title: "ERROR IN PAGE",
+                  error: error
+               })
             }
          }
          else {
@@ -221,7 +247,10 @@ export const afterClearAll = async (req, res, next) => {
          exists = await studentSignupModel.findOne({ _id: idFromtoken.id });
          // console.log("profile middleware : exits user is  ", exists )
       } catch (error) {
-         res.json(error)
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
       }
 
       if (exists) {
@@ -232,7 +261,10 @@ export const afterClearAll = async (req, res, next) => {
             // console.log("profile middleware : stdent Persoan Informatio is ", checkStudentDetails);
          } catch (error) {
             console.log(error);
-            res.json(error)
+            return res.status(500).render("error.ejs", {
+               title: "ERROR IN PAGE",
+               error: error
+            })
          }
 
          if (checkStudentDetails) {
@@ -257,8 +289,12 @@ export const afterClearAll = async (req, res, next) => {
                }
 
             } catch (error) {
-               console.log(error);
-               res.json(error)
+               return res.status(500).render("error.ejs", {
+                  title: "ERROR IN PAGE",
+                  error: error
+               })
+               // console.log(error);
+               // res.json(error)
             }
 
          }

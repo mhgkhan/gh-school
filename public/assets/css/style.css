@@ -926,7 +926,20 @@ main {
   color: #6e2f2f;
 }
 
-
+.admissindetails table{
+  width: 100%;
+  /* border-spacing: 5px; */
+  border-collapse:collapse;
+}
+.admissindetails table thead{
+  background: #a32727;
+  color: white;
+}
+.admissindetails table th, .admissindetails table td{
+  text-align: center;
+  padding: 12px 7px;
+  text-transform: capitalize;
+}
 
 
 /* ##########################

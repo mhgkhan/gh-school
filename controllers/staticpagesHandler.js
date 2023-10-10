@@ -1,3 +1,4 @@
+import { gotoErrorPage } from "./otherHandlers.js"
 
 const pageRender = (ejsfile, title) => {
     return (req, res) => {
@@ -5,7 +6,7 @@ const pageRender = (ejsfile, title) => {
             
             res.status(200).render(ejsfile, {title: title})
         } catch (error) {
-            res.status(500).json({ error })
+            gotoErrorPage(req,res,error,500)
         }
     }
 }
@@ -32,6 +33,9 @@ class staticPagesHandler {
     // for our student previus school form 
     static handlePreviusSchooldataForm = pageRender("./student/pschoolInfoform.ejs", "Student Previus School Information Form || GHSMS");
     // for our school student profile 
+
+
+
     static handleProfilePage = async (req,res)=>{
         try {
         const studentData = req.studentData;
@@ -42,7 +46,8 @@ class staticPagesHandler {
             previusSchool:studentData.previusSchool
         })    
         } catch (error) {
-            return res.status(500).json({error})
+            // return res.status(500).json({error})
+            gotoErrorPage(req,res,error,500)
         }
     }
     

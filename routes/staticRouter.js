@@ -18,7 +18,7 @@ staticPagesRouter.get("/student/create",userAuth, staticPagesHandler.hanldeStude
 .get("/student/login", userAuth, staticPagesHandler.hanldeStudentLoginPage)
 .get("/student/signupinformation",afterSignupAuth,staticPagesHandler.handleAddstudentPersonalInformation)
 .get("/student/previusschooldata",afterSignupDetails, staticPagesHandler.handlePreviusSchooldataForm)
-
+// .get("/student/admissionform", userAuth, staticPagesHandler.handleAdmissionFormPage)
 // to access profile 
 staticPagesRouter.get("/student/profile/", afterClearAll, staticPagesHandler.handleProfilePage);
 

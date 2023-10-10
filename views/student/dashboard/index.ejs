@@ -37,7 +37,25 @@
 <section class="admissindetails section">
   <div class="container section-container">
     <h1>Admission Details</h1>
-    <h3>Status <span>Pending</span></h3>
+    <table border="1" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>From Class </th>
+          <th>Subject</th>
+          <th>Certificate</th>
+          <th>Status</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= previusSchool.classname %></td>
+          <td><%= previusSchool.subject %></td>
+          <td><a target="_blank" href="/assets/media/images/students/certificates/<%= previusSchool.schoolcertificate %>">Click to open </a></td>
+          <td>Pending</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 <!-- main in ended from here  -->
