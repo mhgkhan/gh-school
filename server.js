@@ -6,13 +6,13 @@ const cpsLength = os.cpus().length
 console.log("cpus length is ", cpsLength)
 
 if(cluster.isPrimary){
-    if(cpsLength<=5){
+    if(cpsLength<=10){
         for(let i =0; i<cpsLength; i++){
             cluster.fork()
         }
     }
     else{
-        for(let i =0; i<6; i++){
+        for(let i =0; i<11; i++){
             cluster.fork()
         }
     }
