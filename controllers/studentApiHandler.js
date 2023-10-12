@@ -1,7 +1,9 @@
+//teacher signup model 
+import teacherSignupModel from '../Models/teacher/TeacherSignup.js'
 
-import studentSignupModel from "../Models/schoolstudents/Studentsignup.js";
-import studentPersonalInformationModel from '../Models/schoolstudents/StudentsignupDetails.js'
-import StudentPreviusSchoolDetails from "../Models/schoolstudents/StudentPreviusSchoolData.js";
+import studentPersonalInformationModel from '../Models/student/StudentPersonalDetails.js'
+
+import StudentPreviusSchoolDetails from "../Models/student/StudentPreviusSchoolData.js";
 
 
 import bcrypt from 'bcrypt'
@@ -14,117 +16,6 @@ import JWT from 'jsonwebtoken'
 // }
 
 class studentApiHandler {
-
-    static handleSignupPost = async (req, res) => {
-        try {
-            const { firstname, lastname, email, phone, password, cpassword } = req.body
-            const fullname = `${firstname} ${lastname}`
-
-            if (password === cpassword) {
-
-                // checking if user is exists or not 
-                let exists
-                try {
-                    exists = await studentSignupModel.findOne({ email: email });
-                } catch (error) {
-                    res.status(500).json(error)
-                }
-
-                if (!exists) {
-
-                    const passwordToHash = await bcrypt.hash(password, 10);
-
-                    const createUser = new studentSignupModel({
-                        fullname,
-                        email,
-                        phone,
-                        password: passwordToHash
-                    })
-
-                    try {
-                        const created = await createUser.save()
-                        const data = {
-                            id: created._id
-                        }
-                        const token = JWT.sign(data, process.env.SECRET)
-                        res.cookie("MPS", token, {
-                            httpOnly: true
-                        })
-                        res.redirect("/student/signupinformation")
-                    } catch (error) {
-                        res.status(500).json(error)
-                    }
-                }
-                else {
-                    res.status(401).render("./student/create.ejs", {
-                        title: "Signup Studnet ",
-                        errMsg: "User already exists try to login"
-                    })
-                }
-
-
-
-            }
-            else {
-                res.redirect("/student/create")
-            }
-
-
-        } catch (error) {
-            res.status(500).json({ error: error.message })
-        }
-
-
-    }
-
-
-
-
-    static handleLoginPost = async (req, res) => {
-        try {
-            const { phone, password } = req.body
-
-            // checking if user is exists or not 
-            let exists
-            try {
-                exists = await studentSignupModel.findOne({ phone: phone });
-            } catch (error) {
-                console.log(error);
-                res.status(500).json({err:error})
-            }
-
-            if (exists) {
-                const comparePassword = await bcrypt.compare(password, exists.password);
-                if (comparePassword) {
-
-                    const data = {
-                        id: exists._id
-                    }
-                    const token = JWT.sign(data, process.env.SECRET)
-                    res.cookie("MPS", token, {
-                        httpOnly: true
-                    })
-
-                    res.status(200).json({success:true,token:token})
-                }
-                else {
-                    res.status(400).json({success:false, err:"invilid credientials"})
-                }
-
-            }
-            else {
-                res.status(401).json({success:false, err:"User is not exists try to signup "})
-            }
-
-
-
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({err:error})
-        }
-    }
-
-
 
     
 
@@ -144,7 +35,7 @@ class studentApiHandler {
                 // checking if user is exists or not 
                 let exists
                 try {
-                    exists = await studentSignupModel.findOne({ _id:id });
+                    exists = await teacherSignupModel.findOne({ _id:id });
                     // console.log(exists);
                 } catch (error) {
                     console.log(error);
@@ -232,7 +123,7 @@ class studentApiHandler {
                 // checking if user is exists or not 
                 let exists
                 try {
-                    exists = await studentSignupModel.findOne({ _id:id });
+                    exists = await teacherSignupModel.findOne({ _id:id });
                     // console.log(exists);
                 } catch (error) {
                     console.log(error);

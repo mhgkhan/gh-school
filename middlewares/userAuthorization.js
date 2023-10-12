@@ -1,9 +1,9 @@
-// studnet signup model 
-import studentSignupModel from "../Models/schoolstudents/Studentsignup.js";
-// student personal information model 
-import studentPersonalInformationModel from "../Models/schoolstudents/StudentsignupDetails.js";
-// student previus school model 
-import StudentPreviusSchoolDetails from "../Models/schoolstudents/StudentPreviusSchoolData.js";
+//teacher signup model 
+import teacherSignupModel from '../Models/teacher/TeacherSignup.js'
+// teacher personal information model 
+import TeacherPersonalInformationModel from '../Models/teacher/TeacherInfoModel.js'
+
+
 
 import JWT from 'jsonwebtoken'
 
@@ -19,7 +19,8 @@ export const userAuth = async (req, res, next) => {
       // console.log("from user authorization middleware ", idformtoken);
       let checkinUser
       try {
-         checkinUser = await studentSignupModel.findOne({ _id: idformtoken.id });
+         checkinUser = await teacherSignupModel.findOne({ _id: idformtoken.id });
+         // console.log(checkinUser)
       } catch (error) {
          return res.status(500).render("error.ejs", {
             title: "ERROR IN PAGE",
@@ -31,27 +32,30 @@ export const userAuth = async (req, res, next) => {
 
       if (checkinUser) {
          // res.redirect("/student/form1");
-         res.redirect("/student/signupinformation")
+         res.redirect("/teacher/personalinformation")
       }
       else {
+         // console.log('no cookie ')
          next()
       }
 
    }
    else {
+      // console.log('no cookie ')
       next()
    }
 }
 
 
 
+// this function is used for when user want to logout from an account 
 export const isLogin = async (req, res, next) => {
    try {
       if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
          next();
       }
       else {
-         res.redirect("/student/login");
+         res.redirect("/teacher/login");
       }
    } catch (error) {
       return res.status(500).render("error.ejs", {
@@ -62,8 +66,8 @@ export const isLogin = async (req, res, next) => {
 }
 
 
-
 export const isUserAuthorizeSecond = async (req, res, next) => {
+   /*
    try {
       console.log("from middlewares request paramters is ", req.params)
       if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
@@ -74,7 +78,7 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
             // checking if user is exists or not 
             // console.log("the id is ", idFromToken.id)
             try {
-               const exists = await studentSignupModel.findOne({ _id: idFromToken.id });
+               const exists = await teacherSignupModel.findOne({ _id: idFromToken.id });
                // console.log("the user data is ", exists);
                if (exists && idFromToken.id == exists._id) {
                   next();
@@ -104,8 +108,8 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
          error: error
       })
    }
+   */
 }
-
 
 export const afterSignupAuth = async (req, res, next) => {
 
@@ -118,7 +122,7 @@ export const afterSignupAuth = async (req, res, next) => {
       // checking if user is exists or not 
       let checkinUser
       try {
-         checkinUser = await studentSignupModel.findOne({ _id: idFromtoken.id });
+         checkinUser = await teacherSignupModel.findOne({ _id: idFromtoken.id });
       } catch (error) {
          console.log(error);
          return res.status(500).render("error.ejs", {
@@ -130,15 +134,15 @@ export const afterSignupAuth = async (req, res, next) => {
       if (checkinUser) {
          // console.log("after signup middleware the user is exits ")
          // pdata = personal data 
-         const checkIfPdata = await studentPersonalInformationModel.findOne({ user: checkinUser._id });
+         const checkTeacherInfo = await TeacherPersonalInformationModel.findOne({ user: checkinUser._id });
 
-         if (!checkIfPdata) {
+         if (!checkTeacherInfo) {
             // console.log("after signup middleare user personal information is not exits")
             next();
          }
          else {
             // console.log("after signup middleare user personal information is exits to redirect to previus school data ")
-            res.redirect("/student/previusschooldata")
+            res.redirect("/teacher/status")
          }
 
 
@@ -155,10 +159,13 @@ export const afterSignupAuth = async (req, res, next) => {
       // console.log("user not authorize ")
       res.redirect("/student/login")
    }
+
 }
 
 
+// this middleware will applied on when user use this route => /teacher/status
 export const afterSignupDetails = async (req, res, next) => {
+
    if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
 
       const token = req.cookies.MPS
@@ -168,7 +175,8 @@ export const afterSignupDetails = async (req, res, next) => {
 
       let checkinUser
       try {
-         checkinUser = await studentSignupModel.findOne({ _id: idFromtoken.id });
+         checkinUser = await teacherSignupModel.findOne({ _id: idFromtoken.id });
+         // console.log(checkinUser)
       } catch (error) {
          console.log(error);
          return res.status(500).render("error.ejs", {
@@ -179,10 +187,9 @@ export const afterSignupDetails = async (req, res, next) => {
 
       if (checkinUser) {
          // console.log('after signup user is valid ok')
-         let existsStudnetPersonalInfor
+         let existTeacherPersnalInfo
          try {
-            existsStudnetPersonalInfor = await studentPersonalInformationModel.findOne({ user: checkinUser._id })
-            // console.log(existsStudnetPersonalInfor)
+            existTeacherPersnalInfo = await TeacherPersonalInformationModel.findOne({ user: checkinUser._id })
          } catch (error) {
             console.log(error);
             return res.status(500).render("error.ejs", {
@@ -191,47 +198,33 @@ export const afterSignupDetails = async (req, res, next) => {
             })
          }
 
-         if (existsStudnetPersonalInfor) {
-            // console.log('after signup personal information is exits ok ')
-            // console.log("user student personal information is exists  checked from middlewars")
-
-            try {
-               const exitsPreviusSchooldata = await StudentPreviusSchoolDetails.findOne({ user: checkinUser._id })
-               // console.log("the user previus school data is : \n",exitsPreviusSchooldata);
-
-               if (exitsPreviusSchooldata) {
-                  // console.log("user previus school data  is exits ")
-                  return res.redirect("/student/profile");
-               }
-               else {
-                  // console.log("user previus school data  is not avaliable")
-                  return next();
-               }
-            } catch (error) {
-               return res.status(500).render("error.ejs", {
-                  title: "ERROR IN PAGE",
-                  error: error
-               })
+         if (existTeacherPersnalInfo) {
+            if(checkinUser.asAdmin == "YES"){
+               return res.redirect("/teacher/profile")
+            }
+            else{
+               next();
             }
          }
          else {
+            return res.redirect("/teacher/personalinformation")
             // console.log("user studnet personal informtion is not exists checked from middlewars")
-            res.redirect("/student/signupinformation")
          }
       }
       else {
-         res.redirect("/student/create")
+         res.redirect("/teacher/create")
       }
    }
    else {
-      res.redirect("/student/login");
+      res.redirect("/teacher/login");
    }
+
 }
 
 
-
-
-export const afterClearAll = async (req, res, next) => {
+// this is for when user use this route = /teacher/profile 
+export const teacherClearAll = async (req, res, next) => {
+   
    if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
       const token = req.cookies.MPS
       const idFromtoken = JWT.verify(token, process.env.SECRET)
@@ -244,7 +237,7 @@ export const afterClearAll = async (req, res, next) => {
 
       let exists
       try {
-         exists = await studentSignupModel.findOne({ _id: idFromtoken.id });
+         exists = await teacherSignupModel.findOne({ _id: idFromtoken.id });
          // console.log("profile middleware : exits user is  ", exists )
       } catch (error) {
          return res.status(500).render("error.ejs", {
@@ -255,10 +248,10 @@ export const afterClearAll = async (req, res, next) => {
 
       if (exists) {
          // console.log("profile middleware : user is exists")
-         let checkStudentDetails
+         let checkTeacherDetails
          try {
-            checkStudentDetails = await studentPersonalInformationModel.findOne({ user: exists._id });
-            // console.log("profile middleware : stdent Persoan Informatio is ", checkStudentDetails);
+            checkTeacherDetails = await TeacherPersonalInformationModel.findOne({ user: exists._id });
+            // console.log("profile middleware : stdent Persoan Informatio is ", checkTeacherDetails);
          } catch (error) {
             console.log(error);
             return res.status(500).render("error.ejs", {
@@ -267,39 +260,22 @@ export const afterClearAll = async (req, res, next) => {
             })
          }
 
-         if (checkStudentDetails) {
+         if (checkTeacherDetails) {
             // console.log("profile middleware: sutdent detals is exits");
-            try {
-               const checkPreviusSchoolInformation = await StudentPreviusSchoolDetails.findOne({ user: exists._id })
-               // console.log("profile middleware previus school informatio is", checkPreviusSchoolInformation)
-               if (checkPreviusSchoolInformation) {
-                  // console.log("profile middlware: previus school information is exists")
-                  // console.log("student previus school informatino is exits")
-                  req.studentData = {
-                     signupData: exists,
-                     personalInfo: checkStudentDetails,
-                     previusSchool: checkPreviusSchoolInformation
-                  }
-                  // console.log("profile middleware is req.send user is ", checkPreviusSchoolInformation.user )
-                  next();
+            if(exists.asAdmin=="YES"){
+               req.teacherData = {
+                  signupData: exists,
+                  personalInfo: checkTeacherDetails,
                }
-               else {
-                  // console.log('profiel middleware : spi of school is not exits')
-                  res.redirect("/student/previusschooldata/")
-               }
-
-            } catch (error) {
-               return res.status(500).render("error.ejs", {
-                  title: "ERROR IN PAGE",
-                  error: error
-               })
-               // console.log(error);
-               // res.json(error)
+               next();
+            }
+            else{
+               return res.redirect("/teacher/status")
             }
 
          }
          else {
-            res.redirect("/student/signupinformation")
+            res.redirect("/teacher/signupinformation")
          }
 
 
@@ -307,7 +283,7 @@ export const afterClearAll = async (req, res, next) => {
 
       }
       else {
-         return res.redirect("/student/create")
+         return res.redirect("/teacher/create")
       }
 
 
@@ -316,6 +292,6 @@ export const afterClearAll = async (req, res, next) => {
 
 
    else {
-      res.redirect("/student/login")
+      res.redirect("/teacher/login")
    }
 }

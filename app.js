@@ -11,6 +11,9 @@ import connectDB from './connectdb.js'
 import staticPagesRouter from './routes/staticRouter.js';
 import contactRouter from './routes/contactRouter.js';
 import studentRouter from './routes/studentRouter.js';
+import AdminRouter from './routes/AdminRoutes.js';
+
+import teacherRouter from './routes/TeacherRouter.js';
 
 const app = express();
 
@@ -31,6 +34,12 @@ app.use("/api/contact", contactRouter);
 // student route 
 app.use("/api/student/",studentRouter)
 
+// teacher route 
+app.use("/api/teacher", teacherRouter)
+
+// for administrator of this webiste 
+app.use("/a/ad/admin/", AdminRouter)
+
 app.get("*", (req, res) => res.status(404).render("404.ejs", {title:"404 Page Not Found",url:req.url}))
 
 // session middleware 
@@ -43,6 +52,4 @@ app.get("*", (req, res) => res.status(404).render("404.ejs", {title:"404 Page No
 app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "./views"))
 
-
-
-app.listen(process.env.PORT || 80, () => console.log("SERVER ARE LISTENNING ON PORT " + process.env.PORT || 80))
+export default app

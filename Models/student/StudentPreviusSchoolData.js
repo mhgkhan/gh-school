@@ -44,7 +44,7 @@ const studentPSDStr = mongoose.Schema({
 
     user: {//12
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Signup_Student",
+        ref: "Student_informaton",
         required:true,
         unique:true
     }
@@ -52,5 +52,5 @@ const studentPSDStr = mongoose.Schema({
     timestamps:true
 })
 
-const StudentPreviusSchoolDetails = mongoose.model("PreviousSDetail", studentPSDStr)
+const StudentPreviusSchoolDetails = mongoose.model("Student_previus_school_data", studentPSDStr)
 export default StudentPreviusSchoolDetails

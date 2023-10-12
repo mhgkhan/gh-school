@@ -10,7 +10,7 @@
       <span>Step-1 Create Account Now </span>
     </div>
 
-    <h3> Student Admission </h3>
+    <!-- <h3> Student Admission </h3> -->
     <div class="form-area">
       <div class="form-header">
         <h1 style="margin: 1rem 0px;"> Create new account! </h1>
@@ -29,20 +29,20 @@
         </ul>
       </div>
 
-      <form action="/api/student/signup" id="signup-form" method="post">
+      <form id="signup-form" autocomplete="off" >
 
         <h3 style="width: 100%;height:auto; padding:9px; height: 30px; display: block; text-align: center; margin: 0px auto; color:red;" id="errMsg"></h3>
         <div class="form-fields-row flex item-center justify-center">
 
           <div class="form-field">
             <span><i class="fa fa-user"></i></span>
-            <input type="text" class="form-input" name="firstname" id="firstname" placeholder="Frist name " required minlength="4" pattern="[A-Za-z]{30}" title="Please Enter Valid Name">
+            <input type="text" class="form-input" name="firstname" id="firstname" placeholder="Frist name " required minlength="1">
           </div>
 
 
           <div class="form-field">
             <span><i class="fa fa-user"></i></span>
-            <input type="text" class="form-input" name="lastname" id="lastname" placeholder="Last name" required minlength="4" pattern="[A-Za-z]{50}" title="Please Enter Valid Name">
+            <input type="text" class="form-input" name="lastname" id="lastname" placeholder="Last name" required minlength="1">
           </div>
 
 
@@ -59,7 +59,7 @@
 
           <div class="form-field">
             <span><i class="fa fa-phone"></i></span>
-            <input type="tel" class="form-input" name="phone" id="phone" placeholder="0333 3333333" required minlength="5" pattern="[0-9]{4} [0-9]{7}" title="Please Enter Valid Phone Number" maxlength="12">
+            <input type="tel" class="form-input" name="phone" id="phone" placeholder="03333333333" required minlength="7" maxlength="12">
           </div>
 
         </div>
@@ -82,11 +82,6 @@
 
         <div class="form-fields-row flex item-center justify-center">
 
-          <!-- <div class="form-field">
-                            <span><i class="fa fa-key"></i></span>
-                            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password" >
-                        </div>  -->
-
           <div class="form-field quiz-form" style="width: 100%;">
             <span id="5">5</span>
             <span>+</span>
@@ -96,12 +91,12 @@
           </div>
         </div>
 
-        <button type="button" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
+        <button type="submit" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
           Signup</button>
 
       </form>
       <div class="other" style="padding:10px; text-align:center;">
-        <span>Already Have an Account&nbsp; </span> <a href="/student/login" class="btn">Login</a>
+        <span>Already Have an Account&nbsp; </span> <a href="/teacher/login" class="btn">Login</a>
       </div>
     </div>
 
@@ -241,11 +236,10 @@
     let regax = /^([a-zA-Z0-9]+){6,200}/
     if (regax.test(e.target.value)) {
       errMsg.style.color = "red"
-      if(formInputs[4].value == formInputs[5].value){
+      if (formInputs[4].value == formInputs[5].value) {
         errMsg.innerText = "✅ Password is ok ."
         cp = true
-      }
-      else{
+      } else {
         errMsg.innerText = "❌ Confirm password not matching."
         cp = false
       }
@@ -269,8 +263,59 @@
   })
 
 
-  formSubmitBtn.addEventListener("click", e => {
-    form.submit();
+  // formSubmitBtn.addEventListener("click", e => {
+  //   e.preventDefault();
+  //   form.submit();
+  // })
+
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    let url = "/api/teacher/signup/"
+    let msg = ""
+
+    const request = await fetch(url, {
+      method: "post",
+      headers: {
+        'content-type': "application/json"
+      },
+      body: JSON.stringify({
+        firstname: formInputs[0].value,
+        lastname: formInputs[1].value,
+        email: formInputs[2].value,
+        phone: formInputs[3].value,
+        password: formInputs[4].value,
+        cpassword: formInputs[5].value
+      })
+    })
+
+    try {
+      const response = await request.json();
+      form.reset()
+
+      if (response.success) {
+        errMsg.style.color = "green"
+        msg = "✅ Signup Sucessfull. please wait..."
+        localStorage.setItem("token", response.token)
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
+      } else {
+        errMsg.style.color = "🚫red"
+        msg = response.err
+      }
+    } catch (error) {
+      console.log(error)
+      errMsg.style.color = "🚫red"
+      msg = error
+      // errMsg.innerText = error
+    }
+
+    errMsg.innerText = msg
+
+
+
   })
 </script>
 

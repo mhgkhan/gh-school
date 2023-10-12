@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const singupStudentDetails = mongoose.Schema({
+const teacherInfoModel = mongoose.Schema({
     gender: {
         type: String,
         required: true
@@ -16,32 +16,23 @@ const singupStudentDetails = mongoose.Schema({
         default: "islam",
     },
 
-    student_cnic: { //1
+    teacher_cnic: { //1
         type: String,
         max: 15,
         min: 10,
         unique: true
     },
 
-    father_cnic: { //2
+    dob: { //2
         type: String,
-        max: 15,
-        min: 10,
         required: true
     },
 
-    father_phone: { //3
+    father_cnic: { //3
         type: String,
         max: 18,
         min: 7,
         required: true
-    },
-
-    mother_cnic: {//4
-        type: String,
-        max: 15,
-        min: 10,
-        // required: true
     },
 
     blood_group: {//5
@@ -61,11 +52,11 @@ const singupStudentDetails = mongoose.Schema({
     provience: {//7
         type: String,
         required: true,
-        default: "khyberpakhtunkhwa"
+        default: "KPK"
     },
 
-    city: { type: String, default: "Peshawar" },//8
-    district: { type: String, default: "Khyber" },//9
+    city: { type: String, default: "Peshawar" },
+    district: { type: String, default: "Khyber" },
     vallage_name: {
         type: String,
         required: true
@@ -82,12 +73,12 @@ const singupStudentDetails = mongoose.Schema({
 
     user: {//12
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Signup_Student"
+        ref: "teacher"
     }
 
 }, {
     timestamps: true
 })
 
-const studentPersonalInformationModel = mongoose.model("SPInformation", singupStudentDetails);
-export default studentPersonalInformationModel
+const TeacherPersonalInformationModel = mongoose.model("Teacher_information", teacherInfoModel);
+export default TeacherPersonalInformationModel

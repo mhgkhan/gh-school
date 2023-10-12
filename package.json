@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node app.js",
-    "dev": "nodemon app.js -e ejs,js,json"
+    "dev": "nodemon server.js -e ejs,js,json"
   },
   "repository": {
     "type": "git",

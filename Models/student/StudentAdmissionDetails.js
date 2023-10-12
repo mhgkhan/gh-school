@@ -15,7 +15,7 @@ const studentAdmDetails = mongoose.Schema({
     },
     user: {//12
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Signup_Student"
+        ref: "Student_informaton"
     }
 }, {
     timestamps: true

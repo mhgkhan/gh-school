@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const studentSignupStr = mongoose.Schema({
+const teacherSignupStr = mongoose.Schema({
     fullname:{
         type:String,
         required:true
@@ -23,10 +23,15 @@ const studentSignupStr = mongoose.Schema({
     status:{
         type:String,
         default:"offline"
+    }, 
+    asAdmin:{
+        type:String,
+        required:true,
+        default:"NO"
     }
 },{
     timestamps:true
 })
 
-const studentSignupModel = mongoose.model("Signup_Student", studentSignupStr);
-export default studentSignupModel
+const teacherSignupModel = mongoose.model("teacher", teacherSignupStr);
+export default teacherSignupModel

@@ -5,13 +5,13 @@
 <section class="section">
   <div class="container section-container">
     <h2>Dashboard</h2>
-    <h1>Student Account </h1>
+    <h1> Teacher Account </h1>
     <div class="std-account flex">
       <div class="student-image"><img src="/assets/media/images/students/profiles/<%= personalInfo.image %>" alt=""></div>
       <div class="student-account-heading">
         <div class="stdname flex item-center">
           <h3><%= signupData.fullname %></h3>
-          <span>Topper </span>
+          <span>Administrator </span>
         </div>
         <div class="social-info">
           <div class="data-field flex item-center ">
@@ -24,40 +24,15 @@
 
         <h4>Quick Links </h4>
         <div class="quicklinks flex">
-          <a href="/student/edit/personalinfo/<%= personalInfo.user %>">Edit Personal Info </a>
-          <a href="/student/edit/previusschoolinfo/<%= personalInfo.user %>">Edit Previus School Info </a>
-          <a href="/student/edit/editadmissionform/<%= personalInfo.user %>">Edit Admission Form </a>
-          <a href="/student/edit/password/<%= personalInfo.user %>">Update Password </a>
+          <a href="/teacher/edit/personalinfo/<%= personalInfo.user %>">Edit Personal Info </a>
+          <a href="/teacher/edit/password/<%= personalInfo.user %>">Update your Password </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="admissindetails section">
-  <div class="container section-container">
-    <h1>Admission Details</h1>
-    <table border="1" style="width: 100%;">
-      <thead>
-        <tr>
-          <th>From Class </th>
-          <th>Subject</th>
-          <th>Certificate</th>
-          <th>Status</th>
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= previusSchool.classname %></td>
-          <td><%= previusSchool.subject %></td>
-          <td><a target="_blank" href="/assets/media/images/students/certificates/<%= previusSchool.schoolcertificate %>">Click to open </a></td>
-          <td>Pending</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
 <!-- main in ended from here  -->
 <%- include('../../layouts/footer') %>
 

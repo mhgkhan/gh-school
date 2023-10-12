@@ -1148,11 +1148,14 @@ footer .container p {
     height: 130px !important;
   }
 
+  .form-field{
+    margin: .3rem auto !important;
+  }
   .form-area form .form-field span {
-    padding: 8px 10px !important;
+    padding: 10 12px !important;
   }
   .form-area form .form-field input {
-    padding: 8px 5px !important;
+    padding: 10px 8px !important;
   }
   .uploadPicblock{
     width: 150px;

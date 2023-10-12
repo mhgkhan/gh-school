@@ -7,10 +7,9 @@
 
     <div class="header">
       <h1>MADINA PUBLIC SCHOOL </h1>
-      <span>Step-1 login to your account. </span>
+      <span>Login to your account  </span>
     </div>
 
-    <h3> Student Admission </h3>
     <div class="form-area">
       <div class="form-header">
         <h1 style="margin: 1rem 0px;"> Login to your account </h1>
@@ -66,7 +65,7 @@
 
       </form>
       <div class="other" style="padding:10px; text-align:center;">
-        <span>Not have an account &nbsp; </span> <a href="/student/create" class="btn">Create now </a>
+        <span>Not have an account &nbsp; </span> <a href="/teacher/create" class="btn">Create now </a>
       </div>
     </div>
 
@@ -167,7 +166,7 @@
   form.addEventListener("submit", async e => {
     e.preventDefault()
     let msg = ""
-    let apiUrl = "/api/student/login/";
+    let apiUrl = "/api/teacher/signin/";
     errMsg.innerText = "Wait..."
     const request = await fetch(apiUrl, {
       method: "post",
@@ -186,7 +185,7 @@
 
       if (response.success) {
         errMsg.style.color = "green"
-        msg = "Login Sucessfull."
+        msg = "Login Sucessfull. please wait..."
         localStorage.setItem("token", response.token)
         setTimeout(() => {
           window.location.reload()
