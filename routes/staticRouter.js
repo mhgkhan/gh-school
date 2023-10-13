@@ -42,11 +42,13 @@ staticPagesRouter
     afterSignupAuth,
     staticPagesHandler.handleAddTeacherPersonalInformation
   )
+  .get("/teacher/logout", isLogin, staticPagesHandler.handleLogout)
   .get(
   "/teacher/profile/",
   teacherClearAll,
   staticPagesHandler.handleTeacherProfilePage
 )
+.get("/teacher/account/info", teacherClearAll, staticPagesHandler.handleTeacherInfoPage )
 .get(
     "/teacher/edit/personalInfo/:id/",
     isUserAuthorizeSecond,

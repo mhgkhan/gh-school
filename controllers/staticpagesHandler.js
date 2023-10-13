@@ -60,6 +60,22 @@ class staticPagesHandler {
         }
     }
     static handleTeacherStatusPage = pageRender("./teacher/teacherVerificationPending.ejs","Application Pending")
+
+    static handleTeacherInfoPage = async (req,res)=>{
+        const teacherData = req.teacherData
+        try {
+            res.status(200).render("./teacher/profile/info.ejs",{
+                title:"Your Personal Information ",
+                signupData:teacherData.signupData,
+                personalInfo: teacherData.personalInfo,
+            })
+        } catch (error) {
+            return res.status(500).render("error.ejs", {
+                title: "ERROR IN PAGE",
+                error: error
+             })
+        }
+    }
     
 
     // handle teacher logout route 

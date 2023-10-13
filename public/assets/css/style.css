@@ -942,6 +942,24 @@ main {
 }
 
 
+.info-teacher .info-block{
+  width: 259px;
+  height: auto;
+  padding: 5px 12px;
+  border-bottom: 2px solid #6e2f2f;
+  margin: .5rem 1rem;
+}
+
+.info-teacher .info-block span{
+  margin: 10px 0px;
+  color: #6e2f2fd8;
+}
+.info-block h4{
+  margin: 0px 3px;
+  overflow-wrap: anywhere;
+}
+
+
 /* ##########################
 ##########################
 footer stying .. 
@@ -1197,6 +1215,12 @@ footer .container p {
     /* width: 100%; */
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media screen and (max-width:400px){
+  .info-block{
+    width: 100% !important;
   }
 }
 

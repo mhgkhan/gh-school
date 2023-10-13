@@ -1,0 +1,119 @@
+<%- include('../../layouts/dashboardHeader') %>
+
+
+<!-- main in strted from here  -->
+<section class="section">
+  <div class="container section-container">
+    <h2>Dashboard</h2>
+    <h1><i class="fa fa-robot"></i> Your Account Information </h1>
+
+    <div class="info-teacher flex item-center justify-center flex-wrap">
+
+        <div class="info-block flex flex-col">
+           <span>Full Name</span> 
+           <h4> <span style="margin: 0px 6px;"><i class="fa fa-user"></i></span>  <%= signupData.fullname %> </h4>
+        </div>
+        
+        
+        <div class="info-block flex flex-col">
+           <span>Phone</span> 
+           <h4> <span style="margin: 0px 6px;"><i class="fa fa-phone"></i></span> <%= signupData.phone %> </h4>
+        </div>
+        
+        
+        <div class="info-block flex flex-col">
+           <span>Email </span> 
+           <h4> <span style="margin: 0px 6px;"><i class="fa fa-envelope"></i></span> <%= signupData.email %> </h4>
+        </div>
+        
+        
+        <div class="info-block flex flex-col">
+           <span>Administrator ? </span> 
+           <h4> <span style="margin: 0px 6px;"><i class="fa fa-user"></i></span> <%= signupData.asAdmin %> </h4>
+        </div>
+        
+        
+        
+        <div class="info-block flex flex-col">
+            <span>Gender</span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa-solid fa-person-half-dress"></i></span> <%= personalInfo.gender %> </h4>
+        </div>
+        
+        
+        <div class="info-block flex flex-col">
+            <span> Martial Status </span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa-solid fa-heart"></i> </span> <%= personalInfo.martial_status %> </h4>
+        </div>
+        
+        
+        <div class="info-block flex flex-col">
+            <span>Religon</span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa fa-book"></i></span> <%= personalInfo.religon %> </h4>
+        </div>
+        
+        
+        <div class="info-block flex flex-col">
+            <span>Date of Birth </span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa-solid fa-calendar"></i></span> <%= personalInfo.dob %> </h4>
+        </div>
+        
+        <div class="info-block flex flex-col">
+            <span>Nationality </span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa fa-flag"></i></span>  <%= personalInfo.country %> </h4>
+        </div>
+        
+        <div class="info-block flex flex-col">
+            <span>ID Card Number </span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa-regular fa-id-card"></i></span> <%= personalInfo.teacher_cnic %> </h4>
+        </div>
+        
+        <div class="info-block flex flex-col">
+            <span>Father CNIC  </span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa-regular fa-id-card"></i></span> <%= personalInfo.father_cnic %> </h4>
+        </div>
+        
+        
+        <div class="info-block flex flex-col">
+            <span>Village </span> 
+            <h4> <span style="margin: 0px 6px;"><i class="fa fa-home"></i></span> <%= personalInfo.vallage_name %> </h4>
+        </div>
+
+        
+        <div class="info-block flex flex-col" style="width: 100%;">
+            <span >Parmanent Address </span> 
+            <h4><span style="margin: 0px 6px;"><i class="fa-solid fa-location-dot"></i></span> <%= personalInfo.parmanent_address %> </h4>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+  </div>
+</section>
+
+
+<!-- main in ended from here  -->
+<%- include('../../layouts/footer') %>
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>
