@@ -42,6 +42,8 @@ class staticPagesHandler {
     static hanldeTeacherLoginPage = pageRender("./teacher/login.ejs", "Login Account As A Teacher ")
     // for our Teacher adding personal details informaton 
     static handleAddTeacherPersonalInformation = pageRender("./teacher/personalinfo.ejs", "Peronsal Information Teacher || GHSMS")
+
+    
     // handle teacher profile page 
     static handleTeacherProfilePage = async (req,res)=>{
         try {
@@ -59,7 +61,9 @@ class staticPagesHandler {
              })
         }
     }
+
     static handleTeacherStatusPage = pageRender("./teacher/teacherVerificationPending.ejs","Application Pending")
+    static handleTeacherSelectedPage = pageRender("./teacher/teacherVerificationPage.ejs","Application Verified")
 
     static handleTeacherInfoPage = async (req,res)=>{
         const teacherData = req.teacherData
@@ -67,16 +71,20 @@ class staticPagesHandler {
             res.status(200).render("./teacher/profile/info.ejs",{
                 title:"Your Personal Information ",
                 signupData:teacherData.signupData,
-                personalInfo: teacherData.personalInfo,
+                personalInfo: teacherData.personalInfo
             })
         } catch (error) {
             return res.status(500).render("error.ejs", {
                 title: "ERROR IN PAGE",
                 error: error
-             })
+            })
         }
     }
     
+    // to chagne personal information of teacher getting page 
+    static handlPersonalInfoPage = pageRender("./teacher/profile/edit/editpersonalinfo.ejs", "Edit your personal Information");
+    // to change teacher passwod page 
+    static handleChangePasswordPage = pageRender("./teacher/profile/edit/changepassword.ejs", "Chagne Your passowrd now");
 
     // handle teacher logout route 
     static handleLogout = async (req,res)=>{
@@ -105,10 +113,8 @@ class staticPagesHandler {
 
 
     
-    static handlPersonalInfoPage = pageRender("./student/edit/editpersonalinfo.ejs", "Edit your personal Information");
     static handlePrviusSchoolInfoPage = pageRender("./student/edit/editpreviusschoolinfo.ejs", "Edit Previus School Information");
     static handleAdmissionFormPage = pageRender("./student/edit/editadmissioninfo.ejs", "Edit Your Addmission Form");
-    static handleChangePasswordPage = pageRender("./student/edit/changepassword.ejs", "Chagne Your passowrd now");
 
 
 

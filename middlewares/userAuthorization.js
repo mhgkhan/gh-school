@@ -67,37 +67,42 @@ export const isLogin = async (req, res, next) => {
 
 
 export const isUserAuthorizeSecond = async (req, res, next) => {
-   /*
+
    try {
-      console.log("from middlewares request paramters is ", req.params)
+      // console.log("from middlewares request paramters is ", req.params)
       if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
          const token = req.cookies.MPS
          const idFromToken = JWT.verify(token, process.env.SECRET);
 
-         if (req.params.id == idFromToken.id) {
-            // checking if user is exists or not 
-            // console.log("the id is ", idFromToken.id)
-            try {
-               const exists = await teacherSignupModel.findOne({ _id: idFromToken.id });
-               // console.log("the user data is ", exists);
-               if (exists && idFromToken.id == exists._id) {
+         // checking if user is exists or not 
+         // console.log("the id is ", idFromToken.id)
+         try {
+            const exists = await teacherSignupModel.findOne({ _id: idFromToken.id });
+            // console.log("the user data is ", exists);
+            if (exists && idFromToken.id == exists._id) {
+               // checking the user personal information is completed or not 
+               const checkIfo = await TeacherPersonalInformationModel.findOne({user:exists._id})
+               // console.log('the user data from isuserauthorizedsecond middlware is ', checkIfo);
+               // console.log(exists._id)
+               if(checkIfo){
+                  // console.log("from auth second middleware the user is verified")
                   next();
                }
-               else {
-                  res.redirect("/student/create/")
+               else{
+                  // console.log("from auth second middleware the user is not completed the personal ifnormatio ")
+                  return res.redirect("/teacher/personalinformation")
                }
-            } catch (error) {
-               return res.status(500).render("error.ejs", {
-                  title: "ERROR IN PAGE",
-                  error: error
-               })
             }
+            else {
+               res.redirect("/student/create/")
+            }
+         } catch (error) {
+            return res.status(500).render("error.ejs", {
+               title: "ERROR IN PAGE",
+               error: error
+            })
          }
-         else {
-            // user is not authorize 
-            res.redirect("/student/login")
-         }
-         //   next();
+
       }
       else {
          res.redirect("/student/login");
@@ -108,7 +113,7 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
          error: error
       })
    }
-   */
+
 }
 
 export const afterSignupAuth = async (req, res, next) => {
@@ -199,10 +204,13 @@ export const afterSignupDetails = async (req, res, next) => {
          }
 
          if (existTeacherPersnalInfo) {
-            if(checkinUser.asAdmin == "YES"){
+            if (checkinUser.AsVerified == "YES" && checkinUser.AsSelected == "YES") {
                return res.redirect("/teacher/profile")
             }
-            else{
+            if (checkinUser.AsSelected == "YES" && checkinUser.AsVerified != "YES") {
+               return res.redirect("/teacher/selected")
+            }
+            else {
                next();
             }
          }
@@ -221,10 +229,72 @@ export const afterSignupDetails = async (req, res, next) => {
 
 }
 
+export const checkisSelectedOrNot = async (req, res, next) => {
+   if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+
+      const token = req.cookies.MPS
+      const idFromtoken = JWT.verify(token, process.env.SECRET);
+
+
+
+      let checkinUser
+      try {
+         checkinUser = await teacherSignupModel.findOne({ _id: idFromtoken.id });
+         // console.log(checkinUser)
+      } catch (error) {
+         console.log(error);
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
+      }
+
+      if (checkinUser) {
+         // console.log('after signup user is valid ok')
+         let existTeacherPersnalInfo
+         try {
+            existTeacherPersnalInfo = await TeacherPersonalInformationModel.findOne({ user: checkinUser._id })
+         } catch (error) {
+            console.log(error);
+            return res.status(500).render("error.ejs", {
+               title: "ERROR IN PAGE",
+               error: error
+            })
+         }
+
+         if (existTeacherPersnalInfo) {
+
+            if (checkinUser.AsVerified == "YES" && checkinUser.AsSelected == "YES") {
+               return res.redirect("/teacher/profile")
+            }
+
+            if (checkinUser.AsSelected == "YES" && checkinUser.AsVerified != "YES") {
+               next()
+            }
+
+            else {
+               return res.redirect("/teacher/status")
+            }
+
+         }
+         else {
+            return res.redirect("/teacher/personalinformation")
+            // console.log("user studnet personal informtion is not exists checked from middlewars")
+         }
+      }
+      else {
+         res.redirect("/teacher/create")
+      }
+   }
+   else {
+      res.redirect("/teacher/login");
+   }
+
+}
 
 // this is for when user use this route = /teacher/profile 
 export const teacherClearAll = async (req, res, next) => {
-   
+
    if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
       const token = req.cookies.MPS
       const idFromtoken = JWT.verify(token, process.env.SECRET)
@@ -262,14 +332,19 @@ export const teacherClearAll = async (req, res, next) => {
 
          if (checkTeacherDetails) {
             // console.log("profile middleware: sutdent detals is exits");
-            if(exists.asAdmin=="YES"){
+            if (exists.AsSelected == "YES" && exists.AsVerified == "YES") {
                req.teacherData = {
                   signupData: exists,
                   personalInfo: checkTeacherDetails,
                }
                next();
             }
-            else{
+
+            if (exists.AsSelected == "YES" && exists.isVerified != "YES") {
+               return res.redirect("/teacher/selected")
+            }
+
+            else {
                return res.redirect("/teacher/status")
             }
 

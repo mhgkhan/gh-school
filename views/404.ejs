@@ -10,9 +10,9 @@
             <h1>Your requested page is not found check in the links below  </h1>
             <br><br>
             <a href="/" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Our Website GHSMS</a>
-            <a href="/student/profile" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Profile</a>
-            <a href="/student/create" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Addmission</a>
-            <a href="/student/login" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Login</a>
+            <a href="/teacher/profile" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Profile</a>
+            <a href="/teacher/create" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Addmission</a>
+            <a href="/teacher/login" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Login</a>
             <a href="/ourmission" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Our Mission </a>
             <a href="/ourstory" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Our Story </a>
             <a href="/contactus" style="margin: .5rem 0px; padding: 10px 15px; border-radius: 5px; border: 1px solid darkred; background: brown; color: white; text-align: center; text-decoration: none; display: block;">Contact us </a>
@@ -31,7 +31,7 @@
         <script src="/assets/js/all.js"></script>
 
         <!-- typedjs animation library cdn -->
-        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+        <!-- <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script> -->
 
         <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
 
@@ -39,43 +39,6 @@
         <script src="/assets/js/main.js"></script>
 
 
-        
-        <script>
-
-            const increaseValues = (range, index, timing) => {
-                let counter = 0
-                let surveyValue = document.querySelectorAll(".surveyValue");
-                setInterval(() => {
-                    if (counter >= range) {
-                        clearInterval();
-                    }
-                    else {
-                        counter = counter + 88
-                        surveyValue[index].innerHTML = counter + "+"
-                    }
-                }, timing);
-            }
-
-            increaseValues(6000, 0, 300);
-            increaseValues(16000, 1, 100);
-            increaseValues(4500, 2, 300)
-
-
-            // aos and typed animations libarary works 
-
-            var typed = new Typed("#firstHead", {
-                strings: ["Education is the passport to the future, for tomorrow belongs to those who prepare for it today."],
-                typeSpeed: 120,
-            })
-            var typed = new Typed("#courses", {
-                strings: ["MATHS", "URDU", "ENGLISH", "ISLAMYAT", "PAK STUDY", "PASHTO", "BIOLOGY", "CHEMISTARY"],
-                typeSpeed: 50,
-                loop: true,
-                cursorChar: "✏️"
-            })
-
-
-        </script>
 
         </body>
 

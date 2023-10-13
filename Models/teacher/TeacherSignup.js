@@ -28,6 +28,16 @@ const teacherSignupStr = mongoose.Schema({
         type:String,
         required:true,
         default:"NO"
+    },
+    AsVerified:{
+        type:String,
+        required:true,
+        default:"NO"
+    },
+    AsSelected:{
+        type:String,
+        required:true,
+        default:"NO"
     }
 },{
     timestamps:true

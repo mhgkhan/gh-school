@@ -8,7 +8,8 @@ import {
   afterSignupDetails,
   teacherClearAll,
   isLogin,
-  isUserAuthorizeSecond
+  isUserAuthorizeSecond,
+  checkisSelectedOrNot
 } from "../middlewares/userAuthorization.js";
 
 // static page serving
@@ -33,8 +34,8 @@ staticPagesRouter
 // ******************************************
 // for teacher
 //  to acces the page of create an account,   login  and personalInformation
-staticPagesRouter
-.get("/teacher/status", afterSignupDetails, staticPagesHandler.handleTeacherStatusPage)
+staticPagesRouter.get("/teacher/status", afterSignupDetails, staticPagesHandler.handleTeacherStatusPage);
+staticPagesRouter.get("/teacher/selected/", checkisSelectedOrNot, staticPagesHandler.handleTeacherSelectedPage)
   .get("/teacher/create",userAuth, staticPagesHandler.hanldeTeacherSignupPage)
   .get("/teacher/login", userAuth, staticPagesHandler.hanldeTeacherLoginPage)
   .get(
@@ -50,12 +51,12 @@ staticPagesRouter
 )
 .get("/teacher/account/info", teacherClearAll, staticPagesHandler.handleTeacherInfoPage )
 .get(
-    "/teacher/edit/personalInfo/:id/",
+    "/teacher/edit/personalInfo/",
     isUserAuthorizeSecond,
-    staticPagesHandler.handleChangePasswordPage
+    staticPagesHandler.handlPersonalInfoPage
   )
 .get(
-  "/teacher/edit/password/:id/",
+  "/teacher/edit/password/",
   isUserAuthorizeSecond,
   staticPagesHandler.handleChangePasswordPage
 )
