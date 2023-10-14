@@ -1031,7 +1031,10 @@ main {
 
 .edit-area .info-block{
   border-bottom: none !important;
+  padding: 5px;
+  margin: 0px 0px;
 }
+
 
 /* ##########################
 ##########################
@@ -1177,6 +1180,16 @@ footer .container p {
     width: 90%;
     margin: 0px auto;
     text-align: center;
+  }
+  .edit-area{
+    flex-direction: column;
+  }
+  .edit-area .edit-area-block{
+    width: 100%;
+    margin: 1rem 0px !important;
+  }
+  .edit-area .edit-area-block .span{
+    margin: 5px 0px !important;
   }
 }
 
