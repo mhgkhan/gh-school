@@ -962,11 +962,11 @@ main {
 
 
 .edit-area{
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   width: 100%;
 }
 .edit-area .edit-area-block{
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   margin: 1rem;
 }
 
@@ -978,7 +978,7 @@ main {
   border: none;
 }
 .right-edit-area fieldset{
-  border: 1px solid gray;
+  border: 5px solid red;
 }
 .right-edit-area fieldset legend{
   margin: 0px 12px;
@@ -998,8 +998,10 @@ main {
   margin: .7rem auto;
 }
 
-.edit-area form .form-field span{
+.edit-area form .form-field label{
   font-size: 1.3rem;
+  margin: 0px 6px;
+  cursor: pointer;
 }
 .edit-area form .form-field input{
   padding: 6px;
@@ -1011,7 +1013,7 @@ main {
   width: 100%;
 }
 .edit-area form button{
-  width: 95%;
+  width: 90%;
   margin: 1rem auto;
   display: block;
   font-size: 1.1rem;
@@ -1022,6 +1024,15 @@ main {
   margin: .4rem 10px !important;
   width: 45% !important;
 }
+
+#formnotpassfield{
+  width: 100% !important;
+}
+
+.edit-area .info-block{
+  border-bottom: none !important;
+}
+
 /* ##########################
 ##########################
 footer stying .. 

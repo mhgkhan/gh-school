@@ -83,12 +83,17 @@ class staticPagesHandler {
     
     // to chagne personal information of teacher getting page 
     static handleChangeTeacherInfo = async (req,res)=>{
-        const userId = req.userId
-        console.log("the requserId is ", userId)
+        // const userId = req.userId
+        const stdData = req.stdData
+        // signupData:exists,
+        //                 personalData:checkIfo,
+        //                 userId: checkIfo.user 
         try {
             return res.status(200).render("./teacher/profile/edit/editpersonalinfo.ejs", {
                 title:"Edit your personal information",
-                userId : userId
+                userId : stdData.userId,
+                signupData:stdData.signupData,
+                personalData:stdData.personalData
             })
         } catch (error) {
             

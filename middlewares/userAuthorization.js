@@ -87,7 +87,11 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
                   // console.log(exists._id)
                   if(checkIfo){
                      // console.log("from auth second middleware the user is verified")
-                     req.userId = req.params.id 
+                     req.stdData = {
+                        signupData:exists,
+                        personalData:checkIfo,
+                        userId: checkIfo.user 
+                     }
                      next();
                   }
                   else{

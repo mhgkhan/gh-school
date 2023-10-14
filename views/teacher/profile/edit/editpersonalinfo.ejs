@@ -5,10 +5,10 @@
 <section class="section">
   <div class="container section-container">
     <h2>Edit</h2>
-    <h1>Edit Your Personal Information  </h1>
+    <h1>Edit Your Personal Information </h1>
 
 
-    <div class="edit-area flex item-center justify-center">
+    <div class="edit-area flex justify-center" style="align-items: flex-start;">
 
 
 
@@ -17,76 +17,33 @@
 
         <div class="edit-signup-info w-100">
           <h3>Edit your signup details </h3>
-        
+
           <form id="signupeditfrom" class="w-100">
 
+            <div class="info-teacher flex item-center justify-center flex-wrap">
 
-            <div class="edit-row flex item-center flex item-center justify-center" >
+              <div class="info-block flex flex-col">
+                <span>Gender</span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input type="text" name="gender" id="gender" placeholder="gender" required value="<%= personalData.gender %>">
+                </div>
 
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
               </div>
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
+              <div class="info-block flex flex-col">
+                <span>Martial Status</span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input type="text" name="martial_status" id="mstatus" placeholder="Martial status" required value="<%= personalData.martial_status %>">
+                </div>
+
               </div>
-  
+
+
+
+
+
             </div>
-
-            <div class="edit-row flex item-center flex item-center justify-center" >
-
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-  
-            </div>
-
-            <div class="edit-row flex item-center flex item-center justify-center" >
-
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-  
-            </div>
-
-            <div class="edit-row flex item-center flex item-center justify-center" >
-
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-  
-            </div>
-
-            <div class="edit-row flex item-center flex item-center justify-center" >
-
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-              <div class="form-field flex item-center">
-                <span><i class="fa fa-key"></i></span>
-                <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
-              </div>
-  
-            </div>
-
-
 
           </form>
 
@@ -97,7 +54,7 @@
           <h3>Edit yoru personal Information</h3>
         </div>
 
-        
+
       </div>
 
 
@@ -106,24 +63,26 @@
       <div class="right-edit-area edit-area-block">
 
 
-        
+
         <fieldset>
-          <legend><h3>Update Password</h3></legend>
+          <legend>
+            <h3>Update Password</h3>
+          </legend>
           <form id="update-password-form">
 
             <div class="form-field flex item-center">
-              <span><i class="fa fa-key"></i></span>
-              <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required >
+              <label for="ppassword"><i class="fa fa-key"></i></label>
+              <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required>
             </div>
             <div class="form-field flex item-center">
-              <span><i class="fa fa-key"></i></span>
-              <input type="text" name="newPassword" id="npassword" placeholder="New password" required >
+              <label for="npassword"><i class="fa fa-key"></i></label>
+              <input type="text" name="newPassword" id="npassword" placeholder="New password" required>
             </div>
             <div class="form-field flex item-center">
-              <span><i class="fa fa-key"></i></span>
-              <input type="text" name="confirmnewPassword" id="cnpassword" placeholder="Confirm new password" required >
+              <label for="cnpassword"><i class="fa fa-key"></i></label>
+              <input type="text" name="confirmnewPassword" id="cnpassword" placeholder="Confirm new password" required>
             </div>
-  
+
             <button type="submit">Update Now </button>
           </form>
         </fieldset>
