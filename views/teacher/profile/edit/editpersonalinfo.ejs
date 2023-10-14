@@ -16,11 +16,11 @@
 
 
         <div class="edit-signup-info w-100">
-          <h3>Edit your signup details </h3>
+          <h3>Edit your account details  </h3>
 
           <form id="signupeditfrom" class="w-100">
 
-            <div class="info-teacher flex item-center justify-center flex-wrap">
+            <div class="info-teacher flex item-center justify-between flex-wrap">
 
               <div class="info-block flex flex-col">
                 <span>Gender</span>
@@ -73,6 +73,58 @@
               </div>
 
 
+              <div class="info-block flex flex-col">
+                <span>Blood Group   </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input type="text" name="blood_group" id="blood_group" placeholder="Blood Grup " required value="<%= personalData.blood_group %>">
+                </div>
+              </div>
+
+
+              <div class="info-block flex flex-col">
+                <span>Provience  </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input type="text" name="provience" id="provience" placeholder=" Provience  " required value="<%= personalData.provience %>">
+                </div>
+              </div>
+
+
+              <div class="info-block flex flex-col">
+                <span>City </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input type="text" name="city" id="city" placeholder="City " required value="<%= personalData.city %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>District </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input type="text" name="district" id="district" placeholder="District " required value="<%= personalData.district %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>Vallage  </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input type="text" name="vallage_name" id="vallage_name" placeholder="Vallage  " required value="<%= personalData.vallage_name %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>Parmanent Address  </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input type="text" name="parmanent_address" id="parmanent_address" placeholder="Parmanent Address  " required value="<%= personalData.parmanent_address %>">
+                </div>
+              </div>
+
+
+              <button type="submit" id="infoUpdateButton">Update Now </button>
 
 
 
@@ -80,11 +132,6 @@
 
           </form>
 
-        </div>
-
-
-        <div class="edit-personal-info">
-          <h3>Edit yoru personal Information</h3>
         </div>
 
 
@@ -138,6 +185,13 @@
 
 
 <script src="/assets/js/main.js"></script>
+
+
+<script>
+
+
+
+</script>
 
 </body>
 

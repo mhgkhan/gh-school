@@ -1033,6 +1033,10 @@ main {
   border-bottom: none !important;
   padding: 5px;
   margin: 0px 0px;
+  width: 30%;
+}
+.edit-area .info-block span{
+  margin: 0px  10px;
 }
 
 
@@ -1188,9 +1192,7 @@ footer .container p {
     width: 100%;
     margin: 1rem 0px !important;
   }
-  .edit-area .edit-area-block .span{
-    margin: 5px 0px !important;
-  }
+ 
 }
 
 @media screen and (max-width: 600px) {
