@@ -960,6 +960,68 @@ main {
 }
 
 
+
+.edit-area{
+  border: 1px solid gray;
+  width: 100%;
+}
+.edit-area .edit-area-block{
+  border: 1px solid gray;
+  margin: 1rem;
+}
+
+.edit-area .left-edit-area{
+  width: 70%;
+}
+.edit-area .right-edit-area{
+  width: 30%;
+  border: none;
+}
+.right-edit-area fieldset{
+  border: 1px solid gray;
+}
+.right-edit-area fieldset legend{
+  margin: 0px 12px;
+}
+.edit-area h3{
+  padding: 5px 10px;
+}
+.right-edit-area form{
+  margin-top: .4rem;
+}
+.edit-area form .form-field{
+  width: 95%;
+  height: auto;
+  padding: 3px;
+  border: 1px solid #6e2f2f;
+  border-radius: 4px;
+  margin: .7rem auto;
+}
+
+.edit-area form .form-field span{
+  font-size: 1.3rem;
+}
+.edit-area form .form-field input{
+  padding: 6px;
+  background: none;
+  /* border: 1px solid red; */
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  width: 100%;
+}
+.edit-area form button{
+  width: 95%;
+  margin: 1rem auto;
+  display: block;
+  font-size: 1.1rem;
+}
+
+
+.edit-signup-info .form-field{
+  margin: .4rem 10px !important;
+  width: 45% !important;
+}
 /* ##########################
 ##########################
 footer stying .. 

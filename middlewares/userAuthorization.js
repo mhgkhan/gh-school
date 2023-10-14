@@ -81,16 +81,22 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
             // console.log("the user data is ", exists);
             if (exists && idFromToken.id == exists._id) {
                // checking the user personal information is completed or not 
-               const checkIfo = await TeacherPersonalInformationModel.findOne({user:exists._id})
-               // console.log('the user data from isuserauthorizedsecond middlware is ', checkIfo);
-               // console.log(exists._id)
-               if(checkIfo){
-                  // console.log("from auth second middleware the user is verified")
-                  next();
+               if(req.params.id == idFromToken.id && req.params.id == exists._id){
+                  const checkIfo = await TeacherPersonalInformationModel.findOne({user:exists._id})
+                  // console.log('the user data from isuserauthorizedsecond middlware is ', checkIfo);
+                  // console.log(exists._id)
+                  if(checkIfo){
+                     // console.log("from auth second middleware the user is verified")
+                     req.userId = req.params.id 
+                     next();
+                  }
+                  else{
+                     // console.log("from auth second middleware the user is not completed the personal ifnormatio ")
+                     return res.redirect("/teacher/personalinformation")
+                  }
                }
                else{
-                  // console.log("from auth second middleware the user is not completed the personal ifnormatio ")
-                  return res.redirect("/teacher/personalinformation")
+                  return res.redirect("/teacher/login")
                }
             }
             else {
@@ -335,9 +341,9 @@ export const teacherClearAll = async (req, res, next) => {
             if (exists.AsSelected == "YES" && exists.AsVerified == "YES") {
                req.teacherData = {
                   signupData: exists,
-                  personalInfo: checkTeacherDetails,
+                  personalInfo: checkTeacherDetails
                }
-               next();
+               next()
             }
 
             if (exists.AsSelected == "YES" && exists.isVerified != "YES") {
