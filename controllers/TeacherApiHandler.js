@@ -211,8 +211,103 @@ class TeacherApihandler {
 
 
 
+    static updatePersonalinfo = async (req,res)=>{
+        const userId = req.userId
+        let updateInformations
+        try {
+             updateInformations = await TeacherPersonalInformationModel.findByIdAndUpdate({id:userId},{
+                $set:{...req.body}
+            })
+
+            console.log(updateInformations);
+
+        } catch (error) {
+            return res.status(500).json({error:error})
+        }
+
+
+        return res.status(200).json({success:updateInformations})
+    }
+
+
+
+
+
+
+
+static updatePassword = async (req,res)=>{
+    try {
+        const userId = req.userId 
+
+        const {prevpassword,newpassword,confirmpassword} = req.body
+
+
+        if(newpassword == confirmpassword){
+
+            const userData = await teacherSignupModel.findOne({_id:userId})
+
+            if(userData){
+    
+                const checkPasswordisCorrect = await bcrypt.compare(prevpassword,userData.password);
+    
+                if(checkPasswordisCorrect){
+    
+                    // updating the password 
+                  try {
+
+
+                    const updatePassword = await teacherSignupModel.findByIdAndUpdate({
+                        _id:userId
+                    },{
+                        $set:{
+                            password:newpassword
+                        }
+                    })
+
+                    console.log(updatePassword)
+
+                    return res.status(200).json({success:true, msg:updatePassword})
+
+
+                  } catch (error) {
+                    console.log(error)
+                      return res.status(400).json({success:false,error:error})
+                  }
+    
+
+    
+                }
+                else{
+                    return res.status(400).json({success:false,error:"Previus password is not correct"})
+                }
+    
+            }
+    
+            else{
+                return res.status(404).json({error:"User is not exists", success:false})
+            }
+        }
+        else{
+            return res.status(404).json({error:"confirm password not matched", success:false})
+
+        }
+
+
+
+
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error:error})
+    }
+}
+
+
+
 
 }
+
+
 
 
 

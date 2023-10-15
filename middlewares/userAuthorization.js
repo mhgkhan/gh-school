@@ -380,3 +380,67 @@ export const teacherClearAll = async (req, res, next) => {
       res.redirect("/teacher/login")
    }
 }
+
+
+
+export const idFromToken = async (req,res,next)=>{
+   if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+      const token = req.cookies.MPS
+      const idFromtoken = JWT.verify(token, process.env.SECRET)
+      const id = idFromtoken.id
+
+      // console.log("profile middleware : cookie is ", token)
+      // console.log("profile middleware : tokenId  is ", id)
+
+
+
+      let exists
+      try {
+         exists = await teacherSignupModel.findOne({ _id: idFromtoken.id });
+         // console.log("profile middleware : exits user is  ", exists )
+      } catch (error) {
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
+      }
+
+      if (exists) {
+         // console.log("profile middleware : user is exists")
+         let checkTeacherDetails
+         try {
+            checkTeacherDetails = await TeacherPersonalInformationModel.findOne({ user: exists._id });
+            // console.log("profile middleware : stdent Persoan Informatio is ", checkTeacherDetails);
+         } catch (error) {
+            console.log(error);
+            return res.status(500).render("error.ejs", {
+               title: "ERROR IN PAGE",
+               error: error
+            })
+         }
+
+         if (checkTeacherDetails) {
+            req.userId = exists._id
+            next();
+         }
+         else {
+            res.redirect("/teacher/signupinformation")
+         }
+
+
+
+
+      }
+      else {
+         return res.redirect("/teacher/create")
+      }
+
+
+
+   }
+
+
+   else {
+      res.redirect("/teacher/login")
+   }
+}

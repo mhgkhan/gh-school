@@ -16,9 +16,9 @@
 
 
         <div class="edit-signup-info w-100">
-          <h3>Edit your account details  </h3>
+          <h3>Edit your account details </h3>
 
-          <form id="signupeditfrom" class="w-100">
+          <form id="signupeditfrom" class="w-100" autocapitalize="off">
 
             <div class="info-teacher flex item-center justify-between flex-wrap">
 
@@ -39,7 +39,7 @@
                   <input type="text" name="martial_status" id="mstatus" placeholder="Martial status" required value="<%= personalData.martial_status %>">
                 </div>
               </div>
-              
+
               <div class="info-block flex flex-col">
                 <span>Religon</span>
                 <div class="form-field flex item-center" id="formnotpassfield">
@@ -65,7 +65,7 @@
               </div>
 
               <div class="info-block flex flex-col">
-                <span>Date of birth  </span>
+                <span>Date of birth </span>
                 <div class="form-field flex item-center" id="formnotpassfield">
                   <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
                   <input type="text" name="dob" id="dob" placeholder="Date of birth " required value="<%= personalData.dob %>">
@@ -74,7 +74,7 @@
 
 
               <div class="info-block flex flex-col">
-                <span>Blood Group   </span>
+                <span>Blood Group </span>
                 <div class="form-field flex item-center" id="formnotpassfield">
                   <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
                   <input type="text" name="blood_group" id="blood_group" placeholder="Blood Grup " required value="<%= personalData.blood_group %>">
@@ -83,7 +83,7 @@
 
 
               <div class="info-block flex flex-col">
-                <span>Provience  </span>
+                <span>Provience </span>
                 <div class="form-field flex item-center" id="formnotpassfield">
                   <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
                   <input type="text" name="provience" id="provience" placeholder=" Provience  " required value="<%= personalData.provience %>">
@@ -108,7 +108,7 @@
               </div>
 
               <div class="info-block flex flex-col">
-                <span>Vallage  </span>
+                <span>Vallage </span>
                 <div class="form-field flex item-center" id="formnotpassfield">
                   <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
                   <input type="text" name="vallage_name" id="vallage_name" placeholder="Vallage  " required value="<%= personalData.vallage_name %>">
@@ -116,7 +116,7 @@
               </div>
 
               <div class="info-block flex flex-col">
-                <span>Parmanent Address  </span>
+                <span>Parmanent Address </span>
                 <div class="form-field flex item-center" id="formnotpassfield">
                   <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
                   <input type="text" name="parmanent_address" id="parmanent_address" placeholder="Parmanent Address  " required value="<%= personalData.parmanent_address %>">
@@ -152,15 +152,15 @@
 
             <div class="form-field flex item-center">
               <label for="ppassword"><i class="fa fa-key"></i></label>
-              <input type="text" name="previusPassword" id="ppassword" placeholder="Previus password" required>
+              <input type="text" name="prevpassword" id="ppassword" placeholder="Previus password" required>
             </div>
             <div class="form-field flex item-center">
               <label for="npassword"><i class="fa fa-key"></i></label>
-              <input type="text" name="newPassword" id="npassword" placeholder="New password" required>
+              <input type="text" name="newpassword" id="npassword" placeholder="New password" required>
             </div>
             <div class="form-field flex item-center">
               <label for="cnpassword"><i class="fa fa-key"></i></label>
-              <input type="text" name="confirmnewPassword" id="cnpassword" placeholder="Confirm new password" required>
+              <input type="text" name="confirmpassword" id="cnpassword" placeholder="Confirm new password" required>
             </div>
 
             <button type="submit">Update Now </button>
@@ -188,9 +188,72 @@
 
 
 <script>
+  const updatePersonalInfoForm = document.getElementById("signupeditfrom");
+  const updatePasswordFrom = document.getElementById("update-password-form");
 
 
 
+
+  updatePersonalInfoForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    // console.log("hello world")
+    let path = `/api/teacher/edit/personalinfo`
+
+    const request = await fetch(path, {
+      method: "put",
+      headers: {
+        'content-type': "application/json"
+      },
+      body: JSON.stringify({
+        name: "ghazna"
+      })
+    })
+
+    const response = await request.json();
+
+    console.log(response)
+
+
+  })
+
+
+
+
+  updatePasswordFrom.addEventListener("submit", async e => {
+    e.preventDefault()
+
+
+    const previusPassword = document.getElementById("ppassword"),
+      newpassword = document.getElementById("npassword"),
+      confirmpassword = document.getElementById("cnpassword");
+
+    if (newpassword.value == confirmpassword.value) {
+
+      let path = `/api/teacher/update/password`
+
+      const request = await fetch(path, {
+        method: "put",
+        headers: {
+          'content-type': "application/json"
+        },
+        body: JSON.stringify({
+          prevpassword: previusPassword.value,
+          newpassword: newpassword.value,
+          confirmpassword: confirmpassword.value
+
+        })
+      })
+
+      const response = await request.json();
+
+      console.log(response)
+    } else {
+      alert("confirm passwod not matching..")
+    }
+
+
+
+  })
 </script>
 
 </body>
