@@ -213,20 +213,19 @@ class TeacherApihandler {
 
     static updatePersonalinfo = async (req,res)=>{
         const userId = req.userId
-        let updateInformations
+        
         try {
-             updateInformations = await TeacherPersonalInformationModel.findByIdAndUpdate({id:userId},{
+            const updateInformations = await TeacherPersonalInformationModel.findOneAndUpdate({user:userId},{
                 $set:{...req.body}
             })
-
-            console.log(updateInformations);
-
+            return res.status(200).json({
+                success:true,
+                msg:"Your information is been updated.. "
+            })
         } catch (error) {
-            return res.status(500).json({error:error})
+            console.log(error);
+            return res.status(500).json({error:error.msg,success:false})
         }
-
-
-        return res.status(200).json({success:updateInformations})
     }
 
 
@@ -251,22 +250,23 @@ static updatePassword = async (req,res)=>{
                 const checkPasswordisCorrect = await bcrypt.compare(prevpassword,userData.password);
     
                 if(checkPasswordisCorrect){
+                    const newEncryptPassword = await bcrypt.hash(confirmpassword,10) 
     
                     // updating the password 
                   try {
 
 
-                    const updatePassword = await teacherSignupModel.findByIdAndUpdate({
-                        _id:userId
+                    const updatePassword = await teacherSignupModel.findOneAndUpdate({
+                        _id:userData._id
                     },{
                         $set:{
-                            password:newpassword
+                            password:newEncryptPassword
                         }
                     })
 
                     console.log(updatePassword)
 
-                    return res.status(200).json({success:true, msg:updatePassword})
+                    return res.status(200).json({success:true, msg:"Password updated."})
 
 
                   } catch (error) {

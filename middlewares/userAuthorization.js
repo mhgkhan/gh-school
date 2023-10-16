@@ -104,7 +104,7 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
                }
             }
             else {
-               res.redirect("/student/create/")
+               res.redirect("/teacher/create/")
             }
          } catch (error) {
             return res.status(500).render("error.ejs", {
@@ -166,7 +166,7 @@ export const afterSignupAuth = async (req, res, next) => {
 
       else {
          // console.log("user not exists from middleware")
-         res.redirect("/student/create")
+         res.redirect("/teacher/create")
       }
 
    }

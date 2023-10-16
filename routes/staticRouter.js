@@ -60,25 +60,6 @@ staticPagesRouter.get("/teacher/selected/", checkisSelectedOrNot, staticPagesHan
   isUserAuthorizeSecond,
   staticPagesHandler.handleChangePasswordPage
 )
-// // for teacher edit the student data 
-// // to get edit personal information page
-// staticPagesRouter.get(
-//     "/teacher/edit/student/personalinfo/:id/",
-//     isUserAuthorizeSecond,
-//     staticPagesHandler.handlPersonalInfoPage
-//   );
-//   // to get edit previus school informatin page
-//   staticPagesRouter.get(
-//     "/teacher/edit/student/previusschoolinfo/:id/",
-//     isUserAuthorizeSecond,
-//     staticPagesHandler.handlePrviusSchoolInfoPage
-//   );
-//   // to get edit your addmission form page
-//   staticPagesRouter.get(
-//     "/teacher/edit/student/editadmissionform/:id/",
-//     isUserAuthorizeSecond,
-//     staticPagesHandler.handleAdmissionFormPage
-//   );
 
 
 
