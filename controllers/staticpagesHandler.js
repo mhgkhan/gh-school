@@ -74,6 +74,7 @@ class staticPagesHandler {
                 personalInfo: teacherData.personalInfo
             })
         } catch (error) {
+            console.log(error)
             return res.status(500).render("error.ejs", {
                 title: "ERROR IN PAGE",
                 error: error
@@ -96,11 +97,15 @@ class staticPagesHandler {
                 personalData:stdData.personalData
             })
         } catch (error) {
-            
+            console.log(error)
+            return res.status(500).render("error.ejs", {
+                title: "ERROR IN PAGE",
+                error: error
+            })
         }
     }
     // to change teacher passwod page 
-    static handleChangePasswordPage = pageRender("./teacher/profile/edit/changepassword.ejs", "Chagne Your passowrd now");
+    static handleStudentAddmissionNew = pageRender("./teacher/profile/adm/personal.ejs", "Student Personal Information form");
 
     // handle teacher logout route 
     static handleLogout = async (req,res)=>{

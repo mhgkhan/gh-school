@@ -12,9 +12,9 @@ class contactApiHandler {
 
 
             if (!name || name.length < 4 || !email || email.length < 6 || !message || message.length < 10) {
-                return res.status(200).render("contactus", {
-                    title: "Please Enter valid data",
-                    responseMsg: "Please enter valid data first "
+                return res.status(400).json({
+                    success:false,
+                    error:"All fields are required for contact try again"
                 });
             }
 
@@ -26,7 +26,7 @@ class contactApiHandler {
                 try {
                     messagesUser = await ContactModel.find({ email });
                 } catch (error) {
-                    return res.redirect("/");
+                    return res.status(500).json({success:false,error:error})
                 }
 
                 if (messagesUser.length < 9) {
@@ -35,11 +35,14 @@ class contactApiHandler {
                         name,
                         message
                     })
-                    res.redirect("/")
+                    return res.status(201).json({success:true,msg:"Your message has been submit sucessfully.."})
                 }
 
                 else {
-                    res.redirect("/")
+                    res.status(400).json({
+                        success:false,
+                        error:"you completed your contactus messages trail"
+                    })
                 }
             }
 

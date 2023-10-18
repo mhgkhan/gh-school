@@ -56,9 +56,9 @@ staticPagesRouter.get("/teacher/selected/", checkisSelectedOrNot, staticPagesHan
     staticPagesHandler.handleChangeTeacherInfo
   )
 .get(
-  "/teacher/edit/password/:id",
+  "/teacher/admission/new/",
   isUserAuthorizeSecond,
-  staticPagesHandler.handleChangePasswordPage
+  staticPagesHandler.handleStudentAddmissionNew
 )
 
 

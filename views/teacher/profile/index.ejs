@@ -11,7 +11,7 @@
       <div class="student-account-heading">
         <div class="stdname flex item-center">
           <h3><%= signupData.fullname %></h3>
-          <span>ADMINISTRATOR</span>
+          <span id="flag">ADMINISTRATOR</span>
         </div>
         <div class="social-info">
           <div class="data-field flex item-center ">
@@ -25,7 +25,7 @@
         <h4>Quick Links </h4>
         <div class="quicklinks flex">
           <a href="/teacher/edit/personalinfo/<%= signupData._id %>/">Edit Personal Info </a>
-          <a href="/teacher/edit/password/<%= signupData._id %>/">Update your Password </a>
+          <a href="/teacher/admission/new/">New Admission</a>
         </div>
       </div>
     </div>
@@ -48,6 +48,18 @@
 
 
 <script src="/assets/js/main.js"></script>
+
+<script>
+  let profile = "<%= signupData.asAdmin %>"
+  
+  if(profile=="YES"){
+    document.getElementById("flag").innerText = "ADMINISTRATOR"
+  }
+  else{
+    document.getElementById("flag").innerText = "TEACHER"
+  }
+
+</script>
 
 </body>
 

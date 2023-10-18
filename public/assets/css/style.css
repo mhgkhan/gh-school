@@ -31,11 +31,13 @@ button,
 .btn {
   width: 90px;
   padding: 5px 7px;
-  border: 1px solid #6e2f2f;
+  /* border: 1px solid #6e2f2f; */
+  border: 1px solid #42a2e2;
   text-align: center;
   box-shadow: 0px 0px 4px black;
   transition: 0.4s;
-  background: #a32727;
+  /* background: #a32727; */
+  background: #3f8ec4;
   color: white;
   cursor: pointer;
 }
@@ -46,7 +48,7 @@ button:active,
 }
 button:hover,
 .btn:hover {
-  background: #bf4545;
+  background: #42a2e2;
 }
 
 a {
@@ -162,6 +164,9 @@ h6 {
 header {
   width: 100%;
   background: white;
+  /* background: #4bb6ff; */
+  background: linear-gradient(278deg, #42a2e2, #3f8dc3);
+  background: linear-gradient(278deg, #1e608c, #034b7e);
   padding-top: 17px;
   z-index: 999999;
   position: sticky;
@@ -178,7 +183,9 @@ header .container .logo {
   width: 80px;
   height: 90px;
 }
-
+header .container .logo img {
+  filter: drop-shadow(0px 0px 15px white);
+}
 header .icons {
   width: 90%;
 }
@@ -187,10 +194,12 @@ header .container .icons span {
   cursor: pointer;
   margin: 0px 10px;
 }
-header .container .icons #menuBtn,.profile-sidebar-button {
+header .container .icons #menuBtn,
+.profile-sidebar-button {
   font-size: 2rem;
   display: none;
-  background: #a32727;
+  /* background: #a32727; */
+  background: #5993fd;
   padding: 8px 10px;
   color: white;
   border-radius: 3px;
@@ -204,13 +213,14 @@ header .container .icons #menuBtn span {
   width: 200px;
   margin: 0px 14px;
   padding: 4px;
-  background: #a32727;
+  /* background: #a32727; */
+  background: white;
   border-radius: 4px;
   box-shadow: 0px 0px 4px #5b5a5ace;
   width: 100%;
 }
 .icons .searchbar span {
-  color: white;
+  color: #42a2e2;
   font-size: 1.5rem !important;
   margin: 0px 5px !important;
 }
@@ -221,10 +231,12 @@ header .container .icons #menuBtn span {
   background: none;
   font-size: 1rem;
   border: none;
-  color: white;
+  /* color: white; */
+  color: #42a2e2;
 }
 .icons .searchbar input::placeholder {
-  color: white;
+  /* color: white; */
+  color: #42a2e2;
 }
 
 nav {
@@ -238,21 +250,20 @@ nav {
 
 nav ul li {
   list-style-type: none;
-  margin: 0px 6px;
+  margin: 4px 6px;
+}
+nav ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
   padding: 9px 7px;
-}
-nav ul li a{
-  width: 100%;
-  height: 100%;
-}
-nav ul li:hover {
-  background: #ede7e7e4;
-  transform: scale(1.04, 1.04);
-}
-nav ul li:hover nav ul li a {
   color: white;
-  width: 100%;
-  height: 100%;
+}
+
+nav ul li a:hover {
+  background: #ffffffe4;
+  transform: scale(1.04, 1.04);
+  color: #3f8dc3;
 }
 nav .closeBtn {
   width: 100%;
@@ -260,10 +271,11 @@ nav .closeBtn {
   margin-top: 1rem;
 }
 nav .closeBtn button {
-  background: #a32727;
+  /* background: #a32727; */
+  background: #3f8ec4;
   width: 100%;
-  border: 1px solid #59f757;
-  border: 1px solid #a32727;
+  /* border: 1px solid #59f757; */
+  border: 1px solid #3f8ec4;
   color: white;
   font-size: 1.7rem;
   border-radius: 5px;
@@ -305,7 +317,8 @@ main {
 .content-intro-inner h1 span,
 .content-intro-inner p {
   font-size: 1.3rem;
-  background: #a32727;
+  /* background: #a32727; */
+  background: #184cb2;
   border-radius: 4px;
   color: white;
   padding: 6px;
@@ -361,7 +374,8 @@ main {
 .section-container h1 {
   margin: 0.4rem 3rem;
   font-size: 2.3rem;
-  color: #a32727;
+  /* color: #a32727; */
+  color: #184cb2;
 }
 /* ##############
   SECTIONS ENDED STYLING 
@@ -384,9 +398,10 @@ main {
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid #6e2f2f;
+  border: 1px solid #3f8ec4;
   margin: 1rem auto;
-  box-shadow: -4px 9px 11px 0px #c8bbbbd4;
+  /* box-shadow: -4px 9px 11px 0px #42a2e2; */
+  box-shadow: 0px 1px 11px 0px #42a2e278;
   transform: skewX(-6deg) !important;
   transition: 1s;
 }
@@ -408,7 +423,8 @@ main {
 }
 .service-card .card-text h3 {
   margin: 0.6rem 0px;
-  color: #6e2f2f;
+  /* color: #6e2f2f; */
+  color: #184cb2;
 }
 .service-card .card-text p {
   letter-spacing: 2px;
@@ -515,14 +531,15 @@ main {
   margin: 5px auto;
   display: block;
   border-radius: 50%;
-  border: 4px solid #6e2f2f;
+  border: 4px solid #5993fd;
 }
 .testmonial h3 {
-  color: #6e2f2f;
+  /* color: #6e2f2f; */
+  color: #184cb2;
   margin: 0.3rem auto;
 }
 .testmonial span {
-  background: #6e2f2f;
+  background: #184cb2;
   padding: 4px 7px;
   border-radius: 4px;
   box-shadow: 0px 0px 3px #6e2f2f;
@@ -570,15 +587,15 @@ main {
   font-size: 1.5rem;
   padding: 15px;
   margin: 0px 10px;
-  border: 1px solid #a32727;
+  border: 1px solid #5993fd;
   border-radius: 3px;
-  background: #a32727;
+  background: #184cb2;
   color: white;
   cursor: pointer;
 }
 .contactblock .span:hover {
   background: white;
-  color: #a32727;
+  color: #184cb2;
 }
 .contactblock .address-block .address-text {
   justify-content: space-between;
@@ -630,7 +647,7 @@ main {
 }
 .section-container .header h1 {
   font-size: 3rem;
-  color: #a32727;
+  color: #184cb2;
   width: 100% !important;
   text-align: center;
   margin: 0px auto !important;
@@ -638,7 +655,7 @@ main {
 .section-container .header span {
   margin: 8px 0px;
   padding: 5px 10px;
-  background: #a32727;
+  background: #184cb2;
   color: white;
 }
 
@@ -651,7 +668,8 @@ main {
 }
 .form-area .form-header {
   width: 100%;
-  background: #a32727;
+  /* background: #a32727; */
+  background: #1748a8;
   margin: 0px;
   padding: 10px;
 }
@@ -675,14 +693,14 @@ main {
   width: 48%;
   margin: 0.7rem 7px;
   background: white;
-  border: 1px solid #a32727;
+  border: 1px solid #3f8dc3;
   padding: 0px;
   box-sizing: border-box;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #a32727;
+  background: #3f8ec4;
 }
 .form-area form .form-fields-row .form-field span {
   padding: 14px 18px;
@@ -691,7 +709,8 @@ main {
   color: white;
   font-size: 1.1rem;
 }
-.form-area form .form-fields-row .form-field input,.form-field select {
+.form-area form .form-fields-row .form-field input,
+.form-field select {
   width: 100%;
   height: auto;
   padding: 14px 7px;
@@ -703,7 +722,7 @@ main {
   background: white;
 }
 .form-field input::placeholder {
-  color: #a32727a2;
+  color: #1e608c;
 }
 
 .quiz-form {
@@ -711,7 +730,7 @@ main {
   background: white !important;
 }
 .quiz-form span {
-  background: #a32727 !important;
+  background: #3f8ec4 !important;
   margin: 3px !important;
 }
 
@@ -723,7 +742,8 @@ main {
   font-size: 1.1rem;
   border-radius: 5px;
 }
-.form-area form button:disabled,form button[type="submit"]:disabled {
+.form-area form button:disabled,
+form button[type="submit"]:disabled {
   background: #a29c9c94;
   color: gray;
   box-shadow: none;
@@ -744,14 +764,14 @@ main {
   box-shadow: 0px 0px 0px 1.8px #706d6db8;
   cursor: pointer;
 }
-.animate{
-  animation: vibrate .3s infinite;
+.animate {
+  animation: vibrate 0.3s infinite;
 }
 @keyframes vibrate {
-  from{
+  from {
     transform: translateX(-5px);
   }
-  to{
+  to {
     transform: translateX(10px);
   }
 }
@@ -766,26 +786,22 @@ main {
   transform: scale(0.8, 0.8);
 }
 
-
-
-
-
 /* user dashboard  */
-.sidebar-user-profile{
+.sidebar-user-profile {
   width: 220px;
   background: #a32727;
   /* margin: 0px .8rem; */
   box-shadow: 0px 0px 13px #5c2727bb;
   border-radius: 10px;
 }
-.user-profile-container{
+.user-profile-container {
   width: auto;
 }
-.user-profile-container .form-area{
+.user-profile-container .form-area {
   width: 100%;
 }
 
-.profile-sidebar-button{
+.profile-sidebar-button {
   /* background: white !important;
   color: #a32727 !important; */
   /* display: block; */
@@ -793,52 +809,51 @@ main {
   margin: 10px 3px !important;
   cursor: pointer;
 }
-.sidebar-user-profile .profile-img{
+.sidebar-user-profile .profile-img {
   width: 90%;
   margin: 1rem auto;
   height: 200px;
 }
-.sidebar-user-profile .profile-img img{
+.sidebar-user-profile .profile-img img {
   border-radius: 10px;
 }
-.sidebar-user-profile .menu{
+.sidebar-user-profile .menu {
   width: 90%;
   margin: 1rem auto;
 }
-.menu h3{
+.menu h3 {
   color: white;
   font-size: 1.7rem;
 }
-.menu ul{
+.menu ul {
   margin-top: 1rem;
   list-style-type: none;
 }
-.menu ul li{
+.menu ul li {
   margin: 1rem 0px;
   border-bottom: 1px solid #b5aeae;
   padding: 5px;
 }
-.menu ul li a{
+.menu ul li a {
   font-size: 1.1rem;
   width: 100%;
   height: 100%;
   color: white;
 }
 
-
 /* dashboard sidebar  */
-.dashboard-nav{
+.dashboard-nav {
   width: auto;
   padding: 5px 10px;
 }
-.dashboard-nav ul{
+.dashboard-nav ul {
   display: flex;
 }
-.dashboard-nav ul li{
+.dashboard-nav ul li {
   margin: 0px 5px;
   list-style-type: none;
 }
-.dashboard-nav ul li a{
+.dashboard-nav ul li a {
   padding: 8px 5px;
   border-radius: 3px;
   color: white;
@@ -846,47 +861,46 @@ main {
 }
 
 /* dashboard  */
-.std-account{
+.std-account {
   width: 100%;
   /* border: 1px solid red; */
   padding: 10px;
 }
-.std-account .student-image{
+.std-account .student-image {
   width: 200px;
   height: 230px;
   /* border: 1px solid red; */
   border-radius: 5px;
-  box-shadow: 0px 0px  5px #5e5e5f;
+  box-shadow: 0px 0px 5px #5e5e5f;
   margin: 10px;
 }
-.std-account .student-account-heading{
+.std-account .student-account-heading {
   margin: 10px;
   padding: 10px;
   /* border: 1px solid red; */
   width: 60%;
 }
-.student-account-heading .stdname{
+.student-account-heading .stdname {
   gap: 5px;
-
 }
-.student-account-heading .stdname h3{
+.student-account-heading .stdname h3 {
   font-size: 1.9rem;
 }
-.student-account-heading .stdname span{
+.student-account-heading .stdname span {
   padding: 3px 10px;
   color: white;
-  background: #6e2f2f;
+  background: #1748a8;
   border-radius: 3px;
 }
-.student-account-heading h4{
+.student-account-heading h4 {
   margin-top: 1rem;
   margin-bottom: 0px;
   padding-left: 20px;
 }
-.social-info{
+.social-info {
   width: 100%;
 }
-.social-info .data-field{
+.social-info .data-field {
   width: 100%;
   padding: 4px;
   margin: 7px 0px;
@@ -896,114 +910,114 @@ main {
 .social-info .data-field {
   font-size: 1.2rem;
 }
-.social-info .data-field span{
-  color: #a32727;
+.social-info .data-field span {
+  color: #034b7e;
   font-size: 1.5rem;
 }
-.student-account-heading .quicklinks{
+.student-account-heading .quicklinks {
   width: 100%;
   flex-wrap: wrap;
 }
-.student-account-heading .quicklinks a{
-  background: #a32727;
+.student-account-heading .quicklinks a {
+  background: #3f8ec4;
   color: white;
   padding: 10px 10px;
   border-radius: 4px;
   margin: 5px 8px;
   position: relative;
 }
-.quicklinks a::after{
-  content: '';
+.quicklinks a::after {
+  content: "";
   width: 100%;
   height: 100%;
   position: absolute;
   inset: 0px;
-  transition: .6s;
+  transition: 0.6s;
 }
-.quicklinks a:hover::after{
+.quicklinks a:hover::after {
   width: 0%;
   background: white;
   color: #6e2f2f;
 }
 
-.admissindetails table{
+.admissindetails table {
   width: 100%;
   /* border-spacing: 5px; */
-  border-collapse:collapse;
+  border-collapse: collapse;
 }
-.admissindetails table thead{
+.admissindetails table thead {
   background: #a32727;
   color: white;
 }
-.admissindetails table th, .admissindetails table td{
+.admissindetails table th,
+.admissindetails table td {
   text-align: center;
   padding: 12px 7px;
   text-transform: capitalize;
 }
 
-
-.info-teacher .info-block{
+.info-teacher .info-block {
   width: 259px;
   height: auto;
   padding: 5px 12px;
-  border-bottom: 2px solid #6e2f2f;
-  margin: .5rem 1rem;
+  border-bottom: 2px solid #3f8dc3;
+  margin: 0.5rem 1rem;
 }
 
-.info-teacher .info-block span{
+.info-teacher .info-block span {
   margin: 10px 0px;
-  color: #6e2f2fd8;
+  color: #034b7e;
 }
-.info-block h4{
+.info-block h4 {
   margin: 0px 3px;
   overflow-wrap: anywhere;
+
 }
 
-
-
-.edit-area{
+.edit-area {
   /* border: 1px solid gray; */
   width: 100%;
 }
-.edit-area .edit-area-block{
+.edit-area .edit-area-block {
   /* border: 1px solid gray; */
   margin: 1rem;
 }
 
-.edit-area .left-edit-area{
+.edit-area .left-edit-area {
   width: 70%;
 }
-.edit-area .right-edit-area{
+.edit-area .right-edit-area {
   width: 30%;
   border: none;
 }
-.right-edit-area fieldset{
+.right-edit-area fieldset {
   border: 5px solid red;
 }
-.right-edit-area fieldset legend{
+.right-edit-area fieldset legend {
   margin: 0px 12px;
 }
-.edit-area h3{
+.edit-area h3 {
   padding: 5px 10px;
 }
-.right-edit-area form{
-  margin-top: .4rem;
+.right-edit-area form {
+  margin-top: 0.4rem;
 }
-.edit-area form .form-field{
+.edit-area form .form-field {
   width: 95%;
   height: auto;
   padding: 3px;
-  border: 1px solid #6e2f2f;
+  border: 1px solid #3f8dc3;
   border-radius: 4px;
-  margin: .7rem auto;
+  margin: 0.7rem auto;
 }
 
-.edit-area form .form-field label{
+.edit-area form .form-field label {
   font-size: 1.3rem;
   margin: 0px 6px;
   cursor: pointer;
+  color: #034b7e;
 }
-.edit-area form .form-field input{
+.edit-area form .form-field input {
   padding: 6px;
   background: none;
   /* border: 1px solid red; */
@@ -1012,33 +1026,32 @@ main {
   font-size: 1.1rem;
   width: 100%;
 }
-.edit-area form button{
+.edit-area form button {
   width: 90%;
   margin: 1rem auto;
   display: block;
   font-size: 1.1rem;
 }
 
-
-.edit-signup-info .form-field{
-  margin: .4rem 10px !important;
+.edit-signup-info .form-field {
+  margin: 0.4rem 10px !important;
   width: 45% !important;
 }
 
-#formnotpassfield{
+#formnotpassfield {
   width: 100% !important;
 }
 
-.edit-area .info-block{
+.edit-area .info-block {
   border-bottom: none !important;
   padding: 5px;
   margin: 0px 0px;
   width: 30%;
 }
-.edit-area .info-block span{
-  margin: 0px  10px;
+.edit-area .info-block span {
+  margin: 0px 10px;
+  color: #034b7e;
 }
-
 
 /* ##########################
 ##########################
@@ -1046,7 +1059,9 @@ footer stying ..
 ##########################
 ########################## */
 footer {
-  background: #4a3939;
+  /* background: #4a3939; */
+  /* background: linear-gradient(278deg, #42a2e2, #3f8dc3); */
+  background: linear-gradient(278deg, #1e608c, #001f35);
   color: white;
   margin-top: 1.5rem;
 }
@@ -1107,7 +1122,8 @@ footer .container p {
     margin-top: 2rem;
   }
   nav {
-    background: white;
+    /* background: white; */
+    background: #3f8ec4;
     box-shadow: 0px 0px 4px #424040;
     border-radius: 5px;
     transition: 0.5s;
@@ -1122,16 +1138,18 @@ footer .container p {
   }
   nav ul {
     flex-direction: column;
+    margin-top: 1rem;
   }
   nav ul li {
     margin: 0.6rem auto;
     width: 100%;
     /* text-align: center; */
-    padding: 8px 12px;
     border-bottom: 1px solid gray;
+    /* padding: 5px 12px; */
   }
   nav ul li a {
     width: 100%;
+    padding: 12px;
   }
 
   nav .closeBtn {
@@ -1158,20 +1176,20 @@ footer .container p {
   .container {
     width: 96%;
   }
-  .user-profile-container{
+  .user-profile-container {
     width: 96%;
-    margin:0px auto;
+    margin: 0px auto;
     /* margin-left: 3rem; */
   }
-  .sidebar-user-profile{
+  .sidebar-user-profile {
     position: absolute;
     z-index: 1111;
     transform: translateX(-175px);
     width: 220px;
     /* height: 100%; */
-    transition: .3s ease-in;
+    transition: 0.3s ease-in;
   }
-  .profile-sidebar-button{
+  .profile-sidebar-button {
     display: block;
   }
 }
@@ -1185,14 +1203,13 @@ footer .container p {
     margin: 0px auto;
     text-align: center;
   }
-  .edit-area{
+  .edit-area {
     flex-direction: column;
   }
-  .edit-area .edit-area-block{
+  .edit-area .edit-area-block {
     width: 100%;
     margin: 1rem 0px !important;
   }
- 
 }
 
 @media screen and (max-width: 600px) {
@@ -1254,8 +1271,8 @@ footer .container p {
     height: 130px !important;
   }
 
-  .form-field{
-    margin: .3rem auto !important;
+  .form-field {
+    margin: 0.3rem auto !important;
   }
   .form-area form .form-field span {
     padding: 10 12px !important;
@@ -1263,20 +1280,20 @@ footer .container p {
   .form-area form .form-field input {
     padding: 10px 8px !important;
   }
-  .uploadPicblock{
+  .uploadPicblock {
     width: 150px;
     height: 160px;
   }
-  .std-account{
+  .std-account {
     flex-direction: column;
   }
-  .std-account .student-image{
+  .std-account .student-image {
     margin: 1rem auto;
     display: block;
     width: 150px;
     height: 166px;
   }
-  .student-account-heading{
+  .student-account-heading {
     width: 100% !important;
     display: flex;
     align-items: center;
@@ -1284,30 +1301,29 @@ footer .container p {
     flex-direction: column;
     margin: 5px 0px !important;
   }
-  .social-info{
+  .social-info {
     width: auto;
   }
-  
-  .student-account-heading .stdname{
+
+  .student-account-heading .stdname {
     flex-direction: column;
     width: 100%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
   }
-  .stdname h3
-  {
+  .stdname h3 {
     text-align: center;
   }
-  .student-account-heading .quicklinks{
+  .student-account-heading .quicklinks {
     /* width: 100%; */
     align-items: center;
     justify-content: center;
   }
 }
 
-@media screen and (max-width:400px){
-  .info-block{
+@media screen and (max-width: 400px) {
+  .info-block {
     width: 100% !important;
   }
 }
@@ -1336,11 +1352,11 @@ footer .container p {
   .form-area .form-fields-row .form-field {
     width: 100% !important;
   }
-  .form-fields-row:first-child{
+  .form-fields-row:first-child {
     flex-direction: column !important;
     gap: 0px;
   }
-  .uploadPicblock{
+  .uploadPicblock {
     width: 100px;
     height: 110px;
   }

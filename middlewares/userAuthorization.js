@@ -347,7 +347,7 @@ export const teacherClearAll = async (req, res, next) => {
                   signupData: exists,
                   personalInfo: checkTeacherDetails
                }
-               next()
+               return next()
             }
 
             if (exists.AsSelected == "YES" && exists.isVerified != "YES") {
@@ -360,7 +360,7 @@ export const teacherClearAll = async (req, res, next) => {
 
          }
          else {
-            res.redirect("/teacher/signupinformation")
+            return res.redirect("/teacher/signupinformation")
          }
 
 
@@ -377,7 +377,7 @@ export const teacherClearAll = async (req, res, next) => {
 
 
    else {
-      res.redirect("/teacher/login")
+      return res.redirect("/teacher/login")
    }
 }
 
