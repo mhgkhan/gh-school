@@ -78,6 +78,15 @@ const singupStudentDetails = mongoose.Schema({
     image: {//11
         type: String,
         required: true
+    },
+    teacherid:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"teacher",
+        required:true
+    },
+    std_id:{
+        type:String,
+        required:true,
     }
 
 }, {

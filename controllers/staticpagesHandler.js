@@ -123,20 +123,7 @@ class staticPagesHandler {
 
 
     // student pages handler 
-    // for our student adding personal details informaton 
-    static handleAddstudentPersonalInformation = pageRender("./student/studentinformationform.ejs", "Add Your Personal Information || GHSMS")
-    // for our student previus school form 
-    static handlePreviusSchooldataForm = pageRender("./student/pschoolInfoform.ejs", "Student Previus School Information Form || GHSMS");
-    // for our school student profile 
-
-
-
-
-
-    
-    static handlePrviusSchoolInfoPage = pageRender("./student/edit/editpreviusschoolinfo.ejs", "Edit Previus School Information");
-    static handleAdmissionFormPage = pageRender("./student/edit/editadmissioninfo.ejs", "Edit Your Addmission Form");
-
+    static handleCheckStatusPage = pageRender("./student/AdmStatus.ejs", "Please check your admission form status")
 
 
 

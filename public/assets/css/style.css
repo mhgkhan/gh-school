@@ -158,6 +158,30 @@ h6 {
   margin-top: 2rem;
 }
 
+.loading-bar-sm{
+  width:80px;
+  height:80px;
+  border-radius: 50%;
+  border-top: 10px dotted #3f8dc3;
+  border-right: 10px dotted #035b73;
+  border-bottom: 10px dotted #034b7e;
+  margin: 1rem auto;
+  display: block;
+  transform: .4s;
+  animation: loading-sm .5s infinite linear;
+}
+@keyframes loading-sm{
+  from{
+    transform: rotate(0deg);
+    border-right: 10px dotted #034b7e;
+    border-bottom: 10px dotted #035b73;
+  }
+  to{
+    border-bottom: 10px dotted #034b7e;
+    transform: rotate(360deg);
+  }
+}
+
 /* utility classes  */
 /* ########################### */
 
@@ -335,6 +359,8 @@ main {
 .intro-buttons a {
   margin: 0px 12px;
   width: 120px;
+  
+  width: auto !important;
   color: white;
   padding: 9px;
 }
@@ -665,6 +691,7 @@ main {
   border-radius: 10px;
   box-shadow: 0px 0px 12px #686b68dd;
   padding: 0px;
+  margin: 5px auto;
 }
 .form-area .form-header {
   width: 100%;
@@ -1326,6 +1353,7 @@ footer .container p {
   .info-block {
     width: 100% !important;
   }
+  
 }
 
 @media screen and (max-width: 370px) {

@@ -70,18 +70,6 @@ staticPagesRouter.get("/teacher/selected/", checkisSelectedOrNot, staticPagesHan
 // ******************************************
 // ******************************************
 // for student 
-  // for student admission pages
-  staticPagesRouter.get(
-    "/student/signupinformation",
-    afterSignupAuth,
-    staticPagesHandler.handleAddstudentPersonalInformation
-  )
-  .get(
-    "/student/previusschooldata",
-    afterSignupDetails,
-    staticPagesHandler.handlePreviusSchooldataForm
-  );
-// .get("/student/admissionform", userAuth, staticPagesHandler.handleAdmissionFormPage)
-
+staticPagesRouter.get("/student/checkstatus", staticPagesHandler.handleCheckStatusPage)
 
 export default staticPagesRouter;

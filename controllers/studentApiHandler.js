@@ -205,6 +205,69 @@ class studentApiHandler {
 
 
 
+    
+    static handleStudentAdmissionform = async (req,res) =>{
+        try {
+            
+            const {std_id,phone} = req.body
+
+            if(!std_id || std_id.length<0 || !phone || phone.length<9){
+                return res.status(400).json({
+                    success:false,
+                    error:"Invalid Credientials Passed."
+                })
+            }
+            else{
+
+                try {
+                    const checkStudentIsExists = await studentPersonalInformationModel.findOne({std_id:std_id});
+                    console.log("studentisexists is ", checkStudentIsExists)
+                    if(checkStudentIsExists){
+
+                        if(checkStudentIsExists.asSelected=="YES"){
+                            return res.status(200).json({
+                                success:true,
+                                message:"You are selected.",
+                                data:checkStudentIsExists
+                            })
+                        }
+                        else{
+                            return res.status(200).json({
+                                success:true,
+                                message:"Pending! Sorry your admission form is on pending.",
+                                data:checkStudentIsExists
+                            })
+                        }
+                    }
+                    else{
+                        return res.status(200).json({
+                            success:false,
+                            error:"Student of this id or phone is not avaliable please try again with valid credientials."
+                        })
+                    }
+
+
+                } catch (error) {
+                    return res.status(400).json({
+                        success:false,
+                        error:error
+                    })
+                }
+
+
+
+
+            }
+
+
+        } catch (error) {
+            res.status(500).json({
+                success:false,
+                error:error
+            })
+        }
+    }
+
 }
 
 

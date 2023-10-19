@@ -9,11 +9,15 @@ const studentAdmDetails = mongoose.Schema({
         type: String,
         required: true
     },
+    asSelected:{
+        type:String,
+        defaut:"NO"
+    },
     verify: {
         type: String,
         default: "pending"
     },
-    user: {//12
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Student_informaton"
     }

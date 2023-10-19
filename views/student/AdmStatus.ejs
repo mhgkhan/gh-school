@@ -1,22 +1,33 @@
 <%- include('../layouts/header') %>
 
-
 <!-- main in strted from here  -->
-<section class="section">
+
+<section class="section flex" style="margin: 0px; position:relative">
+
+
   <div class="container section-container">
 
     <div class="header">
       <h1>MADINA PUBLIC SCHOOL </h1>
-      <span>Login to your account  </span>
+      <span>Student Admission Status</span>
     </div>
 
     <div class="form-area">
       <div class="form-header">
-        <h1 style="margin: 1rem 0px;"> Login to your account </h1>
+        <h1 style="margin: .4rem;">CHECK YOUR ADDMISSION STATUS </h1>
         <ul>
+          <li>
+            <p>Hi, if you done any online admission here so you are able to check your application (admission) status that what's going on.</p>
+          </li>
           <li>
             <p> Please fill all fields with valid credientials and don't leave any field from this other
               wise the submit button is disabled.</p>
+          </li>
+          <li>
+            <p> If your admission is succeed so you have to show your complete form then print it and go to MPS (Madina public high school) with your original documents.</p>
+          </li>
+          <li>
+            <p>Else: try again or wait for hour or day or 2 days we check your admission form then we respond you. thanks! </p>
           </li>
 
           <li>
@@ -25,7 +36,7 @@
         </ul>
       </div>
 
-      <form id="login-form" autocomplete="off">
+      <form id="check-form" autocomplete="off">
 
         <h3 style="width: 100%;height:auto; padding:9px; height: 30px; display: block; text-align: center; margin: 0px auto; color:red;" id="errMsg"></h3>
 
@@ -38,18 +49,13 @@
           </div>
 
           <div class="form-field">
-            <span><i class="fa fa-key"></i></span>
-            <input type="password" class="form-input" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password">
+            <span><i class="fa fa-robot"></i></span>
+            <input type="number" class="form-input" name="std_id" id="std_id" placeholder="Student id" required title="Enter the student admission id">
           </div>
 
         </div>
 
         <div class="form-fields-row flex item-center justify-center">
-
-          <!-- <div class="form-field">
-                            <span><i class="fa fa-key"></i></span>
-                            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password" >
-                        </div>  -->
 
           <div class="form-field quiz-form" style="width: 100%;">
             <span id="5">5</span>
@@ -60,16 +66,27 @@
           </div>
         </div>
 
-        <button type="submit" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
-          Login</button>
+        <button type="submit" id="formSubmitBtn" disabled><i class="fa fa-signal"></i> Check</button>
 
       </form>
-      <div class="other" style="padding:10px; text-align:center;">
-        <span>Not have an account &nbsp; </span> <a href="/teacher/create" class="btn">Create now </a>
+
+
+
+
+      <div class="student-data-result">
+        <div class="container-student-result" id="result-container">
+          <!-- <div class="loading-bar-sm"></div> -->
+          <!-- <div class="student-adm mt-2">
+              <h1>this is the student result </h1>
+            </div> -->
+
+        </div>
       </div>
     </div>
 
+
   </div>
+
 </section>
 <!-- main in ended from here  -->
 <%- include('../layouts/footer') %>
@@ -88,19 +105,19 @@
 <script src="/assets/js/main.js"></script>
 
 <script>
-  const form = document.getElementById("login-form");
+  const form = document.getElementById("check-form");
   const formSubmitBtn = document.getElementById("formSubmitBtn")
   const formInputs = document.querySelectorAll(".form-input");
   const errMsg = document.getElementById("errMsg");
-
+  const resultContainer = document.getElementById("result-container")
 
   let ph = false,
-    p = false,
+    id = false,
     quiz = false
 
   const checkall = () => {
-    // console.log(ph, p, quiz)
-    if (ph && p && quiz) {
+    //   console.log(ph, id, quiz)
+    if (ph && id && quiz) {
       if (formInputs[2].value == "105") {
         formSubmitBtn.disabled = false
       } else {
@@ -110,7 +127,7 @@
       }
 
     } else {
-      // console.log("submit button was disabled")
+      console.log("submit button was disabled")
       formSubmitBtn.disabled = true
     }
 
@@ -136,14 +153,14 @@
   formInputs[1].addEventListener("keyup", e => {
 
 
-    if (e.target.value.length > 5) {
-      p = true
+    if (e.target.value.length > 0) {
+      id = true
       errMsg.style.color = "green"
-      errMsg.innerText = '✅ password'
+      errMsg.innerText = '✅ Ok'
     } else {
-      p = false
+      id = false
       errMsg.style.color = "red"
-      errMsg.innerText = "❌ password must  grater than  5 characters"
+      errMsg.innerText = "❌ Id vlaue is not valid"
     }
     checkall()
   })
@@ -166,8 +183,14 @@
   form.addEventListener("submit", async e => {
     e.preventDefault()
     let msg = ""
-    let apiUrl = "/api/teacher/signin/";
+    let apiUrl = "/api/student/admstatus/";
     errMsg.innerText = "Wait..."
+    resultContainer.innerHTML = ` <div class="loading-bar-sm"></div>`
+    form.style.filter = "blur(5px)"
+    formInputs[0].disabled = true
+      formInputs[1].disabled = true
+      formInputs[2].disabled = true
+      formSubmitBtn.disabled = true
     const request = await fetch(apiUrl, {
       method: "post",
       headers: {
@@ -175,25 +198,26 @@
       },
       body: JSON.stringify({
         phone: formInputs[0].value,
-        password: formInputs[1].value
+        std_id: formInputs[1].value
       })
     })
 
     try {
       const response = await request.json();
       form.reset()
+      form.style.filter = "blur(0px)"
+      formInputs[0].disabled = false
+      formInputs[1].disabled = false
+      formInputs[2].disabled = false
 
       if (response.success) {
         errMsg.style.color = "green"
-        msg = "Login Sucessfull. please wait..."
-        localStorage.setItem("token", response.token)
-        setTimeout(() => {
-          window.location.reload()
-        }, 1000);
+        msg = response.message
+        //   console.log(response.data)
         // errMsg.innerText = "Login Sucessfull."
       } else {
         errMsg.style.color = "red"
-        msg = response.err
+        msg = response.error
         // errMsg.innerText = response.err
       }
     } catch (error) {
@@ -203,11 +227,15 @@
       // errMsg.innerText = error
     }
 
+    resultContainer.innerHTML = `
+      <div class="student-adm mt-2 default-padding">
+              <h4>${msg}</h4>
+            </div> 
+      `
     errMsg.innerText = msg
 
   })
 </script>
-
 
 </body>
 
