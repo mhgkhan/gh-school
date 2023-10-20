@@ -12,8 +12,8 @@ import JWT from 'jsonwebtoken'
 
 export const userAuth = async (req, res, next) => {
 
-   if (req.cookies.MPS) {
-      const token = req.cookies.MPS
+   if (req.cookies.GHS) {
+      const token = req.cookies.GHS
       // console.log("from user authorization middleware ", token)
       const idformtoken = JWT.verify(token, process.env.SECRET);
       // console.log("from user authorization middleware ", idformtoken);
@@ -51,7 +51,7 @@ export const userAuth = async (req, res, next) => {
 // this function is used for when user want to logout from an account 
 export const isLogin = async (req, res, next) => {
    try {
-      if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+      if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
          next();
       }
       else {
@@ -70,8 +70,8 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
 
    try {
       // console.log("from middlewares request paramters is ", req.params)
-      if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
-         const token = req.cookies.MPS
+      if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
+         const token = req.cookies.GHS
          const idFromToken = JWT.verify(token, process.env.SECRET);
 
          // checking if user is exists or not 
@@ -128,9 +128,9 @@ export const isUserAuthorizeSecond = async (req, res, next) => {
 
 export const afterSignupAuth = async (req, res, next) => {
 
-   if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+   if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
       // console.log("cookies is founded. from middleware ")
-      const token = req.cookies.MPS
+      const token = req.cookies.GHS
       const idFromtoken = JWT.verify(token, process.env.SECRET);
 
 
@@ -181,9 +181,9 @@ export const afterSignupAuth = async (req, res, next) => {
 // this middleware will applied on when user use this route => /teacher/status
 export const afterSignupDetails = async (req, res, next) => {
 
-   if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+   if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
 
-      const token = req.cookies.MPS
+      const token = req.cookies.GHS
       const idFromtoken = JWT.verify(token, process.env.SECRET);
 
 
@@ -240,9 +240,9 @@ export const afterSignupDetails = async (req, res, next) => {
 }
 
 export const checkisSelectedOrNot = async (req, res, next) => {
-   if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+   if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
 
-      const token = req.cookies.MPS
+      const token = req.cookies.GHS
       const idFromtoken = JWT.verify(token, process.env.SECRET);
 
 
@@ -305,8 +305,8 @@ export const checkisSelectedOrNot = async (req, res, next) => {
 // this is for when user use this route = /teacher/profile 
 export const teacherClearAll = async (req, res, next) => {
 
-   if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
-      const token = req.cookies.MPS
+   if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
+      const token = req.cookies.GHS
       const idFromtoken = JWT.verify(token, process.env.SECRET)
       const id = idFromtoken.id
 
@@ -384,8 +384,8 @@ export const teacherClearAll = async (req, res, next) => {
 
 
 export const idFromToken = async (req,res,next)=>{
-   if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
-      const token = req.cookies.MPS
+   if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
+      const token = req.cookies.GHS
       const idFromtoken = JWT.verify(token, process.env.SECRET)
       const id = idFromtoken.id
 

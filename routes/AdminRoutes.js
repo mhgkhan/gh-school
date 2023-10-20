@@ -5,7 +5,7 @@ const AdminRouter = express.Router();
 AdminRouter.get("/principle", (req,res)=>{
     try {
         res.status(200).render("./admin/index.ejs",{
-            title:"Admin MPS"
+            title:"Admin GHS"
         })
     } catch (error) {
         console.log(error)

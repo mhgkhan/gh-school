@@ -24,11 +24,11 @@ class studentApiHandler {
     static HandlePersonalDetailsPost =  async (req, res) => {
         try {
             
-            if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+            if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
                 // console.log(req.file)
                 // console.log(req.body)
                 // console.log("cookies is exists ")
-                const verfication = JWT.verify(req.cookies.MPS, process.env.SECRET)
+                const verfication = JWT.verify(req.cookies.GHS, process.env.SECRET)
                 const id = verfication.id
                 // console.log(verfication);
 
@@ -112,11 +112,11 @@ class studentApiHandler {
          
             const {schoolname,subject,classname,rollno,obtmarks,totalmarks,schooladdress,schoolphone} = req.body
 
-            if (req.cookies.MPS && req.cookies.MPS !== "undefiend") {
+            if (req.cookies.GHS && req.cookies.GHS !== "undefiend") {
                 // console.log(req.file)
                 // console.log(req.body)
                 // console.log("cookies is exists ")
-                const verfication = JWT.verify(req.cookies.MPS, process.env.SECRET)
+                const verfication = JWT.verify(req.cookies.GHS, process.env.SECRET)
                 const id = verfication.id
                 // console.log(verfication);
 

@@ -110,7 +110,7 @@ class staticPagesHandler {
     // handle teacher logout route 
     static handleLogout = async (req,res)=>{
         // setting the logout logic 
-        res.clearCookie("MPS")
+        res.clearCookie("GHS")
         return res.redirect("/teacher/login")
     }
 
