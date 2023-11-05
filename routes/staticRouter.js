@@ -9,7 +9,9 @@ import {
   teacherClearAll,
   isLogin,
   isUserAuthorizeSecond,
-  checkisSelectedOrNot
+  checkisSelectedOrNot,
+  authorizeTeacher,
+  authorizeTeacherWithAuthorizeStudentExits,
 } from "../middlewares/userAuthorization.js";
 
 // static page serving
@@ -57,11 +59,11 @@ staticPagesRouter.get("/teacher/selected/", checkisSelectedOrNot, staticPagesHan
   )
 .get(
   "/teacher/admission/new/",
-  isUserAuthorizeSecond,
+  authorizeTeacher,
   staticPagesHandler.handleStudentAddmissionNew
 )
-
-
+.get("/teacher/admission/new/previussd", authorizeTeacherWithAuthorizeStudentExits, staticPagesHandler.handlePrevSchoolData)
+// .get("/teacher/adm/result/", authorizeFullStudent, staticPagesHandler.handleStudentAdmREsult)
 
 
 

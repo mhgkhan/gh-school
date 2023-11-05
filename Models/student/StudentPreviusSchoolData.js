@@ -1,56 +1,65 @@
 import mongoose from "mongoose";
 
 const studentPSDStr = mongoose.Schema({
-    schoolname: {
+    schooltype:{ // done
+        type:String,
+        required:true,
+        default:"primary"
+    },
+    studenttype:{ //done
+        type:String,
+        required:true,
+        default:"Regular"
+    },
+    classname: { // done
+        type: String,
+        required: true,
+        default:"Arts"
+    },
+    subject: { // done
+        type: String,
+        required: true,
+        default:"Science"
+    },
+    rollno: { // done
         type: String,
         required: true
     },
-    subject: {
+    schoolphone: { // done
         type: String,
-        required: true,
-        default:"Arts"
+        required: true
     },
-    classname: {
+    schoolname: { //done
         type: String,
-        required: true,
-        default:"Arts"
+        required: true
     },
-    rollno: {
+    schooladdress: { // done
         type: String,
-        required: true,
-        default:"Arts"
+        required: true
     },
-
     obtmarks: {
         type: String,
-        required: true
+        required: true,
+        default:"0"
     },
     totalmarks: {
         type: String,
         required: true,
+        default:"0"
     },
-    schooladdress: {
-        type: String,
-        required: true
-    },
-    schoolphone: {
-        type: String,
-        required: true
-    },
-    schoolcertificate: {
+    certificate: {
         type: String,
         required: true
     },
 
-    user: {//12
+    student: {//12
         type: mongoose.Schema.Types.ObjectId,
         ref: "Student_informaton",
         required:true,
-        unique:true
     }
 },{
     timestamps:true
 })
 
-const StudentPreviusSchoolDetails = mongoose.model("Student_previus_school_data", studentPSDStr)
-export default StudentPreviusSchoolDetails
+const StudentPreviusSchoolDetailsModel = mongoose.model("Student_previus_school_data", studentPSDStr)
+export default StudentPreviusSchoolDetailsModel

@@ -104,8 +104,16 @@ class staticPagesHandler {
             })
         }
     }
-    // to change teacher passwod page 
+
+    
+    
+    
     static handleStudentAddmissionNew = pageRender("./teacher/profile/adm/personal.ejs", "Student Personal Information form");
+    static handlePrevSchoolData = pageRender("./teacher/profile/adm/prschool.ejs", "Student Previus School Information form")
+    static handleStudentAdmREsult = pageRender("./teacher/profile/adm/stdresult.ejs", "Student Admission Result")
+
+
+
 
     // handle teacher logout route 
     static handleLogout = async (req,res)=>{

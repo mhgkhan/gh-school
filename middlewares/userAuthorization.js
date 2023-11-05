@@ -6,6 +6,7 @@ import TeacherPersonalInformationModel from '../Models/teacher/TeacherInfoModel.
 
 
 import JWT from 'jsonwebtoken'
+import studentPersonalInformationModel from '../Models/student/StudentPersonalDetails.js'
 
 // import {gotoErrorPage} from "../controllers/otherHandlers.js"
 
@@ -444,3 +445,138 @@ export const idFromToken = async (req,res,next)=>{
       res.redirect("/teacher/login")
    }
 }
+
+
+export const authorizeTeacher = async (req,res,next)=>{
+   if(req.cookies.GHS && req.cookies.GHS !=="undefiend"){
+      const token = req.cookies.GHS 
+      const validateToken = JWT.verify(token, process.env.SECRET);
+      const id = validateToken.id
+      let exists
+      try {
+         exists = await teacherSignupModel.findOne({_id:id});
+      } catch (error) {
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
+      }
+
+
+      if(exists){
+
+         if(exists.AsSelected == "YES" && exists.AsVerified == "YES"){
+            return next()
+         }
+         
+         if (exists.AsSelected == "YES" && exists.isVerified != "YES") {
+            return res.redirect("/teacher/selected")
+         }
+
+         else {
+            return res.redirect("/teacher/status")
+         }
+
+      }
+      else{
+         return res.redirect("/teacher/create")
+      }
+
+   }
+   else
+   {
+      return res.redirect("/teacher/login")
+   }
+}
+
+
+
+
+
+
+export const authorizeTeacherWithAuthorizeStudentExits = async (req,res,next)=>{
+   if(req.cookies.GHS && req.cookies.GHS !=="undefiend"){
+      const token = req.cookies.GHS 
+      const validateToken = JWT.verify(token, process.env.SECRET);
+      const id = validateToken.id
+      let exists
+      try {
+         exists = await teacherSignupModel.findOne({_id:id});
+      } catch (error) {
+         return res.status(500).render("error.ejs", {
+            title: "ERROR IN PAGE",
+            error: error
+         })
+      }
+
+
+      if(exists){
+
+         if(exists.AsSelected == "YES" && exists.AsVerified == "YES"){
+            if(req.cookies.GHSSTD && req.cookies.GHSSTD !== "undefiend"){
+
+               const token = req.cookies.GHSSTD
+               const verifyToken = JWT.verify(token,process.env.SECRET)
+               console.log(verifyToken)
+               const Stdid = verifyToken.id 
+               console.log("the id is ", Stdid)
+               
+               try {
+
+                  const existStd = await studentPersonalInformationModel.findOne({_id:Stdid})
+                  console.log("the student id is ", existStd.teacherid)
+                  console.log("the teacher id is ", exists._id)
+                  console.log(existStd.teacherid === exists._id )
+                     // checking if student id is same with teacher id 
+                   if(existStd){
+                     console.log("student is verified")
+                     // if(exists._id == existStd.teacherid){
+                     //    return next();
+                     // }
+                     // else{
+                     //    return res.redirect("/teacher/login")
+                     // }
+                     return next();
+                  }
+                  else{
+                      return res.redirect("/teacher/admission/new/")
+                   }
+
+               } catch (error) {
+                  return res.status(500).render("error.ejs", {
+                     title: "ERROR IN PAGE",
+                     error: error
+                  })
+               }
+
+
+            }
+            else{
+               return res.redirect("/teacher/admission/new/")
+            }
+
+
+         }
+         
+         if (exists.AsSelected == "YES" && exists.isVerified != "YES") {
+            return res.redirect("/teacher/selected")
+         }
+
+         else {
+            return res.redirect("/teacher/status")
+         }
+
+      }
+      else{
+         return res.redirect("/teacher/create")
+      }
+
+   }
+   else
+   {
+      return res.redirect("/teacher/login")
+   }
+}
+
+
+

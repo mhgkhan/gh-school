@@ -1,9 +1,18 @@
 import mongoose from "mongoose";
 
 const singupStudentDetails = mongoose.Schema({
+    fullname:{
+        type:String,
+        required:true
+    },
+    fathername:{
+        type:String,
+        required:true
+    },
     gender: {
         type: String,
-        required: true
+        required: true,
+        default:"male"
     },
     martial_status: {
         type: String,
@@ -34,7 +43,6 @@ const singupStudentDetails = mongoose.Schema({
         type: String,
         max: 18,
         min: 7,
-        required: true
     },
 
     mother_cnic: {//4
@@ -43,7 +51,12 @@ const singupStudentDetails = mongoose.Schema({
         min: 10,
         // required: true
     },
-
+    
+    email:{
+        type:String,
+        required:true,
+        default:"example@example.example",
+    },
     blood_group: {//5
         type: String,
         required: true,
@@ -79,15 +92,14 @@ const singupStudentDetails = mongoose.Schema({
         type: String,
         required: true
     },
+    dob:{
+        type:String,
+        requried:true
+    },
     teacherid:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"teacher",
-        required:true
     },
-    std_id:{
-        type:String,
-        required:true,
-    }
 
 }, {
     timestamps: true
