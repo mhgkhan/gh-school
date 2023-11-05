@@ -1,0 +1,242 @@
+<%- include('../layouts/header') %>
+
+<!-- main in strted from here  -->
+
+<section class="section flex" style="margin: 0px; position:relative">
+
+
+  <div class="container section-container">
+
+    <div class="header">
+      <h1>GHAZNA PUBLIC SCHOOL </h1>
+      <span>Student Admission Status</span>
+    </div>
+
+    <div class="form-area">
+      <div class="form-header">
+        <h1 style="margin: .4rem;">CHECK YOUR ADDMISSION STATUS </h1>
+        <ul>
+          <li>
+            <p>Hi, if you done any online admission here so you are able to check your application (admission) status that what's going on.</p>
+          </li>
+          <li>
+            <p> Please fill all fields with valid credientials and don't leave any field from this other
+              wise the submit button is disabled.</p>
+          </li>
+          <li>
+            <p> If your admission is succeed so you have to show your complete form then print it and go to GHS (Ghazna public high school) with your original documents.</p>
+          </li>
+          <li>
+            <p>Else: try again or wait for hour or day or 2 days we check your admission form then we respond you. thanks! </p>
+          </li>
+
+          <li>
+            <p> And must calculate the 100 + 5 = and type the answer of this is the last field.</p>
+          </li>
+        </ul>
+      </div>
+
+      <form id="check-form" autocomplete="off">
+
+        <h3 style="width: 100%;height:auto; padding:9px; height: 30px; display: block; text-align: center; margin: 0px auto; color:red;" id="errMsg"></h3>
+
+        <div class="form-fields-row flex item-center justify-center">
+
+
+          <div class="form-field">
+            <span><i class="fa fa-phone"></i></span>
+            <input type="tel" class="form-input" name="phone" id="phone" minlength="9" maxlength="13" required placeholder="03123456789">
+          </div>
+
+          <div class="form-field">
+            <span><i class="fa fa-robot"></i></span>
+            <input type="number" class="form-input" name="std_id" id="std_id" placeholder="Student id" required title="Enter the student admission id">
+          </div>
+
+        </div>
+
+        <div class="form-fields-row flex item-center justify-center">
+
+          <div class="form-field quiz-form" style="width: 100%;">
+            <span id="5">5</span>
+            <span>+</span>
+            <span id="100">100</span>
+            <span>=</span>
+            <input type="number" class="form-input" name="quiznumber" id="quiznumber" required maxlength="3" minlength="2" placeholder="Enter answer here (100 + 5 =) ">
+          </div>
+        </div>
+
+        <button type="submit" id="formSubmitBtn" disabled><i class="fa fa-signal"></i> Check</button>
+
+      </form>
+
+
+
+
+      <div class="student-data-result">
+        <div class="container-student-result" id="result-container">
+          <!-- <div class="loading-bar-sm"></div> -->
+          <!-- <div class="student-adm mt-2">
+              <h1>this is the student result </h1>
+            </div> -->
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</section>
+<!-- main in ended from here  -->
+<%- include('../layouts/footer') %>
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+<script>
+  const form = document.getElementById("check-form");
+  const formSubmitBtn = document.getElementById("formSubmitBtn")
+  const formInputs = document.querySelectorAll(".form-input");
+  const errMsg = document.getElementById("errMsg");
+  const resultContainer = document.getElementById("result-container")
+
+  let ph = false,
+    id = false,
+    quiz = false
+
+  const checkall = () => {
+    //   console.log(ph, id, quiz)
+    if (ph && id && quiz) {
+      if (formInputs[2].value == "105") {
+        formSubmitBtn.disabled = false
+      } else {
+        errMsg.style.color = "red"
+        errMsg.innerText = "❌ Wroing answer"
+        formSubmitBtn.disabled = true
+      }
+
+    } else {
+      console.log("submit button was disabled")
+      formSubmitBtn.disabled = true
+    }
+
+    // setTimeout(() => {
+    //   errMsg.innerText = ""
+    // }, 3000);
+  }
+
+  formInputs[0].addEventListener("keyup", e => {
+    e.target.type = "number"
+    if (e.target.value.length > 9) {
+      ph = true
+      errMsg.style.color = "green"
+      errMsg.innerText = '✅ phone number are valid '
+    } else {
+      ph = false
+      errMsg.style.color = "red"
+      errMsg.innerText = '❌ invilid phone '
+    }
+    checkall()
+  })
+
+  formInputs[1].addEventListener("keyup", e => {
+
+
+    if (e.target.value.length > 0) {
+      id = true
+      errMsg.style.color = "green"
+      errMsg.innerText = '✅ Ok'
+    } else {
+      id = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ Id vlaue is not valid"
+    }
+    checkall()
+  })
+  formInputs[2].addEventListener("keyup", e => {
+    console.log('value2 length is ', e.target.value.length)
+
+    if (e.target.value.length > 2) {
+      quiz = true
+      errMsg.style.color = "green"
+      errMsg.innerText = "✅ Valid value "
+    } else {
+      quiz = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ invlid value "
+    }
+    checkall()
+  })
+
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault()
+    let msg = ""
+    let apiUrl = "/api/student/admstatus/";
+    errMsg.innerText = "Wait..."
+    resultContainer.innerHTML = ` <div class="loading-bar-sm"></div>`
+    form.style.filter = "blur(5px)"
+    formInputs[0].disabled = true
+      formInputs[1].disabled = true
+      formInputs[2].disabled = true
+      formSubmitBtn.disabled = true
+    const request = await fetch(apiUrl, {
+      method: "post",
+      headers: {
+        'content-type': "application/json"
+      },
+      body: JSON.stringify({
+        phone: formInputs[0].value,
+        std_id: formInputs[1].value
+      })
+    })
+
+    try {
+      const response = await request.json();
+      form.reset()
+      form.style.filter = "blur(0px)"
+      formInputs[0].disabled = false
+      formInputs[1].disabled = false
+      formInputs[2].disabled = false
+
+      if (response.success) {
+        errMsg.style.color = "green"
+        msg = response.message
+        //   console.log(response.data)
+        // errMsg.innerText = "Login Sucessfull."
+      } else {
+        errMsg.style.color = "red"
+        msg = response.error
+        // errMsg.innerText = response.err
+      }
+    } catch (error) {
+      // console.log(error)
+      errMsg.style.color = "red"
+      msg = error
+      // errMsg.innerText = error
+    }
+
+    resultContainer.innerHTML = `
+      <div class="student-adm mt-2 default-padding">
+              <h4>${msg}</h4>
+            </div> 
+      `
+    errMsg.innerText = msg
+
+  })
+</script>
+
+</body>
+
+</html>

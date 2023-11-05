@@ -1,0 +1,214 @@
+<%- include('../layouts/header') %>
+
+
+<!-- main in strted from here  -->
+<section class="section">
+  <div class="container section-container">
+
+    <div class="header">
+      <h1>GHAZNA PUBLIC SCHOOL </h1>
+      <span>Login to your account  </span>
+    </div>
+
+    <div class="form-area">
+      <div class="form-header">
+        <h1 style="margin: 1rem 0px;"> Login to your account </h1>
+        <ul>
+          <li>
+            <p> Please fill all fields with valid credientials and don't leave any field from this other
+              wise the submit button is disabled.</p>
+          </li>
+
+          <li>
+            <p> And must calculate the 100 + 5 = and type the answer of this is the last field.</p>
+          </li>
+        </ul>
+      </div>
+
+      <form id="login-form" autocomplete="off">
+
+        <h3 style="width: 100%;height:auto; padding:9px; height: 30px; display: block; text-align: center; margin: 0px auto; color:red;" id="errMsg"></h3>
+
+        <div class="form-fields-row flex item-center justify-center">
+
+
+          <div class="form-field">
+            <span><i class="fa fa-phone"></i></span>
+            <input type="tel" class="form-input" name="phone" id="phone" minlength="9" maxlength="13" required placeholder="03123456789">
+          </div>
+
+          <div class="form-field">
+            <span><i class="fa fa-key"></i></span>
+            <input type="password" class="form-input" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password">
+          </div>
+
+        </div>
+
+        <div class="form-fields-row flex item-center justify-center">
+
+          <!-- <div class="form-field">
+                            <span><i class="fa fa-key"></i></span>
+                            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password" >
+                        </div>  -->
+
+          <div class="form-field quiz-form" style="width: 100%;">
+            <span id="5">5</span>
+            <span>+</span>
+            <span id="100">100</span>
+            <span>=</span>
+            <input type="number" class="form-input" name="quiznumber" id="quiznumber" required maxlength="3" minlength="2" placeholder="Enter answer here (100 + 5 =) ">
+          </div>
+        </div>
+
+        <button type="submit" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
+          Login</button>
+
+      </form>
+      <div class="other" style="padding:10px; text-align:center;">
+        <span>Not have an account &nbsp; </span> <a href="/teacher/create" class="btn">Create now </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('../layouts/footer') %>
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+<script>
+  const form = document.getElementById("login-form");
+  const formSubmitBtn = document.getElementById("formSubmitBtn")
+  const formInputs = document.querySelectorAll(".form-input");
+  const errMsg = document.getElementById("errMsg");
+
+
+  let ph = false,
+    p = false,
+    quiz = false
+
+  const checkall = () => {
+    // console.log(ph, p, quiz)
+    if (ph && p && quiz) {
+      if (formInputs[2].value == "105") {
+        formSubmitBtn.disabled = false
+      } else {
+        errMsg.style.color = "red"
+        errMsg.innerText = "❌ Wroing answer"
+        formSubmitBtn.disabled = true
+      }
+
+    } else {
+      // console.log("submit button was disabled")
+      formSubmitBtn.disabled = true
+    }
+
+    // setTimeout(() => {
+    //   errMsg.innerText = ""
+    // }, 3000);
+  }
+
+  formInputs[0].addEventListener("keyup", e => {
+    e.target.type = "number"
+    if (e.target.value.length > 9) {
+      ph = true
+      errMsg.style.color = "green"
+      errMsg.innerText = '✅ phone number are valid '
+    } else {
+      ph = false
+      errMsg.style.color = "red"
+      errMsg.innerText = '❌ invilid phone '
+    }
+    checkall()
+  })
+
+  formInputs[1].addEventListener("keyup", e => {
+
+
+    if (e.target.value.length > 5) {
+      p = true
+      errMsg.style.color = "green"
+      errMsg.innerText = '✅ password'
+    } else {
+      p = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ password must  grater than  5 characters"
+    }
+    checkall()
+  })
+  formInputs[2].addEventListener("keyup", e => {
+    console.log('value2 length is ', e.target.value.length)
+
+    if (e.target.value.length > 2) {
+      quiz = true
+      errMsg.style.color = "green"
+      errMsg.innerText = "✅ Valid value "
+    } else {
+      quiz = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ invlid value "
+    }
+    checkall()
+  })
+
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault()
+    let msg = ""
+    let apiUrl = "/api/teacher/signin/";
+    errMsg.innerText = "Wait..."
+    const request = await fetch(apiUrl, {
+      method: "post",
+      headers: {
+        'content-type': "application/json"
+      },
+      body: JSON.stringify({
+        phone: formInputs[0].value,
+        password: formInputs[1].value
+      })
+    })
+
+    try {
+      const response = await request.json();
+      form.reset()
+
+      if (response.success) {
+        errMsg.style.color = "green"
+        msg = "Login Sucessfull. please wait..."
+        localStorage.setItem("token", response.token)
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
+        // errMsg.innerText = "Login Sucessfull."
+      } else {
+        errMsg.style.color = "red"
+        msg = response.err
+        // errMsg.innerText = response.err
+      }
+    } catch (error) {
+      // console.log(error)
+      errMsg.style.color = "red"
+      msg = error
+      // errMsg.innerText = error
+    }
+
+    errMsg.innerText = msg
+
+  })
+</script>
+
+
+</body>
+
+</html>

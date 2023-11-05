@@ -1,0 +1,197 @@
+<%- include('./layouts/header') %>
+
+<style>
+  form {
+    padding: 10px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1rem;
+  }
+
+  button {
+    /* background-color: #; */
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+  }
+
+
+
+  .hide {
+    display: none;
+  }
+</style>
+
+<!-- main in strted from here  -->
+<section class="section">
+  <div class="container section-container">
+    <h3>Contact us </h3>
+    <h1 style="margin: 1rem 0px;"> FREE FEEL FOR CONTACT US </h1>
+    <p>Your questions and feedback are important to us. We welcome your
+      inquiries and look <br> forward to connecting with you as we work together to create an exceptional
+      educational experience.</p>
+
+
+    <form id="contactform" autocomplete="off">
+      <div class="input-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-input-contact" id="name" name="name" required placeholder="Name" maxlength="40" minlength="4">
+        <span style="color: red; margin:0px 15px;" class="errLine"></span>
+      </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-input-contact" id="email" name="email" required placeholder="Email" maxlength="100" minlength="4">
+        <span style="color: red; margin:0px 15px;" class="errLine"></span>
+      </div>
+      <div class="input-group">
+        <label for="message">Message:</label>
+        <textarea id="message" class="form-input-contact" name="message" rows="10" required placeholder="Your message" maxlength="500" minlength="10"></textarea>
+        <span style="color: red; margin:0px 15px;" class="errLine"></span>
+      </div>
+      <h3 style="color: red; width: 100%; height: 20px; margin: 5px; text-align: center;" id="alertMsg"></h3>
+      <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('./layouts/footer') %>
+
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+<script>
+  let name = false,
+    email = false,
+    message = false
+
+  let formInputContact = document.querySelectorAll(".form-input-contact");
+  let errLine = document.querySelectorAll(".errLine");
+
+  function checkInvilidInput() {
+    console.log(name, email, message)
+    if (name && email && message) {
+      document.getElementById("submitBtn").disabled = false
+    } else {
+      document.getElementById("submitBtn").disabled = true
+    }
+  }
+
+  formInputContact[0].addEventListener("keyup", e => {
+    if (e.target.value.length < 5) {
+      name = false
+      //   errLine[0].classList.add("hide");
+      errLine[0].innerHTML = "❌ Name value must be atleast 5 characters"
+    } else {
+      name = true
+      // errLine[0].classList.remove("hide");
+      errLine[0].innerHTML = "✅ Name are valid"
+    }
+    checkInvilidInput()
+  })
+
+
+  formInputContact[1].addEventListener("keyup", e => {
+    let regx = /^[a-z]([_\-\.a-z0-9]+)@([_\-\.a-z]+)\.([a-z]){2,8}/
+    if (!regx.test) {
+      email = false
+      // errLine[1].classList.add("hide");
+      errLine[1].innerHTML = "❌Email are not valid"
+    } else {
+      email = true
+      //   errLine[1].classList.remove("hide");
+      errLine[1].innerHTML = "✅ Email are valid"
+    }
+    checkInvilidInput()
+  })
+
+
+  formInputContact[2].addEventListener("keyup", e => {
+    if (e.target.value.length < 20) {
+      message = false
+      // errLine[2].classList.add("hide");
+      errLine[2].innerHTML = "Message value must be atleast 20 characters."
+    } else {
+      message = true
+      // errLine[2].classList.remove("hide");
+      errLine[2].innerHTML = "✅ message are valid"
+    }
+    checkInvilidInput()
+  })
+
+
+  const contactform = document.getElementById("contactform");
+  const alertMsg = document.getElementById("alertMsg");
+
+  contactform.addEventListener("submit", async e => {
+    e.preventDefault();
+    let url = '/api/contact'
+    const request = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formInputContact[0].value,
+        email: formInputContact[1].value,
+        message: formInputContact[2].value
+      })
+    })
+    contactform.reset()
+    name=false,message=false,email=false
+    alertMsg.style.color = 'green'
+    alertMsg.innerText = "Loading ..."
+
+    try {
+      const response = await request.json()
+      if (response.success) {
+        alertMsg.style.color = "green"
+        alertMsg.innerText = `✅ ${response.msg}`
+        
+      } else {
+        alertMsg.style.color = "red"
+        alertMsg.innerText = error
+      }
+    } catch (error) {
+      alertMsg.style.color = "red"
+      alertMsg.innerText = error
+    }
+
+
+
+  })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+<%- include('../layouts/header') %>
+
+
+<!-- main in strted from here  -->
+<section class="section">
+  <div class="container section-container">
+
+    <div class="header">
+      <h1>GHAZNA PUBLIC SCHOOL </h1>
+      <span>Step-1 Create Account Now </span>
+    </div>
+
+    <!-- <h3> Student Admission </h3> -->
+    <div class="form-area">
+      <div class="form-header">
+        <h1 style="margin: 1rem 0px;"> Create new account! </h1>
+        <ul>
+          <li>
+            <p> Please fill all fields with valid credientials and don't leave any field from this other
+              wise the submit button is disabled.</p>
+          </li>
+          <li>
+            <p>Must check your confirm password if match otherwise they will throw error (submit button
+              are disabled).</p>
+          </li>
+          <li>
+            <p> And must calculate the 100 + 5 = and type the answer of this is the last field.</p>
+          </li>
+        </ul>
+      </div>
+
+      <form id="signup-form" autocomplete="off" >
+
+        <h3 style="width: 100%;height:auto; padding:9px; height: 30px; display: block; text-align: center; margin: 0px auto; color:red;" id="errMsg"></h3>
+        <div class="form-fields-row flex item-center justify-center">
+
+          <div class="form-field">
+            <span><i class="fa fa-user"></i></span>
+            <input type="text" class="form-input" name="firstname" id="firstname" placeholder="Frist name " required minlength="1">
+          </div>
+
+
+          <div class="form-field">
+            <span><i class="fa fa-user"></i></span>
+            <input type="text" class="form-input" name="lastname" id="lastname" placeholder="Last name" required minlength="1">
+          </div>
+
+
+
+        </div>
+
+        <div class="form-fields-row flex item-center justify-center">
+
+          <div class="form-field">
+            <span><i class="fa fa-envelope"></i></span>
+            <input type="email" class="form-input" name="email" id="email" placeholder="Valid email" required minlength="5" title="Please Enter Valid Email">
+          </div>
+
+
+          <div class="form-field">
+            <span><i class="fa fa-phone"></i></span>
+            <input type="tel" class="form-input" name="phone" id="phone" placeholder="03333333333" required minlength="7" maxlength="12">
+          </div>
+
+        </div>
+
+
+        <div class="form-fields-row flex item-center justify-center">
+
+          <div class="form-field">
+            <span><i class="fa fa-key"></i></span>
+            <input type="password" class="form-input" name="password" id="password" placeholder="Password" required minlength="6" title="Please Enter Valid password">
+          </div>
+
+
+          <div class="form-field">
+            <span><i class="fa fa-key"></i></span>
+            <input type="password" class="form-input" name="cpassword" id="confirm-password" placeholder="Confirm password" required minlength="6" title="Please Enter Valid password">
+          </div>
+
+        </div>
+
+        <div class="form-fields-row flex item-center justify-center">
+
+          <div class="form-field quiz-form" style="width: 100%;">
+            <span id="5">5</span>
+            <span>+</span>
+            <span id="100">100</span>
+            <span>=</span>
+            <input type="number" class="form-input" name="quiznumber" id="quiznumber" placeholder="Enter answer here " required minlength="1" maxlength="3">
+          </div>
+        </div>
+
+        <button type="submit" id="formSubmitBtn" disabled><i class="fa fa-sign-in"></i>
+          Signup</button>
+
+      </form>
+      <div class="other" style="padding:10px; text-align:center;">
+        <span>Already Have an Account&nbsp; </span> <a href="/teacher/login" class="btn">Login</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('../layouts/footer') %>
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+<script>
+  const form = document.getElementById("signup-form");
+  const formSubmitBtn = document.getElementById("formSubmitBtn")
+  const formInputs = document.querySelectorAll(".form-input");
+  let errMsg = document.getElementById("errMsg")
+
+
+
+  let f = false,
+    l = false,
+    em = false,
+    ph = false,
+    p = false,
+    cp = false,
+    quiz = false
+
+  const checkall = () => {
+    // console.log(f, l, em, ph, p, cp, quiz)
+    if (f && l && ph && em && p && cp && quiz) {
+      if (formInputs[4].value === formInputs[5].value) {
+        if (formInputs[6].value == "105") {
+          formSubmitBtn.disabled = false
+        } else {
+          formSubmitBtn.disabled = true
+        }
+      } else {
+        formSubmitBtn.disabled = true
+      }
+    } else {
+      // console.log("submit button was disabled")
+      formSubmitBtn.disabled = true
+    }
+  }
+
+  formInputs[0].addEventListener("keyup", e => {
+    // console.log('value1 length is ', e.target.value.length)
+    let regax = /^[a-zA-Z]([a-zA-Z ]){1,15}$/
+    if (regax.test(e.target.value)) {
+      f = true
+      errMsg.style.color = "green"
+      errMsg.innerText = "✅First Name."
+    } else {
+      f = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ First Name Not valid ."
+    }
+    checkall()
+  })
+
+  formInputs[1].addEventListener("keyup", e => {
+    // console.log('value2 length is ', e.target.value.length)
+    let regax = /^[a-zA-Z]([a-zA-Z ]){1,15}$/
+
+    if (regax.test(e.target.value)) {
+      l = true
+      errMsg.style.color = "green"
+      errMsg.innerText = "✅ Last Name."
+    } else {
+      l = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ last name invilid"
+    }
+    checkall()
+  })
+
+  formInputs[2].addEventListener("keyup", e => {
+    // console.log('value3 length is ', e.target.value.length)
+
+
+    let regx = /^[a-z]([_\-\.a-z0-9]+)@([_\-\.a-z]+)\.([a-z]){2,8}/
+
+    if (regx.test(e.target.value)) {
+      errMsg.style.color = "green"
+      errMsg.innerText = "✅ Email is ok."
+      em = true
+    } else {
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ Email not valid."
+      em = false
+    }
+    checkall()
+  })
+
+  formInputs[3].addEventListener("keyup", e => {
+    // console.log('value4 length is ', e.target.value.length)
+    let regax = /^[0-9]([0-9]){9,12}$/
+    if (regax.exec(e.target.value)) {
+      ph = true
+      errMsg.style.color = "green"
+      errMsg.innerText = "✅Phone number is ok."
+    } else {
+      ph = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ Phone number are not valid."
+    }
+    checkall()
+  })
+
+  formInputs[4].addEventListener("keyup", e => {
+    // console.log('value5 length is ', e.target.value.length)
+    let regax = /^([a-zA-Z0-9]+){6,200}/
+    if (regax.test(e.target.value)) {
+      p = true
+      errMsg.style.color = "red"
+      errMsg.innerText = "✅ Password is ok ."
+    } else {
+      p = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ Password is weak."
+    }
+    checkall()
+  })
+
+  formInputs[5].addEventListener("keyup", e => {
+    // console.log('value6 length is ', e.target.value.length)
+    let regax = /^([a-zA-Z0-9]+){6,200}/
+    if (regax.test(e.target.value)) {
+      errMsg.style.color = "red"
+      if (formInputs[4].value == formInputs[5].value) {
+        errMsg.innerText = "✅ Password is ok ."
+        cp = true
+      } else {
+        errMsg.innerText = "❌ Confirm password not matching."
+        cp = false
+      }
+    } else {
+      cp = false
+      errMsg.style.color = "red"
+      errMsg.innerText = "❌ Password is weak."
+    }
+    checkall()
+  })
+
+  formInputs[6].addEventListener("keyup", e => {
+    // console.log('value7 length is ', e.target.value.length)
+
+    if (e.target.value.length >= 2) {
+      quiz = true
+    } else {
+      quiz = false
+    }
+    checkall()
+  })
+
+
+  // formSubmitBtn.addEventListener("click", e => {
+  //   e.preventDefault();
+  //   form.submit();
+  // })
+
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    let url = "/api/teacher/signup/"
+    let msg = ""
+
+    const request = await fetch(url, {
+      method: "post",
+      headers: {
+        'content-type': "application/json"
+      },
+      body: JSON.stringify({
+        firstname: formInputs[0].value,
+        lastname: formInputs[1].value,
+        email: formInputs[2].value,
+        phone: formInputs[3].value,
+        password: formInputs[4].value,
+        cpassword: formInputs[5].value
+      })
+    })
+
+    try {
+      const response = await request.json();
+      form.reset()
+
+      if (response.success) {
+        errMsg.style.color = "green"
+        msg = "✅ Signup Sucessfull. please wait..."
+        localStorage.setItem("token", response.token)
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
+      } else {
+        errMsg.style.color = "🚫red"
+        msg = response.err
+      }
+    } catch (error) {
+      // console.log(error)
+      errMsg.style.color = "🚫red"
+      msg = error
+      // errMsg.innerText = error
+    }
+
+    errMsg.innerText = msg
+
+
+
+  })
+</script>
+
+
+</body>
+
+</html>

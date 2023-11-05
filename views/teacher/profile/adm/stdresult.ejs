@@ -1,0 +1,170 @@
+<%- include('../../../layouts/dashboardHeader') %>
+
+
+<!-- main in strted from here  -->
+<section class="section">
+  <style>
+    iframe img{
+      width:100% !important;
+      height:100% !important;
+    }
+  </style>
+  <div class="container section-container">
+    <div class="container section-container user-profile-container">
+
+      <div class="header">
+        <h1>GHAZNA PUBLIC SCHOOL </h1>
+        <span>Student Addmission Result  </span>
+      </div>
+
+      <h1><%= message %></h1>
+      <span> Student Id is : <%= studentid %></span>
+      <p>WAIT!: please take screenshot from this window or copy the Student id please </p>
+      <p>this id is useful for to search your admision status )</p>
+      <a href="/student/checkstatus"><h3>Click here to check your admission status </h3></a>
+    </div>
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('../../../layouts/footer') %>
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+
+<script>
+
+  const form = document.getElementById("signup-form");
+  const formSubmitBtn = document.getElementById("formSubmitBtn")
+  const formInputs = document.querySelectorAll(".form-input")
+
+
+  const uploadPicBlock = document.getElementById("uploadPicBlock");
+  const usrimageinput = document.getElementById("usrimageinput");
+  const formimageinputSpan = document.getElementById("userImageUploadMsg")
+
+
+  // for inputs 
+  let rn=false,spn=false,sfn=false,sfa = false,quiz = false
+
+
+
+  // to check if input is not valid 
+  const checkall = () => {
+      // console.log(fc, fp, vn, pa, quiz)
+      if (usrimageinput.files.length < 1) {
+          formSubmitBtn.disabled = true
+          formimageinputSpan.innerText = "Image Upload Is Required"
+          uploadPicBlock.style.boxShadow = "0px 0px 29px red"
+          uploadPicBlock.classList.add("animate")
+      }
+      else {
+          uploadPicBlock.style.boxShadow = "0px 0px 5px #706d6db8"
+          uploadPicBlock.classList.remove("animate")
+          formimageinputSpan.innerText = usrimageinput.files[0].name
+          console.log(rn,spn,sfn,sfa,quiz)
+          if (rn && spn && sfn && sfa && quiz) {
+              if (formInputs[4].value == "105") {
+                  formSubmitBtn.disabled = false
+              }
+              else {
+                  formSubmitBtn.disabled = true
+              }
+          }
+          else {
+              // console.log("submit button was disabled")
+              formSubmitBtn.disabled = true
+          }
+      }
+  }
+
+
+
+
+  uploadPicBlock.addEventListener("click", e => {
+     // uploadPicBlock.innerHTML = ""
+      usrimageinput.click()
+      //uploadPicBlock.classList.remove("animate")
+  })
+ usrimageinput.addEventListener("change", e => {
+      uploadPicBlock.innerHTML = "<span> <i class='fa fa-upload'> </i> </span> <p style='text-align:center; padding:5px;'>Select Student Shool Certificate (if you want to change it click on the outer border of this box)</p> "
+      if (e.target.files.length < 1) {
+          usrimageinput.click()
+      }
+      else {
+          const fakeUrl = URL.createObjectURL(e.target.files[0]);
+          // uploadPicBlock.innerHTML = `<iframe style="width:90%; height:90%;" src="${fakeUrl}"> </iframe>`
+          // console.log(e.target.files[0])
+          if(e.target.files[0].type == "application/pdf"){
+            uploadPicBlock.innerHTML = `<iframe style="width:90%; height:90%;" src="${fakeUrl}"> </iframe>`
+          }
+          else{
+            uploadPicBlock.innerHTML = `<img src="${fakeUrl}" />`
+          }
+          checkall()
+
+          // console.log(e.target.files[0])
+          // console.log(e.target.name)
+
+      }
+  })
+
+
+
+
+
+
+
+
+  formInputs[0].addEventListener("keyup", e => {
+      // console.log('value1 length is ', e.target.value.length)
+      e.target.value.length > 0 ? rn = true : rn=false
+      checkall()
+  })
+
+  formInputs[1].addEventListener("keyup", e => {
+      // console.log('value2 length is ', e.target.value.length)
+      e.target.value.length > 5 ? spn= true:spn= false
+      checkall()
+  })
+  formInputs[2].addEventListener("keyup", e => {
+      // console.log('value2 length is ', e.target.value.length)
+      e.target.value.length > 5? sfn =  true : sfn = false
+      checkall()
+  })
+  formInputs[3].addEventListener("keyup", e => {
+      // console.log('value2 length is ', e.target.value.length)
+      e.target.value.length > 5 ? sfa = true : sfid = false
+      checkall()
+  })
+  formInputs[4].addEventListener("keyup", e => {
+      // console.log('value2 length is ', e.target.value.length)
+      e.target.value.length > 2 ? quiz = true : quiz = false
+      checkall()
+  })
+
+
+
+/*         form.addEventListener("submit", e=>{
+      e.preventDefault();
+      console.log(e.target)
+  })
+*/ 
+
+
+</script>
+
+
+</body>
+
+</html>

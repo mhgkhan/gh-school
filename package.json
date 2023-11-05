@@ -1,0 +1,47 @@
+{
+  "name": "gh-sms",
+  "version": "1.0.0",
+  "description": "this is my first project for school management system on nodejs express",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "node server.js",
+    "dev": "nodemon server.js -e ejs,js,json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhgkhan/gh-school.git"
+  },
+  "keywords": [
+    "school management system",
+    "GHSMS ghazna school management system",
+    "ghazna",
+    "gh school",
+    "ghazna",
+    "mhgkhan school management system",
+    "mhgkhan",
+    "management system",
+    "gh",
+    "projects"
+  ],
+  "author": "ghazna khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhgkhan/gh-school/issues"
+  },
+  "homepage": "https://github.com/mhgkhan/gh-school#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

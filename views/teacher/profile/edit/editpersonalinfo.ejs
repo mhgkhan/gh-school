@@ -1,0 +1,383 @@
+<%- include('../../../layouts/dashboardHeader') %>
+
+
+<!-- main in strted from here  -->
+<section class="section">
+  <div class="container section-container">
+    <h2>Edit</h2>
+    <h1>Edit Your Personal Information </h1>
+
+
+    <div class="edit-area flex justify-center" style="align-items: flex-start;">
+
+
+
+      <div class="left-edit-area edit-area-block">
+
+
+        <div class="edit-signup-info w-100">
+          <h3>Edit your account details </h3>
+
+          <form id="signupeditfrom" class="w-100" autocapitalize="off">
+
+            <div class="info-teacher flex item-center justify-between flex-wrap">
+
+              <div class="info-block flex flex-col">
+                <span>Gender</span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input class="personal-info-input" type="text" name="gender" id="gender" placeholder="gender" required value="<%= personalData.gender %>">
+                </div>
+
+              </div>
+
+
+              <div class="info-block flex flex-col">
+                <span>Martial Status</span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input class="personal-info-input" type="text" name="martial_status" id="mstatus" placeholder="Martial status" required value="<%= personalData.martial_status %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>Religon</span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-book"></i></span>
+                  <input class="personal-info-input" type="text" name="religon" id="mstatus" placeholder="Religon" required value="<%= personalData.religon %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>National ID</span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input class="personal-info-input" type="text" name="teacher_cnic" id="teacher_cnic" placeholder="Teacher cnic " required value="<%= personalData.teacher_cnic %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>Father Cnic </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input class="personal-info-input" type="text" name="father_cnic" id="father_cnic" placeholder="Father cnic " required value="<%= personalData.father_cnic %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>Date of birth </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input class="personal-info-input" type="text" name="dob" id="dob" placeholder="Date of birth " required value="<%= personalData.dob %>">
+                </div>
+              </div>
+
+
+              <div class="info-block flex flex-col">
+                <span>Blood Group </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-user"></i></span>
+                  <input class="personal-info-input" type="text" name="blood_group" id="blood_group" placeholder="Blood Grup " required value="<%= personalData.blood_group %>">
+                </div>
+              </div>
+
+
+              <div class="info-block flex flex-col">
+                <span>Provience </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input class="personal-info-input" type="text" name="provience" id="provience" placeholder=" Provience  " required value="<%= personalData.provience %>">
+                </div>
+              </div>
+
+
+              <div class="info-block flex flex-col">
+                <span>City </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input class="personal-info-input" type="text" name="city" id="city" placeholder="City " required value="<%= personalData.city %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>District </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input class="personal-info-input" type="text" name="district" id="district" placeholder="District " required value="<%= personalData.district %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>Vallage </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input class="personal-info-input" type="text" name="vallage_name" id="vallage_name" placeholder="Vallage  " required value="<%= personalData.vallage_name %>">
+                </div>
+              </div>
+
+              <div class="info-block flex flex-col">
+                <span>Parmanent Address </span>
+                <div class="form-field flex item-center" id="formnotpassfield">
+                  <span style="margin: 0px 6px;"><i class="fa-solid fa-flag"></i></span>
+                  <input class="personal-info-input" type="text" name="parmanent_address" id="parmanent_address" placeholder="Parmanent Address  " required value="<%= personalData.parmanent_address %>">
+                </div>
+              </div>
+
+
+              <button   disabled type="submit" id="infoUpdateButton">Update Now </button>
+
+              <h4 style="color: red;height:30px; margin: 6px 2rem; " id="msg"></h4>
+
+
+
+            </div>
+
+          </form>
+
+        </div>
+
+
+      </div>
+
+
+
+
+      <div class="right-edit-area edit-area-block">
+
+
+
+        <fieldset>
+          <legend>
+            <h3>Update Password</h3>
+          </legend>
+          <form id="update-password-form">
+            <h4 id="alertPasword" style="color: red; text-align: center; width: 100%; height: 30px;"></h4>
+            <div class="form-field flex item-center">
+              <label for="ppassword"><i class="fa fa-key"></i></label>
+              <input type="text" class="update-password-input" name="prevpassword" id="ppassword" placeholder="Previus password" required>
+            </div>
+            <div class="form-field flex item-center">
+              <label for="npassword"><i class="fa fa-key"></i></label>
+              <input type="text" class="update-password-input" name="newpassword" id="npassword" placeholder="New password" required>
+            </div>
+            <div class="form-field flex item-center">
+              <label for="cnpassword"><i class="fa fa-key"></i></label>
+              <input type="text" class="update-password-input" name="confirmpassword" id="cnpassword" placeholder="Confirm new password" required>
+            </div>
+
+            <button disabled type="submit" id="changepasswordbtn">Update Now </button>
+          </form>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- main in ended from here  -->
+<%- include('../../../layouts/footer') %>
+
+
+
+<script src="/assets/js/all.js"></script>
+
+
+<!-- typedjs animation library cdn -->
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
+
+<script src="/assets/js/main.js"></script>
+
+
+<script>
+  const updatePersonalInfoForm = document.getElementById("signupeditfrom");
+  const updatePasswordFrom = document.getElementById("update-password-form");
+
+
+
+  const personalInfoInput = document.querySelectorAll(".personal-info-input");
+  const msg = document.getElementById("msg");
+
+
+  personalInfoInput.forEach(input=>{
+    input.addEventListener("keyup", e=> infoUpdateButton.disabled = false)
+  })
+
+  updatePersonalInfoForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    // console.log("hello world")
+    let path = `/api/teacher/edit/personalinfo`
+
+    const request = await fetch(path, {
+      method: "put",
+      headers: {
+        'content-type': "application/json"
+      },
+      body: JSON.stringify({
+        gender: personalInfoInput[0].value,
+        martial_status: personalInfoInput[1].value,
+        religon: personalInfoInput[2].value,
+        teacher_cnic: personalInfoInput[3].value,
+        father_cnic: personalInfoInput[4].value,
+        dob: personalInfoInput[5].value,
+        blood_group: personalInfoInput[6].value,
+        provience: personalInfoInput[7].value,
+        city: personalInfoInput[8].value,
+        district: personalInfoInput[9].value,
+        vallage_name: personalInfoInput[10].value,
+        parmanent_address: personalInfoInput[11].value
+      })
+    })
+
+    try {
+      const response = await request.json();
+      if (response.success) {
+        msg.style.color = "green"
+        msg.innerText = response.msg + " and please Wait"
+        setTimeout(() => {
+          window.location.reload()
+        }, 1500);
+      } else {
+        msg.style.color = "red"
+        msg.innerText = response.error + "and please Wait"
+        setTimeout(() => {
+          window.location.reload()
+        }, 1500);
+      }
+    } catch (error) {
+      msg.style.color = "red"
+      msg.innerText = response.error
+    }
+
+    // console.log(response)
+
+
+  })
+
+
+
+
+  const passwordInput = document.querySelectorAll(".update-password-input");
+  let pp = false,
+    np = false,
+    cnp = false
+  const alertPasword = document.getElementById("alertPasword")
+  const changepasswordbtn = document.getElementById("changepasswordbtn")
+
+
+  function checPasswordsValidation() {
+    console.log(pp, np, cnp)
+    if (pp && np && cnp) {
+      changepasswordbtn.disabled = false
+      if (np == cnp) {
+        changepasswordbtn.disabled = false
+      } else {
+        changepasswordbtn.disabled = true
+      }
+    } else {
+      changepasswordbtn.disabled = true
+    }
+  }
+
+
+  passwordInput[0].addEventListener("keyup", e => {
+    if (e.target.value.length < 6) {
+      pp = false
+      alertPasword.style.color = "red"
+      alertPasword.innerText = "❌ Not valid"
+    } else {
+      pp = true
+      alertPasword.style.color = "green"
+      alertPasword.innerText = "✅ Password is ok"
+    }
+    checPasswordsValidation()
+  })
+
+  passwordInput[1].addEventListener("keyup", e => {
+    if (e.target.value.length < 6) {
+      np = false
+      alertPasword.style.color = "red"
+      alertPasword.innerText = "❌ New password is weak"
+    } else {
+      np = true
+      alertPasword.style.color = "green"
+      alertPasword.innerText = "✅ Mew password is ok"
+    }
+    checPasswordsValidation()
+  })
+
+  passwordInput[2].addEventListener("keyup", e => {
+    if (e.target.value.length < 6) {
+      cnp = false
+      alertPasword.style.color = "red"
+      alertPasword.innerText = "❌ Confirm password is weak"
+    } else {
+      cnp = true
+      alertPasword.style.color = "green"
+      alertPasword.innerText = "✅ Confirm password is ok"
+      if (np == cnp) {
+        changepasswordbtn.disabled = false
+      } else {
+        changepasswordbtn.disabled = true
+        alertPasword.innerText = "❌ Confirm password not matched"
+      }
+    }
+    checPasswordsValidation()
+  })
+
+
+
+
+  console.log(passwordInput)
+  updatePasswordFrom.addEventListener("submit", async e => {
+    e.preventDefault()
+
+
+    const previusPassword = document.getElementById("ppassword"),
+      newpassword = document.getElementById("npassword"),
+      confirmpassword = document.getElementById("cnpassword");
+
+    if (newpassword.value == confirmpassword.value) {
+
+      let path = `/api/teacher/update/password`
+
+      const request = await fetch(path, {
+        method: "put",
+        headers: {
+          'content-type': "application/json"
+        },
+        body: JSON.stringify({
+          prevpassword: previusPassword.value,
+          newpassword: newpassword.value,
+          confirmpassword: confirmpassword.value
+
+        })
+      })
+      updatePasswordFrom.reset()
+
+      try {
+        const response = await request.json();
+        if (response.success) {
+          alertPasword.style.color = "green"
+          alertPasword.innerText = response.msg
+        } else {
+          alertPasword.style.color = "red"
+          alertPasword.innerText = response.error
+        }
+      } catch (error) {
+        alertPasword.style.color = "red"
+        alertPasword.innerText = response.error
+      }
+
+    } else {
+      alert("confirm passwod not matching..")
+    }
+
+
+
+  })
+</script>
+
+</body>
+
+</html>
